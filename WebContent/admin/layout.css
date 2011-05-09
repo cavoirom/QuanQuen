@@ -1,0 +1,278 @@
+/*
+ *  Author:		cavoirom
+ *  Email:		cavoirom@yahoo.com
+ *  Created:	2th April, 2011
+ *  ---------------------------------------------------
+ *  Please don't delete this infomation.
+ *  ---------------------------------------------------
+ *  This file defines the layout of admin panel.
+ */
+
+
+body {
+	margin: 0 auto 0 auto;
+	padding: 0;
+	font-family: Verdana, Arial, "Times New Roman";
+}
+
+/* Login Page */
+#LoginFormContainer {
+	padding: 0 10px 0 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 350px;
+}
+#LoginForm {
+	margin: 80px auto 0 auto;
+	padding: 0 0 10px 0;
+	border: 1px solid #0f3600;
+	width: 330px;
+}
+#LoginForm .formTitle {
+	padding-left: 15px;
+	line-height: 1.6em;
+	font-size: 1.2em;
+	color: #fff;
+	background-color:  #2f6a05;
+}
+#LoginForm .floatLeft {
+	padding-left: 5px;
+	float: left;
+}
+#LoginForm .rmbLabel {
+	font-size: 0.8em;
+	position: relative;
+	top: -2px;
+}
+#LoginForm .floatRight {
+	padding-right: 5px;
+	float: right;
+}
+#LoginForm .inputLabel {
+	line-height: 1.8em;
+	font-size: 0.8em;
+}
+#LoginForm .smButton {
+	margin-top: 5px;
+	margin-right: 10px;
+}
+#LoginForm .warpper {
+	width: 145px;
+}
+#LoginForm .clear {
+	clear: both;
+}
+#LoginForm .errorMessage {
+	padding-top: 5px;
+	padding-left: 15px;
+	font-size: 0.9em;
+	color: #990000;
+}
+
+/* Error page */
+#ErrorContainer {
+	padding: 0 10px 0 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 600px;	
+}
+#Error {
+	margin: 80px auto 0 auto;
+	padding: 0;
+	border: 1px solid #0f3600;
+	width: 580px;
+}
+#Error .errorName {
+	padding-left: 15px;
+	line-height: 1.6em;
+	font-size: 1.2em;
+	color: #fff;
+	background-color:  #2f6a05;
+}
+#Error .errorContent {
+	font-size: 1em;
+	padding: 15px 15px 15px 20px;
+}
+
+/* Admin Control Panel - Layout */
+#HeaderBar {
+	background-color: #134400;
+	height: 41px;
+	left: 0px;
+	position: absolute;
+	width: 100%;
+	min-width: 980px;
+	z-index: -1;
+}
+#PageContainer {
+	padding: 0 10px 0 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+}
+#HeaderContainer {
+	height: 40px;
+}
+#LogoContainer {
+	float: left;
+	height: 30px;
+	width: 200px;
+	position: relative;
+	top: 10px;
+	//background: #398; /* for test */
+}
+#LogoContainer .pageLogo {
+	width: 120px;
+	margin: 0 auto 0 auto;
+	line-height: 1.6em;
+	font-size: 1.3em;
+	font-weight: normal;
+	color: #fff;
+	cursor: pointer;
+	display: block;
+}
+#TitleContainer {
+	border: 1px solid #0f3600;
+	border-bottom: 0px;
+	float: right;
+	height: 30px;
+	width: 758px;
+	position: relative;
+	top:10px;
+	background: #2f6a05;
+}
+#TitleContainer .menuTitle {
+	padding-left: 15px;
+	line-height: 1.6em;
+	font-size: 1.2em;
+	font-weight: normal;
+	color: #fff;
+}
+#MainContainer {
+	width: 960px;
+}
+#SideContainer {
+	float: left;
+	width: 200px;
+	//background: #834; /* for test */
+}
+#SideContainer a {
+	color: inherit;
+	text-decoration:none;
+}
+#SideContainer ul {
+	list-style-type: none;
+	margin: 0px;
+	padding-top: 10px;
+	padding-left: 10px;
+	font-size: 0.9em;
+	line-height: 1.4em;
+}
+#SideContainer li {
+	padding-left: 30px;
+	margin-top: 2px;
+	cursor: pointer;
+	background-repeat: no-repeat;
+	background-position: 5px;
+}
+#SideContainer li:hover {
+	color: #072200;
+}
+#SideContainer .selected {
+	font-weight: bold;
+	background-color: #cdffba;	
+}
+#SideContainer .generalButton {
+	background-image: url("images/general.png");
+}
+#SideContainer .systemButton {
+	background-image: url("images/system.png");
+}
+#SideContainer .placeButton {
+	background-image: url("images/place.png");
+}
+#SideContainer .userButton {
+	background-image: url("images/user.png");
+}
+#SideContainer .categoryButton {
+	background-image: url("images/category.png");
+}
+#SideContainer .articleButton {
+	background-image: url("images/article.png");
+}
+#SideContainer .commentButton {
+	background-image: url("images/comment.png");
+}
+#SideContainer .logoutButton {
+	background-image: url("images/logout.png");
+}
+#SideContainer .separator {
+	border-bottom: 1px solid #ddd;
+	width: 150px;
+	height: 1px;
+}
+
+#ContentContainer {
+	float: right;
+	padding-bottom: 30px;
+	border: 1px solid #2f6a05;
+	border-top: 0px;
+	width: 758px;
+	//height: 500px; /* for test */
+}
+#MainContent {
+	margin: 0 auto 0 auto;
+	padding: 25px;
+	width: 700px;
+	
+}
+#MainContent .listLabel {
+	font-size: 1em;
+	font-weight: bold;
+	padding-top: 10px;
+	padding-left: 40px;
+}
+#MainContent .listWrapper {
+	margin: 0 auto 0 auto;
+	padding: 0px;
+	width: 650px;
+	border-top: 1px solid #ddd;
+}
+#MainContent .itemWrapper {
+	padding-top: 5px;
+	display: block;
+	line-height: 1.5em;
+	font-size: 1em;
+}
+#MainContent .itemLabel {
+	float: left;
+	width: 250px;
+	text-align: right;
+	color: #072200;
+}
+#MainContent .itemDesc {
+
+}
+#MainContent .itemValue {
+	float: right;
+	width: 390px;
+}
+#FooterContainer {
+	margin-left: 200px;
+	clear: both;
+	width: 760px;
+}
+#Copyright {
+	color: #777;
+	font-size: 0.7em;
+	padding-top: 3px;
+	padding-left: 10px;
+	float: left;
+}
+#ContactInfo {
+	color: #777;
+	font-size: 0.7em;
+	padding-top: 3px;
+	padding-right: 10px;
+	float: right;
+}
