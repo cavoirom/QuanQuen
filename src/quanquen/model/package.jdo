@@ -30,11 +30,11 @@
 				<column length="2184" jdbc-type="VARCHAR"/>
 			</field>
 			<field name="membersLikeThis" persistence-modifier="persistent">
-				<collection element-type="quanquen.Member"/>
+				<collection element-type="quanquen.model.Member"/>
 				<join/>
 			</field>
 			<field name="comments" persistence-modifier="persistent">
-				<collection element-type="quanquen.Comment"/>
+				<collection element-type="quanquen.model.Comment"/>
 				<join/>
 			</field>
 		</class>
@@ -43,7 +43,7 @@
 				<column length="32" jdbc-type="VARCHAR"/>
 			</field>
 			<field name="places" persistence-modifier="persistent" mapped-by="categories">
-				<collection element-type="quanquen.Place"/>
+				<collection element-type="quanquen.model.Place"/>
 			</field>
 		</class>
 		<class name="Comment" identity-type="datastore" detachable="true">
@@ -63,7 +63,7 @@
 				<column length="32" jdbc-type="VARCHAR"/>
 			</field>
 			<field name="members" persistence-modifier="persistent">
-				<collection element-type="quanquen.Member" />
+				<collection element-type="quanquen.model.Member" />
 				<join />
 			</field>
 			<field name="permissions" persistence-modifier="persistent" default-fetch-group="true"/>
@@ -104,19 +104,19 @@
 			<field name="birthday" persistence-modifier="persistent"/>
 			<field name="group" persistence-modifier="persistent"/>
 			<field name="friends" persistence-modifier="persistent" mapped-by="friends">
-				<collection element-type="quanquen.Member"/>
+				<collection element-type="quanquen.model.Member"/>
 				<join/>
 			</field>
 			<field name="articles" persistence-modifier="persistent" mapped-by="author">
-				<collection element-type="quanquen.Article"/>
+				<collection element-type="quanquen.model.Article"/>
 				<join/>
 			</field>
 			<field name="comments" persistence-modifier="persistent" mapped-by="author">
-				<collection element-type="quanquen.Comment"/>
+				<collection element-type="quanquen.model.Comment"/>
 				<join/>
 			</field>
 			<field name="places" persistence-modifier="persistent" mapped-by="managers">
-				<collection element-type="quanquen.Place"/>
+				<collection element-type="quanquen.model.Place"/>
 			</field>
 			<field name="isActive"/>
 			<fetch-group name="authorization">
@@ -152,29 +152,29 @@
 				<column length="32" jdbc-type="VARCHAR"/>
 			</field>
 			<field name="categories" persistence-modifier="persistent">
-				<collection element-type="quanquen.Category"/>
+				<collection element-type="quanquen.model.Category"/>
 				<join/>
 			</field>
 			<field name="postedDate" persistence-modifier="persistent"/>
 			<field name="lastUpdate" persistence-modifier="persistent"/>
 			<field name="images" persistence-modifier="persistent">
-				<collection element-type="quanquen.Image"/>
+				<collection element-type="quanquen.model.Image"/>
 				<join/>
 			</field>
 			<field name="membersLikeThis" persistence-modifier="persistent">
-				<collection element-type="quanquen.Member"/>
+				<collection element-type="quanquen.model.Member"/>
 				<join/>
 			</field>
 			<field name="announcement">
 				<column length="4096" jdbc-type="VARCHAR"/>
 			</field>
 			<field name="managers" persistence-modifier="persistent">
-				<collection element-type="quanquen.Member"/>
+				<collection element-type="quanquen.model.Member"/>
 				<join/>
 			</field>
 			<field name="numberOfVisited"/>
 			<field name="articles" persistence-modifier="persistent">
-				<collection element-type="quanquen.Article"/>
+				<collection element-type="quanquen.model.Article"/>
 				<join/>
 			</field>
 		</class>
