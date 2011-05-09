@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<!DOCTYPE jdo PUBLIC
+    "-//Sun Microsystems, Inc.//DTD Java Data Objects Metadata 2.0//EN"
+    "http://java.sun.com/dtd/jdo_2_0.dtd">
+<jdo>
+	<package name="quanquen.model">
+		<class name="Address" identity-type="datastore" detachable="true">
+			<field name="province">
+				<column length="32" jdbc-type="VARCHAR" />
+			</field>
+			<field name="district">
+				<column length="32" jdbc-type="VARCHAR" />
+			</field>
+			<field name="street">
+				<column length="64" jdbc-type="VARCHAR" />
+			</field>
+			<field name="houseNumber">
+				<column length="16" jdbc-type="VARCHAR" />
+			</field>
+		</class>
+		<class name="Article" identity-type="datastore" detachable="true">
+			<field name="title">
+				<column length="128" jdbc-type="VARCHAR"/>
+			</field>
+			<field name="author" persistence-modifier="persistent">
+			</field>
+			<field name="postedDate">
+			</field>
+			<field name="content">
+				<column length="2184" jdbc-type="VARCHAR"/>
+			</field>
+			<field name="membersLikeThis" persistence-modifier="persistent">
+				<collection element-type="quanquen.Member"/>
+				<join/>
+			</field>
+			<field name="comments" persistence-modifier="persistent">
+				<collection element-type="quanquen.Comment"/>
+				<join/>
+			</field>
+		</class>
+		<class name="Category" identity-type="datastore" detachable="true">
+			<field name="title">
+				<column length="32" jdbc-type="VARCHAR"/>
+			</field>
+			<field name="places" persistence-modifier="persistent" mapped-by="categories">
+				<collection element-type="quanquen.Place"/>
+			</field>
+		</class>
+		<class name="Comment" identity-type="datastore" detachable="true">
+			<field name="author" persistence-modifier="persistent">
+			</field>
+			<field name="postedDate">
+			</field>
+			<field name="content">
+				<column length="32768" jdbc-type="LONGVARCHAR"/>
+			</field>
+		</class>
+		<class name="Group" identity-type="datastore" detachable="true">
+			<unique>
+				<field name="name"/>
+			</unique>
+			<field name="name">
+				<column length="32" jdbc-type="VARCHAR"/>
+			</field>
+			<field name="members" persistence-modifier="persistent">
+				<collection element-type="quanquen.Member" />
+				<join />
+			</field>
+			<field name="permissions" persistence-modifier="persistent" default-fetch-group="true"/>
+		</class>
+		<class name="Image" identity-type="datastore" detachable="true">
+			<field name="url">
+				<column length="256" jdbc-type="VARCHAR"/>
+			</field>
+			<field name="description">
+				<column length="4096" jdbc-type="VARCHAR"/>
+			</field>
+		</class>
+		<class name="Member" identity-type="datastore" detachable="true">
+			<unique>
+				<field name="username"/>
+			</unique>
+			<unique>
+				<field name="email"/>
+			</unique>
+			<field name="username">
+				<column length="32" jdbc-type="VARCHAR"/>
+			</field>
+			<field name="password">
+				<column length="32" jdbc-type="VARCHAR"/>
+			</field>
+			<field name="fullName">
+				<column length="32" jdbc-type="VARCHAR"/>
+			</field>
+			<field name="email">
+				<column length="128" jdbc-type="VARCHAR"/>
+			</field>
+			<field name="joinedDate" persistence-modifier="persistent"/>
+			<field name="website">
+				<column length="128" jdbc-type="VARCHAR"/>
+			</field>
+			<field name="avatar" persistence-modifier="persistent"/>
+			<field name="address" persistence-modifier="persistent"/>
+			<field name="birthday" persistence-modifier="persistent"/>
+			<field name="group" persistence-modifier="persistent"/>
+			<field name="friends" persistence-modifier="persistent" mapped-by="friends">
+				<collection element-type="quanquen.Member"/>
+				<join/>
+			</field>
+			<field name="articles" persistence-modifier="persistent" mapped-by="author">
+				<collection element-type="quanquen.Article"/>
+				<join/>
+			</field>
+			<field name="comments" persistence-modifier="persistent" mapped-by="author">
+				<collection element-type="quanquen.Comment"/>
+				<join/>
+			</field>
+			<field name="places" persistence-modifier="persistent" mapped-by="managers">
+				<collection element-type="quanquen.Place"/>
+			</field>
+			<field name="isActive"/>
+			<fetch-group name="authorization">
+				<field name="username"/>
+				<field name="password"/>
+				<field name="group"/>
+			</fetch-group>
+		</class>
+		<class name="Place" identity-type="datastore" detachable="true">
+			<field name="name">
+				<column length="64" jdbc-type="VARCHAR"/>
+			</field>
+			<field name="address" persistence-modifier="persistent"/>
+			<field name="map">
+				<column length="256" jdbc-type="VARCHAR"/>
+			</field>
+			<field name="tel">
+				<column length="16" jdbc-type="VARCHAR"/>
+			</field>
+			<field name="fax">
+				<column length="16" jdbc-type="VARCHAR"/>
+			</field>
+			<field name="email">
+				<column length="128" jdbc-type="VARCHAR"/>
+			</field>
+			<field name="website">
+				<column length="128" jdbc-type="VARCHAR"/>
+			</field>
+			<field name="price">
+				<column length="128" jdbc-type="VARCHAR"/>
+			</field>
+			<field name="checkoutMethod">
+				<column length="32" jdbc-type="VARCHAR"/>
+			</field>
+			<field name="categories" persistence-modifier="persistent">
+				<collection element-type="quanquen.Category"/>
+				<join/>
+			</field>
+			<field name="postedDate" persistence-modifier="persistent"/>
+			<field name="lastUpdate" persistence-modifier="persistent"/>
+			<field name="images" persistence-modifier="persistent">
+				<collection element-type="quanquen.Image"/>
+				<join/>
+			</field>
+			<field name="membersLikeThis" persistence-modifier="persistent">
+				<collection element-type="quanquen.Member"/>
+				<join/>
+			</field>
+			<field name="announcement">
+				<column length="4096" jdbc-type="VARCHAR"/>
+			</field>
+			<field name="managers" persistence-modifier="persistent">
+				<collection element-type="quanquen.Member"/>
+				<join/>
+			</field>
+			<field name="numberOfVisited"/>
+			<field name="articles" persistence-modifier="persistent">
+				<collection element-type="quanquen.Article"/>
+				<join/>
+			</field>
+		</class>
+		<class name="SystemProperty" identity-type="datastore" detachable="true">
+			<unique>
+				<field name="name" />
+			</unique>
+			<field name="name">
+				<column length="48" jdbc-type="VARCHAR"/>
+			</field>
+			<field name="value">
+				<column length="128" jdbc-type="VARCHAR"/>
+			</field>
+		</class>
+	</package>
+</jdo>
