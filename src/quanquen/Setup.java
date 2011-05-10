@@ -17,23 +17,30 @@ import quanquen.model.*;
 
 public class Setup {
 	public static void main(String[] args) {
-
-		// Begin - Setup default group
 		/*
-		 * LinkedHashSet<String> adminPermission = new LinkedHashSet<String>();
-		 * adminPermission.add("admin"); adminPermission.add("member"); Group
-		 * adminGroup = new Group("admin", new LinkedHashSet<Member>(),
-		 * adminPermission); LinkedHashSet<String> memberPermission = new
-		 * LinkedHashSet<String>(); memberPermission.add("member"); Group
-		 * memberGroup = new Group("member", new LinkedHashSet<Member>(),
-		 * memberPermission);
-		 * 
-		 * pm.makePersistent(adminGroup); pm.makePersistent(memberGroup);
-		 */
+		// Setup PersistenceManager for Datastore functions
+		PersistenceManagerFactory pmf = JDOHelper
+				.getPersistenceManagerFactory("datanucleus.properties");
+		PersistenceManager pm = pmf.getPersistenceManager();
+		
+		// Begin - Setup default group
+		
+		LinkedHashSet<String> adminPermission = new LinkedHashSet<String>();
+		adminPermission.add("admin");
+		adminPermission.add("member");
+		Group adminGroup = new Group("admin", new LinkedHashSet<Member>(), adminPermission);
+		LinkedHashSet<String> memberPermission = new LinkedHashSet<String>();
+		memberPermission.add("member");
+		Group memberGroup = new Group("member", new LinkedHashSet<Member>(), memberPermission);
+		 
+		pm.makePersistent(adminGroup);
+		pm.makePersistent(memberGroup);
+		 
 		// End - Setup default group
 
 		// Close PersistenceManager
-		// pm.close();
+		pm.close();
+		*/
 		Setup.addMember();
 	}
 
@@ -118,6 +125,8 @@ public class Setup {
 				mG = r1.get(0);
 			Member m = new Member(username, password, email, birthday, mG,
 					isActive);
+			mG.addMember(m);
+			pm.makePersistent(mG);
 			pm.makePersistent(m);
 			tx.commit();
 			pm.close();
