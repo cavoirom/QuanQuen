@@ -21,6 +21,9 @@ if (loginStatus.equals("false")) {
 }
 %>
 
+<% if (isAdminAuthorized) {
+	response.sendRedirect("home.jsp");
+} else { %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="vi">
 <!--
@@ -33,9 +36,6 @@ Please don't delete this infomation.
 This file display login form of admin panel.
 -->
 <head>
-	<% if(isAdminAuthorized) { %>
-	<meta http-equiv="refresh" content="0;url=home.jsp"/>
-	<% } %>
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 	<meta name="lang" content="vi"/>
 	<title>Trang quản lý - Quán Quen</title>
@@ -73,3 +73,4 @@ This file display login form of admin panel.
 </body>
 
 </html>
+<% } %>

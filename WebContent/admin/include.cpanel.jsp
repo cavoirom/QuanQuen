@@ -9,22 +9,14 @@ if (session.getAttribute("isAdminAuthorized") == null)
 else
 	isAdminAuthorized = (Boolean) session.getAttribute("isAdminAuthorized");
 %>
+<% if (isAdminAuthorized && request.getRequestURI().endsWith("home.jsp")) { %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="vi">
-<!--
-Author:		cavoirom
-Email:		cavoirom@yahoo.com
-Created:		2th April, 2011
-***************************************************
-Please don't delete this infomation.
-***************************************************
-This file display login form of admin panel.
--->
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 	<meta name="lang" content="vi"/>
 	<title>Quán Quen - Trang quản lý</title>
-	<link rel="shortcut icon" href="../favicon.ico">
+	<link rel="shortcut icon" href="../favicon.ico"/>
 	<link rel="stylesheet" type="text/css" href="layout.css"/>
 </head>
 
@@ -94,6 +86,11 @@ This file display login form of admin panel.
 			<div id="ContactInfo">Liên Lạc</div>
 		</div>
 	</div>
+	</div>
 </body>
-
 </html>
+<% } else { 
+	String errorCode = "404";
+	request.setAttribute("errorCode", errorCode); %>
+<jsp:include page="include.error.jsp" flush="true"/>
+<% } %>
