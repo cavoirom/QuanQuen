@@ -76,7 +76,7 @@ public class Setup {
 		String groupName = in.nextLine();
 
 		// Set activation
-		System.out.print("Is actived: ");
+		System.out.print("Is actived (true/false): ");
 		boolean isActive = in.nextBoolean();
 		in.nextLine();
 
