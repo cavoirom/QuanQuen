@@ -1,0 +1,29 @@
+form#register{
+	margin: 20px auto;
+	width: 420px;
+	display: block;
+	height: 170px;
+	border: 1px solid #ddd;
+	padding: 20px;
+}
+form#register fieldset{
+	border: none;
+	margin: 10px 0px;
+}
+
+form#register label{
+	width: 170px;
+	display: block;
+	float: left;
+	text-align: left;
+}
+
+form#register fieldset input{
+	width: 200px;
+}
+
+form#register #buttonregister{
+	width: 80px;
+	margin: auto;
+	display: block;
+}

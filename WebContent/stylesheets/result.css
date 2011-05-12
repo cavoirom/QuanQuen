@@ -1,0 +1,57 @@
+form#advancesearch{
+	margin: 0px 0px 0px 5px;
+	border: 1px solid #ddd;
+	width: 980px;
+}
+
+form#advancesearch fieldset {
+	border: none;
+	margin: 10px;
+}
+
+form#advancesearch fieldset label {
+	width: 125px;
+	float: left;
+	height: 24px;
+	line-height: 24px;
+	text-align: right;
+}
+
+form#advancesearch fieldset select{
+	width: 180px;
+	float: left;
+	margin: 0px 0px 0px 10px;
+	height: 24px;
+	line-height: 24px;
+	font-size: 1em;
+}
+
+form#advancesearch fieldset input#value {
+	width: 810px;
+	float: left;
+	margin: 0px 0px 0px 10px;
+	height: 24px;
+	line-height: 24px;
+	font-size: 1em;
+}
+
+input#buttonsearch{
+	color: #00f;
+	height: 24px;
+	width: 80px;
+	font-weight: bold;
+	display: block;
+	margin: 0px auto 10px;
+}
+
+input#buttonsearch:hover{
+	cursor: pointer;
+	color: #fff;
+}
+
+div#result{
+	border: 1px solid #ddd;
+	width: 980px;
+	position: relative;
+	margin: 10px 0px 0px 5px;
+}

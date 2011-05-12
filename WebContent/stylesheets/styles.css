@@ -1,0 +1,419 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	font-size: 100%;
+	font-family: Arial, Tahoma, Helvetica, sans-serif;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: #00f;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+h2 {
+	font-size: 1.5em;
+}
+
+h3 {
+	font-size: 1.125em;
+}
+
+h4 {
+	font-size: 1em;
+}
+
+#wrapper {
+	width: 994px;
+	margin: 10px auto;
+}
+
+div#dotter {
+	background: url(../images/dotter.png) no-repeat;
+	height: 50px;
+	padding: 4.5px 9px 0px 4.5px;
+}
+
+ul#nav, div#footer {
+	background: #760 url(../images/navbg.jpg) repeat-x center;
+	position: relative;
+	height: 42px;
+	width: 982px;
+}
+
+ul#nav li {
+	float: left;
+	background: url(../images/divide.jpg) no-repeat top right;
+	padding-right: 2px;
+}
+
+ul#nav li#search {
+	background: none;
+}
+
+ul#nav li a span, ul#nav li a {
+	color: #fff;
+	display: block;
+	line-height: 41px;
+	text-indent: -9999px;
+	width: 150px;
+}
+
+#nav li#search #buttonsearch {
+	background: url(../images/search_icon.png) no-repeat center;
+	width: 41px;
+	height: 41px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	text-indent: -9999px;
+	border: none;
+}
+
+ul#nav li a#homepage span {
+	background: url(../images/homepage.png) no-repeat center center;
+}
+
+ul#nav li a#quanquen span {
+	background: url(../images/quanquen.png) no-repeat center center;
+}
+
+ul#nav li a#about span {
+	background: url(../images/about.png) no-repeat center center;
+}
+
+ul#nav li a#contact span {
+	background: url(../images/contact.png) no-repeat center center;
+}
+
+ul#nav li a:hover,ul#nav li a:active {
+	background: url(../images/navhover.png) repeat-x center;
+}
+
+body#homepage #wrapper div#header ul#nav li a#homepage,body#quanquen #wrapper div#header ul#nav li a#quanquen,body#about #wrapper div#header ul#nav li a#about,body#contact #wrapper div#header ul#nav li a#contact
+	{
+	background: url(../images/navselected.png) repeat-x center;
+}
+
+form#formsearch{
+	background: url(../images/dotter_search.png) no-repeat center left;
+	width: 330px;
+	height: 19px;
+	position: relative;
+	display: block;
+	margin-left: 40px;
+	padding: 11px 0px 11px 0px;
+}
+
+#searchbox {
+	width: 260px;
+	height: 19px;
+	position: absolute;
+	line-height: 19px;
+	border: none;
+	margin: 0px 2px;
+	background: transparent;
+	color: #fff;
+}
+
+div#dotterbanner {
+	background: url(../images/dotter_banner.png) no-repeat;
+	padding: 2px 0px 0px 5px;
+	height: 171px;
+	position: relative;
+}
+
+div#banner #buttonregister {
+	color: #fff;
+	font-weight: bold;
+	background: url(../images/navbg.jpg);
+	line-height: 34px;
+	height: 34px;
+	width: 122px;
+	position: absolute;
+	top: 65px;
+	right: 20px;
+	text-align: center;
+}
+
+div#banner #buttonregister:hover {
+	color: #f00;
+}
+
+div#banner #formlogin {
+	position: absolute;
+	height: 58px;
+	width: 406px;
+	right: 20px;
+	bottom: 10px;
+	color: #fff;
+	font-size: 0.9em;
+	font-weight: bold;
+	/*background: #ddd;*/
+}
+
+div#banner #formlogin .inputbox {
+	width: 156px;
+	height: 20px;
+	line-height: 20px;
+}
+
+div#banner #formlogin #accountbox,div#banner #formlogin #rescuepassword
+	{
+	display: block;
+}
+
+div#banner #formlogin #savepassword,div#banner #formlogin label,div#banner #formlogin #rescuepassword
+	{
+	color: #dba8ac;
+	font-size: 0.9em;
+	padding-top: 3px;
+}
+
+div#banner #formlogin #rescuepassword:hover {
+	color: #00f;
+}
+
+div#banner #formlogin #part1,div#banner #formlogin #part2 {
+	float: left;
+	width: 156px;
+	padding-right: 9px;
+}
+
+div#banner #formlogin #buttonlogin {
+	clear: both;
+	position: absolute;
+	color: #fff;
+	background: url(../images/navbg.jpg);
+	border: none;
+	font-weight: bold;
+	right: 0px;
+	width: 76px;
+	height: 22px;
+	top: 19px;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+div#banner #formlogin #buttonlogin:hover {
+	cursor: pointer;
+	color: #f00;
+}
+
+div#banner {
+	height: 164px;
+	background: url(../images/banner.jpg) no-repeat;
+}
+
+div#content {
+	position: relative;
+}
+
+div#dottermainbox {
+	background: url(../images/dotter_mainbox.png) no-repeat;
+	height: 391px;
+	width: 410px;
+	position: relative;
+	padding: 2px 4px 5px 5px;
+	overflow: hidden;
+}
+
+div#dottermainbox div#titlemainbox {
+	background: url(../images/mainbox_title_bg.png) repeat-x;
+	height: 30px;
+	width: 410px;
+	padding-bottom: 3px;
+}
+
+div#titlemainbox p#topmonth {
+	background: url(../images/top_month.png) no-repeat center center;
+	height: 30px;
+	width: 410px;
+	text-indent: -9999px;
+}
+
+div#contentmainbox {
+	height: 360px;
+	position: relative;
+	overflow: hidden;
+}
+
+div#contentmainbox div#numbermainbox {
+	position: absolute;
+	right: 4px;
+	top: 4px;
+	z-index: 600;
+}
+
+div#numbermainbox input {
+	float: left;
+}
+
+.numberbox {
+	width: 30px;
+	height: 30px;
+	background: #000;
+	filter: alpha(opacity = 40);
+	-moz-opacity: 0.4;
+	-khtml-opacity: 0.4;
+	opacity: 0.4;
+	display: block;
+	line-height: 30px;
+	text-align: center;
+	margin: 0px 0px 5px 5px;
+	border: 2px solid #fff;
+	font-weight: bold;
+	color: #fff;
+}
+
+.numberbox:hover {
+	color: #f0f;
+	cursor: pointer;
+}
+
+div.caption {
+	background: #000;
+	filter: alpha(opacity = 50);
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+	color: #fff;
+	position: absolute;
+	bottom: 0px;
+	padding: 5px 10px 10px 10px;
+	text-align: justify;
+}
+
+#boxtextmainbox{
+	height: 95px;
+}
+
+div.caption a{
+	text-transform: capitalize;
+	line-height: 28px;
+	color: #fff;
+	overflow: hidden;
+	height: 28px;
+	display: block;
+}
+
+div.caption p {
+	overflow: hidden;
+	height: 72px;
+	line-height: 18px;
+}
+
+div.caption a:hover {
+	color: #f00;
+}
+
+div.dottersubbox {
+	background: url(../images/dotter_subbox.png) no-repeat;
+	height: 391px;
+	width: 265px;
+	position: absolute;
+	top: 0px;
+	padding: 2px 4px 5px 2px;
+	overflow: hidden;
+}
+
+div#dottersubbox1 {
+	left: 434px;
+}
+
+div#dottersubbox2 {
+	right: 5px;
+}
+
+div.dottersubbox div.titlesubbox {
+	background: url(../images/subbox_title_bg.png) repeat-x;
+	height: 30px;
+	width: 265px;
+	padding: 0px 0px 3px 0px;
+}
+
+div.dottersubbox div.titlesubbox p {
+	background: url(../images/newupdate.png) no-repeat center center;
+	height: 30px;
+	width: 265px;
+	text-indent: -9999px;
+}
+
+div.dottersubbox div.titlesubbox p#newupdate {
+	background: url(../images/newupdate.png) no-repeat center center;
+}
+
+div.dottersubbox div.titlesubbox p#newrecent {
+	background: url(../images/newrecent.png) no-repeat center center;
+}
+
+div.dottersubbox div.contentsubbox {
+	overflow: hidden;
+	height: 358px;
+	width: 265px;
+	position: relative;
+}
+
+#numbersubbox{
+	position: absolute;
+	right: 4px;
+	z-index: 600;
+	top: 4px
+}
+
+p#copyright {
+	margin-left: 10px;
+	line-height: 41px;
+	width: 108px;
+	color: #fff;
+	text-indent: -9999px;
+	background: url(../images/copyright.png) no-repeat center;
+}
+
+input.selectednumber {
+	color: #f0f;
+}
+
+.gallery {
+	position: relative;
+}
+
+#contentmainbox #gallerymainbox{
+	height: 360px;
+}
+
+#contentsubbox2 #gallerysubbox2{
+	height: 360px;
+}
+
+.gallery>a {
+	position: absolute;
+}
+
+.gallery a img {
+	border: none;
+}
+
+.gallery a.show {
+	z-index: 500;
+}
+
+.gallery .caption {
+	z-index: 600;
+}
+
+.mark{
+	text-align: center;
+	margin-top: 10px;
+}

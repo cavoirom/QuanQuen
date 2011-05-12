@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Comment {
 	private Member author;
-	private Date postedDate;
+	private Date postedDate = new Date();
 	private String content;
 	
 	public Comment(Member author, Date postedDate, String content) {
@@ -37,6 +37,5 @@ public class Comment {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
 	
 }

@@ -9,7 +9,7 @@ public class Member {
 	private String password;
 	private String fullName;
 	private String email;
-	private Date joinedDate;
+	private Date joinedDate = new Date();
 	private String website;
 	private Image avatar;
 	private Address address;
@@ -161,6 +161,14 @@ public class Member {
 		this.isActive = isActive;
 	}
 
-
+	public boolean equals(Object obj){
+		if (obj instanceof Member){
+			Member that = (Member) obj;
+			if(this.username.equals(that.username)){
+				return true;
+			}
+		}
+		return false;
+	}
 	
 }

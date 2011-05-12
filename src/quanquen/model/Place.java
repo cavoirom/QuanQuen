@@ -5,6 +5,7 @@ import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
 public class Place {
+	private int id;
 	private String name;
 	private Address address;
 	private String map;
@@ -15,7 +16,7 @@ public class Place {
 	private String price;
 	private String checkoutMethod;
 	private LinkedHashSet<Category> categories;
-	private Date postedDate;
+	private Date postedDate = new Date();
 	private Date lastUpdate;
 	private LinkedList<Image> images;
 	private LinkedHashSet<Member> membersLikeThis;
@@ -205,4 +206,13 @@ public class Place {
 		this.articles = articles;
 	}
 	
+	public boolean equals(Object obj){
+		if (obj instanceof Place){
+			Place that = (Place) obj;
+			if(this.id == that.id){
+				return true;
+			}
+		}
+		return false;
+	}
 }

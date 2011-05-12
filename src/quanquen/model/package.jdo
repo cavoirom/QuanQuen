@@ -18,7 +18,9 @@
 				<column length="16" jdbc-type="VARCHAR" />
 			</field>
 		</class>
-		<class name="Article" identity-type="datastore" detachable="true">
+		<class name="Article" detachable="true">
+			<field name="id" primary-key="true" value-strategy="increment">
+			</field>
 			<field name="title">
 				<column length="128" jdbc-type="VARCHAR"/>
 			</field>
@@ -125,7 +127,9 @@
 				<field name="group"/>
 			</fetch-group>
 		</class>
-		<class name="Place" identity-type="datastore" detachable="true">
+		<class name="Place" detachable="true">
+			<field name="id" primary-key="true" value-strategy="increment">
+			</field>
 			<field name="name">
 				<column length="64" jdbc-type="VARCHAR"/>
 			</field>
@@ -188,6 +192,6 @@
 			<field name="value">
 				<column length="128" jdbc-type="VARCHAR"/>
 			</field>
-		</class>
+		</class>		
 	</package>
 </jdo>

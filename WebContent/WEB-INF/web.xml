@@ -24,4 +24,44 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>search</display-name>
+    <servlet-name>search</servlet-name>
+    <servlet-class>quanquen.control.search</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>search</servlet-name>
+    <url-pattern>/search</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>place</display-name>
+    <servlet-name>place</servlet-name>
+    <servlet-class>quanquen.control.place</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>place</servlet-name>
+    <url-pattern>/place</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>loadDistricts</display-name>
+    <servlet-name>loadDistricts</servlet-name>
+    <servlet-class>quanquen.control.loadDistricts</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>loadDistricts</servlet-name>
+    <url-pattern>/loadDistricts</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>category</display-name>
+    <servlet-name>category</servlet-name>
+    <servlet-class>quanquen.control.category</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>category</servlet-name>
+    <url-pattern>/category</url-pattern>
+  </servlet-mapping>
 </web-app>

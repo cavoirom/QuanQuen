@@ -5,9 +5,10 @@ import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
 public class Article {
+	private int id;
 	private String title;
 	private Member author;
-	private Date postedDate;
+	private Date postedDate = new Date();
 	private String content;
 	private LinkedHashSet<Member> membersLikeThis;
 	private LinkedList<Comment> comments;
@@ -78,6 +79,16 @@ public class Article {
 
 	public void setPageViews(int pageViews) {
 		this.pageViews = pageViews;
+	}
+	
+	public boolean equals(Object obj){
+		if (obj instanceof Article){
+			Article that = (Article) obj;
+			if(this.id == that.id){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 }

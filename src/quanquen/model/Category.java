@@ -26,5 +26,13 @@ public class Category {
 	public void addPlace(Place place) {
 		this.places.add(place);
 	}
-	
+	public boolean equals(Object obj){
+		if (obj instanceof Category){
+			Category that = (Category) obj;
+			if(this.title.equals(that.title)){
+				return true;
+			}
+		}
+		return false;
+	}
 }
