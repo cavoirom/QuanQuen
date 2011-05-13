@@ -24,6 +24,14 @@ public class Article {
 		this.comments = new LinkedList<Comment>();
 		this.pageViews = 0;
 	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getTitle() {
 		return title;

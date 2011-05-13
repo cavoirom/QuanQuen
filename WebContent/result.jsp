@@ -7,6 +7,7 @@
 <title>Quán quen | Kết quả tìm kiếm</title>
 <link href="stylesheets/styles.css" rel="stylesheet" type="text/css">
 <link href="stylesheets/result.css" rel="stylesheet" type="text/css">
+<link href="stylesheets/places.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="clientscripts/jquery-1.5.1.min.js"></script>
 <script type="text/javascript" src="clientscripts/jquery.corner.js"></script>
 </head>

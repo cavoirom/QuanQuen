@@ -11,6 +11,10 @@ import javax.servlet.http.HttpSession;
 
 import quanquen.bussinessaccess.BALAddress;
 
+/*
+ * Load all Place by category id
+ */
+
 public class category extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -24,7 +28,11 @@ public class category extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String province = request.getParameter("province");	
+		String province = request.getParameter("province");
+		String district = request.getParameter("district");
+		if (district != null){
+			session.setAttribute("district", district);
+		}
 		province = (province == null)? "Hồ Chí Minh": province;
 		session.setAttribute("province", province);
 		List<String> provinces;

@@ -14,6 +14,12 @@
 		return true;
 	}
 	
+	function deleteText(){
+		if (document.forms["formsearch"].searchbox.value == "Nội dung tìm kiếm..."){
+			document.forms["formsearch"].searchbox.value = "";
+		}
+	}
+	
 	function validateSearch(){
 		if(document.forms["formsearch"].searchbox.value == "" || document.forms["formsearch"].searchbox.value == "Nội dung tìm kiếm..."){
 			document.forms["formsearch"].searchbox.value = "";
@@ -39,7 +45,7 @@ response.setCharacterEncoding("utf-8");%>
 			<li><a href="contact.jsp" id="contact"><span>Liên hệ</span></a></li>
 			<li id="search">
 				<form action="search" method="post" id="formsearch" onsubmit="return validateSearch();">
-				<input type="text" value="<%=((session.getAttribute("searchvalue")==null)? "Nội dung tìm kiếm...":(String)session.getAttribute("searchvalue"))%>" id="searchbox" size="20" name="searchvalue"/>
+				<input type="text" value="<%=((session.getAttribute("searchvalue")==null)? "Nội dung tìm kiếm...":(String)session.getAttribute("searchvalue"))%>" id="searchbox" size="20" name="searchvalue" onClick="deleteText()"/>
 				<input type="submit" value="Tìm" id="buttonsearch"/>
 				</form>
 			</li>

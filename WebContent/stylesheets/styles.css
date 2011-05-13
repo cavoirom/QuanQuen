@@ -417,3 +417,7 @@ input.selectednumber {
 	text-align: center;
 	margin-top: 10px;
 }
+
+.clear{
+	clear: both;
+}

@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Quán Quen | Chi Tiết</title>
 <link href="stylesheets/styles.css" rel="stylesheet" type="text/css">
+<link href="stylesheets/detail.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="wrapper">

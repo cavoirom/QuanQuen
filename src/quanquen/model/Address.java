@@ -50,5 +50,7 @@ public class Address {
 		this.houseNumber = houseNumber;
 	}
 	
-	
+	public String toString(){
+		return this.province +", " + this.district + ", " + this.houseNumber;
+	}
 }

@@ -13,6 +13,9 @@ import javax.servlet.http.HttpSession;
 import quanquen.bussinessaccess.BALPlace;
 import quanquen.model.Place;
 
+/*
+ * Search for Place by address, name, price, comment, author
+ */
 
 public class search extends HttpServlet {
 	private static final long serialVersionUID = 1L;

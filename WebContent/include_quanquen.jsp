@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.List" %>
+<%@ page import="java.util.List"%>
+<%
+	request.setCharacterEncoding("utf-8");
+	response.setCharacterEncoding("utf-8");
+%>
+
 <div id="content">
 	<div id="quanquen_first">
 		<div id="topplace">
@@ -33,7 +38,7 @@
 				</a>
 	
 				<a href="5">
-					<img src="images/lotus.jpg" alt="Lotus" width="410" height="360" title="" alt="" rel="<a id='linkbox'><h3>Nội dung 5</h3></a><p>You're not connected to online Help, which shows you our latest content. Check your Internet connection, and then try to connect to online Help again. If you still see this message, the online Help service might be temporarily unavailable.</p>"/>
+					<img src="images/lotus.jpg" alt="Lotus" width="410" height="360" title="" alt="" rel="<h3><a id='linkbox'>Nội dung 5</a></h3><p>You're not connected to online Help, which shows you our latest content. Check your Internet connection, and then try to connect to online Help again. If you still see this message, the online Help service might be temporarily unavailable.</p>"/>
 				</a>
 	
 				<a href="6">
@@ -49,7 +54,7 @@
 			</div>
 		</div><!-- End topplace -->
 	
-		<div id="ad">asdfkjalsdfjalsjdf;lạdsflj</div>
+		<div id="ad"></div>
 	</div> <!-- End quanquen_first -->
 	
 	<div id="quanquen_last">

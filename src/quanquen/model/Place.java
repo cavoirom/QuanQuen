@@ -49,6 +49,14 @@ public class Place {
 		this.numberOfVisited = 0;
 		this.articles = new LinkedHashSet<Article>();
 	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;

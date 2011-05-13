@@ -3,6 +3,10 @@
 <script type="text/javascript">
 	function validateAdvanceSearch(){
 		var formsearch = document.forms["advancesearch"];
+		if (document.forms["advancesearch"].value.value == ""){
+			document.forms["advancesearch"].value.focus();
+			return false;
+		}
 	}
 	function deleteText(){
 		if (document.forms["advancesearch"].value.value=="Nội dung tìm kiếm..."){
@@ -40,24 +44,5 @@
 	<input type="submit" value="Tìm kiếm" id="buttonsearch"/>
 </form>
 <div id="result">
-<p>asdfsadfasdfa  asdhf adsjfhasdf sadjfhsad fsadfhskdjfhaskdjfh asdfh sadjfhaskjdfhaskjd sdhfas dfsad fasjdf
-<p>asdfsadfasdfa  asdhf adsjfhasdf sadjfhsad fsadfhskdjfhaskdjfh asdfh sadjfhaskjdfhaskjd sdhfas dfsad fasjdf
-<p>asdfsadfasdfa  asdhf adsjfhasdf sadjfhsad fsadfhskdjfhaskdjfh asdfh sadjfhaskjdfhaskjd sdhfas dfsad fasjdf
-<p>asdfsadfasdfa  asdhf adsjfhasdf sadjfhsad fsadfhskdjfhaskdjfh asdfh sadjfhaskjdfhaskjd sdhfas dfsad fasjdf
-<p>asdfsadfasdfa  asdhf adsjfhasdf sadjfhsad fsadfhskdjfhaskdjfh asdfh sadjfhaskjdfhaskjd sdhfas dfsad fasjdf
-<p>asdfsadfasdfa  asdhf adsjfhasdf sadjfhsad fsadfhskdjfhaskdjfh asdfh sadjfhaskjdfhaskjd sdhfas dfsad fasjdf
-<p>asdfsadfasdfa  asdhf adsjfhasdf sadjfhsad fsadfhskdjfhaskdjfh asdfh sadjfhaskjdfhaskjd sdhfas dfsad fasjdf
-<p>asdfsadfasdfa  asdhf adsjfhasdf sadjfhsad fsadfhskdjfhaskdjfh asdfh sadjfhaskjdfhaskjd sdhfas dfsad fasjdf
-<p>asdfsadfasdfa  asdhf adsjfhasdf sadjfhsad fsadfhskdjfhaskdjfh asdfh sadjfhaskjdfhaskjd sdhfas dfsad fasjdf
-<p>asdfsadfasdfa  asdhf adsjfhasdf sadjfhsad fsadfhskdjfhaskdjfh asdfh sadjfhaskjdfhaskjd sdhfas dfsad fasjdf
-<p>asdfsadfasdfa  asdhf adsjfhasdf sadjfhsad fsadfhskdjfhaskdjfh asdfh sadjfhaskjdfhaskjd sdhfas dfsad fasjdf
-<p>asdfsadfasdfa  asdhf adsjfhasdf sadjfhsad fsadfhskdjfhaskdjfh asdfh sadjfhaskjdfhaskjd sdhfas dfsad fasjdf
-<p>asdfsadfasdfa  asdhf adsjfhasdf sadjfhsad fsadfhskdjfhaskdjfh asdfh sadjfhaskjdfhaskjd sdhfas dfsad fasjdf
-<p>asdfsadfasdfa  asdhf adsjfhasdf sadjfhsad fsadfhskdjfhaskdjfh asdfh sadjfhaskjdfhaskjd sdhfas dfsad fasjdf
-<p>asdfsadfasdfa  asdhf adsjfhasdf sadjfhsad fsadfhskdjfhaskdjfh asdfh sadjfhaskjdfhaskjd sdhfas dfsad fasjdf
-<p>asdfsadfasdfa  asdhf adsjfhasdf sadjfhsad fsadfhskdjfhaskdjfh asdfh sadjfhaskjdfhaskjd sdhfas dfsad fasjdf
-<p>asdfsadfasdfa  asdhf adsjfhasdf sadjfhsad fsadfhskdjfhaskdjfh asdfh sadjfhaskjdfhaskjd sdhfas dfsad fasjdf
-<p>asdfsadfasdfa  asdhf adsjfhasdf sadjfhsad fsadfhskdjfhaskdjfh asdfh sadjfhaskjdfhaskjd sdhfas dfsad fasjdf
-<p>asdfsadfasdfa  asdhf adsjfhasdf sadjfhsad fsadfhskdjfhaskdjfh asdfh sadjfhaskjdfhaskjd sdhfas dfsad fasjdf
-<p>asdfsadfasdfa  asdhf adsjfhasdf sadjfhsad fsadfhskdjfhaskdjfh asdfh sadjfhaskjdfhaskjd sdhfas dfsad fasjdf
+	<%@include file="include_listplaces.jsp"%>
 </div>

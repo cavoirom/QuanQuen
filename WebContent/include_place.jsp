@@ -4,7 +4,6 @@
 	<h3 class="mark">Thể loại: </h3>
 	
 	<div id="quanquen_first">
-
 		<div id="topplace">
 			<div id="numbertopplacebox">
 				<input type="button" class="numberbox selectednumber" value="1" onClick="slideshowcategory.change(this.value)"/>
@@ -57,4 +56,7 @@
 		</div>
 	</div>
 	
+	<div id="quanquen_last">
+		<%@include file="include_listplaces.jsp" %>
+	</div>
 </div>

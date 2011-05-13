@@ -42,7 +42,7 @@ div#content div#quanquen_first div#ad {
 div#content div#quanquen_last{
 	position: relative;
 	width: 980px;
-	padding: 0px 0px 0px 5px;
+	margin: 0px 0px 0px 5px;
 	margin-top: 10px;
 }
 

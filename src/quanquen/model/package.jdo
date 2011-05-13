@@ -40,7 +40,9 @@
 				<join/>
 			</field>
 		</class>
-		<class name="Category" identity-type="datastore" detachable="true">
+		<class name="Category" detachable="true">
+			<field name="id" primary-key="true" value-strategy="increment">
+			</field>
 			<field name="title">
 				<column length="32" jdbc-type="VARCHAR"/>
 			</field>

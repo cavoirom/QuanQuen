@@ -7,6 +7,8 @@
 <title>Quán Quen | Thể Loại</title>
 <link href="stylesheets/styles.css" rel="stylesheet" type="text/css">
 <link href="stylesheets/quanquen.css" rel="stylesheet" type="text/css">
+<link href="stylesheets/places.css" rel="stylesheet" type="text/css">
+<link href="stylesheets/place.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="clientscripts/slideshow.js"></script>
 <script type="text/javascript" src="clientscripts/jquery-1.5.1.min.js"></script>
 <script type="text/javascript">
