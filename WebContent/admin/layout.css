@@ -214,6 +214,7 @@ body {
 	margin: 0 auto 0 auto;
 	padding: 25px;
 	width: 700px;
+	min-height: 200px;
 	
 }
 #MainContent .listLabel {
