@@ -31,20 +31,21 @@ public class loadDistricts extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		
-		String province = request.getParameter("province");
+		int provinceid = Integer.parseInt(request.getParameter("provinceid"));
 		HttpSession session = request.getSession();
 		String district = (String)session.getAttribute("district");
-		
+		String province = ((List<String>)session.getAttribute("provinces")).get(provinceid);
 		List<String> districts = new BALAddress().getDistrictsByProvince(province);
 		PrintWriter out = response.getWriter();
 		String text = "";
+		System.out.println(district);
 		for (int i=0; i < districts.size(); i++){
-			if (district != null && districts.get(i).equals(district)){
-				text = text + "<option value='" + districts.get(i) +"' selected='selected'>" + districts.get(i) + "</option>";
+			if (district != null && i==new Integer(district)){
+				text = text + "\n" + "<option value=\"" + i +"\" selected=\"selected\">" + districts.get(i) + "</option>";
 			}
-			text = text + "<option value='" + districts.get(i) +"'>" + districts.get(i) + "</option>";
+			text = text + "\n" + "<option value=\"" + i + "\">" + districts.get(i) + "</option>";
 		}
-		out.println();
+		out.print(text);
 		out.close();
 	}
 

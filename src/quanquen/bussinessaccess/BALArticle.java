@@ -8,7 +8,7 @@ import javax.jdo.Query;
 import quanquen.model.Article;
 
 public class BALArticle {
-	private PersistenceManager pm;
+	private static PersistenceManager pm;
 	
 	public List<Article> getArticleByDescDate(){
 		List<Article> articles;

@@ -1,8 +1,9 @@
 package quanquen.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Comment {
+public class Comment implements Serializable{
 	private Member author;
 	private Date postedDate = new Date();
 	private String content;

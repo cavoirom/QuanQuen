@@ -1,6 +1,8 @@
 package quanquen.model;
 
-public class Image {
+import java.io.Serializable;
+
+public class Image implements Serializable{
 	private String url;
 	private String description;
 	

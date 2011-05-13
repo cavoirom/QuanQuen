@@ -1,10 +1,11 @@
 package quanquen.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
-public class Place {
+public class Place implements Serializable{
 	private int id;
 	private String name;
 	private Address address;
@@ -50,6 +51,14 @@ public class Place {
 		this.articles = new LinkedHashSet<Article>();
 	}
 	
+	public Place(){
+		
+	}
+	
+	public Place(int placeid) {
+		
+	}
+
 	public int getId() {
 		return id;
 	}

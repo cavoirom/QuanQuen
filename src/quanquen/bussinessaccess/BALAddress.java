@@ -9,7 +9,7 @@ import javax.jdo.Query;
 import quanquen.model.Address;
 
 public class BALAddress {
-	private PersistenceManager pm;
+	private static PersistenceManager pm;
 	
 	public List<Address> getAdress(){
 		List<Address> address = new ArrayList<Address>();
@@ -30,27 +30,34 @@ public class BALAddress {
 		return address;
 	}
 	
+	//Pass
 	public List<String> getAllProvince(){
 		List<String> provinces = new ArrayList<String>();
-		List<Address> address = getAdress();
-		for (Address add: address){
-			String province = add.getProvince();
-			if (!provinces.contains(province)){
-				provinces.add(province);
-			}
-		}
+		pm = Connection.getPersistenceManager();
+		Query query = pm.newQuery(Address.class);
+		//SET field;
+		query.setResult("distinct province");
+		//SET unique
+		//query.setUnique(true);
+		provinces = (List<String>)query.execute();
+		pm.close();
 		return provinces;		
 	}
-	
+	//Pass
 	public List<String> getDistrictsByProvince(String province){
 		List<String> districts = new ArrayList<String>();
-		List<Address> address = getAdressByProvince(province);
-		for (Address add: address){
-			String district = add.getDistrict();
-			if (!district.contains(province)){
-				districts.add(province);
-			}
-		}
-		return districts;		
+		pm = Connection.getPersistenceManager();
+		Query query = pm.newQuery(Address.class);
+		query.declareParameters("String province");
+		query.setFilter("this.province == province");
+		//SET field;
+		query.setResult("distinct district");
+		districts = (List<String>)query.execute(province);
+		pm.close();
+		return districts;	
+	}
+	
+	public static void main(String[] args) {
+		
 	}
 }

@@ -18,7 +18,7 @@ $(document).ready(function() {
 });
 </script>
 </head>
-<body id="quanquen" onload="loadDistrict()">
+<body id="quanquen" onload="loadDistrict('<%=(session.getAttribute("provinceid")).toString()%>')">
 <div id="wrapper">
 
 	<%@include file="include_header.jsp" %>

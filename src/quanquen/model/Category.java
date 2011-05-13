@@ -1,8 +1,9 @@
 package quanquen.model;
 
+import java.io.Serializable;
 import java.util.LinkedHashSet;
 
-public class Category {
+public class Category implements Serializable{
 	private int id;
 	private String title;
 	private LinkedHashSet<Place> places;

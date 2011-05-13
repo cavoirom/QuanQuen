@@ -1,10 +1,11 @@
 package quanquen.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
-public class Member {
+public class Member implements Serializable{
 	private String username;
 	private String password;
 	private String fullName;
@@ -20,6 +21,10 @@ public class Member {
 	private LinkedList<Comment> comments;
 	private LinkedHashSet<Place> places;
 	private boolean isActive;
+	
+	public Member(){
+		
+	}
 	
 	public Member(String username, String password, String email, Date birthday,
 			Group group, boolean isActive) {

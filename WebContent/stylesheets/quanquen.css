@@ -46,25 +46,38 @@ div#content div#quanquen_last{
 	margin-top: 10px;
 }
 
-div#content div#quanquen_last form#choosecategory{
-	padding: 10px 0px;
-	vertical-align: middle;
+form#choosecategory{
+	padding: 10px 0px 0px 0px;
 	border: 1px solid #ddd;
-	height: 30px;
+	height: 40px;
 }
 
-div#content div#quanquen_last form#choosecategory fieldset{
+form#choosecategory fieldset{
 	border: none;
-	width: 550px;
+	width: 670px;
 	margin: auto;
 }
 
-div#content div#quanquen_last form#choosecategory fieldset select{
-	width: 100px;
+form#choosecategory fieldset label {
+	width: 120px;
+	float: left;
+	height: 24px;
+	line-height: 24px;
+	text-align: right;
+	margin-right: 5px;
 }
 
-div#content div#quanquen_last form#choosecategory fieldset select{
-	margin-right: 10px;
+form#choosecategory fieldset select{
+	width: 180px;
+	float: left;
+	height: 24px;
+	line-height: 24px;
+	font-size: 1em;
+	text-transform: capitalize;
+}
+
+form#choosecategory fieldset input{
+	margin-left: 20px;
 }
 
 div#content div#quanquen_last div#category{

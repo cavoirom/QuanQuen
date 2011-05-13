@@ -58,7 +58,7 @@
 	</div> <!-- End quanquen_first -->
 	
 	<div id="quanquen_last">
-		<form action="" method="post" id="choosecategory">
+		<form action="category" method="post" id="choosecategory">
 			<fieldset>
 				<label for="province">Tỉnh/Thành phố</label>
 				<select id="province" name="province">
@@ -68,17 +68,14 @@
 				for (int i=0; i<provinces.size(); i++){
 					if(provinces.get(i).equals(province)){
 				%>
-						<option value="<%=provinces.get(i).toString()%>" selected="selected"><%=provinces.get(i).toString()%></option>
-					<%}else{ %>
-						<option value="<%=provinces.get(i).toString()%>"><%=provinces.get(i).toString()%></option>
+						<option value="<%=i%>" selected="selected"><%=provinces.get(i).toString()%></option>
+					<%}else{%>
+						<option value="<%=i%>"><%=provinces.get(i).toString()%></option>
 					<%}} %>
 				</select>
 				
 				<label for="district">Quận/Huyện</label>
 				<select id="district" name="district">
-					<option value="All">Tất cả</option>
-					<option value="Thủ Đức">Thủ Đức</option>
-					<option value="Quận 1">Quận 1</option>
 				</select>
 				<input type="submit" value="Go"/>
 			</fieldset>

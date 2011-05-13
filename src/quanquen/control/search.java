@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,12 +37,14 @@ public class search extends HttpServlet {
 		
 		//get type of search
 		String type = request.getParameter("type");
-		type = (type == null)? "Tên địa điểm" : type;
+		type = (type == null)? "name" : type;
 		//get Search Value
 		String searchvalue = request.getParameter("searchvalue");
-		
+		System.out.println(type);
+		System.out.println(searchvalue);
 		//Check for type of search
-		List<Place> places = new BALPlace().getPlaces(type, searchvalue);
+		List<Place> places = new BALPlace().getPlacesByTypes(type.trim(), searchvalue.trim(), 1);
+		System.out.println(places.size());
 		
 		//Save information for times other search
 		HttpSession session = request.getSession();
@@ -49,6 +52,9 @@ public class search extends HttpServlet {
 		session.setAttribute("type", type);
 		
 		//Return result for client
-		response.sendRedirect("result.jsp");
+		request.setAttribute("places", places);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("result.jsp");
+		dispatcher.forward(request, response);
+
 	}
 }

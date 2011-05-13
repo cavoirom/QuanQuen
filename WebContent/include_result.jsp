@@ -16,12 +16,11 @@
 </script>    
 <%	
 	request.setCharacterEncoding("utf-8");
-	String value = (String)session.getAttribute("searchvalue");
-
+	//String value = (String)session.getAttribute("searchvalue");
 	String type = (String)session.getAttribute("type");
-	type = (type == null)? "Tên địa điểm" : type;
-	String[] types = new String[]{"name","category","author","address","price"};
-	String[] description = new String[]{"Tên địa điểm","Thể loại","Thành viên post","Địa chỉ","Khoảng giá"};
+	type = (type == null)? "name" : type;
+	String[] types = new String[]{"name","category","author","price"};
+	String[] description = new String[]{"Tên địa điểm","Thể loại","Thành viên post","Khoảng giá"};
 %>    
 <form id="advancesearch" action="search" method="post" onsubmit="return validateAdvanceSearch();">
 	<fieldset>

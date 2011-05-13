@@ -28,13 +28,13 @@ public class category extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String province = request.getParameter("province");
+		String provinceid = request.getParameter("provinceid");
 		String district = request.getParameter("district");
 		if (district != null){
 			session.setAttribute("district", district);
 		}
-		province = (province == null)? "Hồ Chí Minh": province;
-		session.setAttribute("province", province);
+		provinceid = (provinceid == null)? "0": provinceid;
+		session.setAttribute("provinceid", provinceid);
 		List<String> provinces;
 		provinces = (List<String>)session.getAttribute("provinces");
 		if (provinces == null){

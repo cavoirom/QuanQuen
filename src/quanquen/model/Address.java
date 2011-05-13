@@ -1,6 +1,6 @@
 package quanquen.model;
 
-public class Address {
+public class Address{
 	private String province;
 	private String district;
 	private String street;

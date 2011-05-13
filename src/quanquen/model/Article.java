@@ -1,10 +1,11 @@
 package quanquen.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
-public class Article {
+public class Article implements Serializable{
 	private int id;
 	private String title;
 	private Member author;
