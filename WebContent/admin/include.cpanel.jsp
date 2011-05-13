@@ -75,7 +75,7 @@ else
 						&& isAdminAuthorized) { %>
 					<jsp:include page="include.general.jsp" flush="true"/>
 					<% } else if (cat.equals("mem") && isAdminAuthorized) { %>
-					<jsp:include page="include.member.detail.jsp" flush="true"/>
+					<jsp:include page="include.member.search.jsp" flush="true"/>
 					<% } else { %>
 					<h1>Blank</h1>
 					<% } %>

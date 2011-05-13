@@ -19,7 +19,6 @@ else
 <div class="listWrapper">
 	<div class="itemWrapper"><span class="itemLabel">Title:</span><span class="itemValue">Quán Quen</span></div>
 	<div class="itemWrapper"><span class="itemLabel">Tagline:</span><span class="itemValue">None</span></div>
-	<div class="itemWrapper"><span class="itemLabel">Status:</span><span class="itemValue">Open / Close</span></div>
 </div>
 <% } else { 
 	String errorCode = "404";

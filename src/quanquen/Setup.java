@@ -17,7 +17,11 @@ import quanquen.model.*;
 
 public class Setup {
 	public static void main(String[] args) {
-		/*
+		//Setup.addGroup();
+		Setup.addMember();
+	}
+
+	public static void addGroup() {
 		// Setup PersistenceManager for Datastore functions
 		PersistenceManagerFactory pmf = JDOHelper
 				.getPersistenceManagerFactory("datanucleus.properties");
@@ -40,12 +44,6 @@ public class Setup {
 
 		// Close PersistenceManager
 		pm.close();
-		*/
-		Setup.addMember();
-	}
-
-	public static void addGroup() {
-		// Create scanner for input.
 	}
 
 	public static void addMember() {

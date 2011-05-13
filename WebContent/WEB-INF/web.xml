@@ -8,6 +8,10 @@
 		<servlet-name>admin.Authorization</servlet-name>
 		<servlet-class>quanquen.control.admin.AuthorizationServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>admin.Search</servlet-name>
+		<servlet-class>quanquen.control.admin.SearchServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>admin.Authorization</servlet-name>
 		<url-pattern>/admin/login.jsp</url-pattern>
@@ -15,6 +19,10 @@
 	<servlet-mapping>
 		<servlet-name>admin.Authorization</servlet-name>
 		<url-pattern>/admin/logout.jsp</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>admin.Search</servlet-name>
+		<url-pattern>/admin/searchmember.jsp</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
