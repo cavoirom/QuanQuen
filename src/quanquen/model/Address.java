@@ -1,11 +1,13 @@
 package quanquen.model;
 
-public class Address{
+import java.io.Serializable;
+
+public class Address implements Serializable {
 	private String province;
 	private String district;
 	private String street;
 	private String houseNumber;
-	
+
 	public Address() {
 	}
 
@@ -19,7 +21,7 @@ public class Address{
 	}
 
 	public String getProvince() {
-		return province;
+		return (province == null) ? "" : province;
 	}
 
 	public void setProvince(String province) {
@@ -27,7 +29,7 @@ public class Address{
 	}
 
 	public String getDistrict() {
-		return district;
+		return (district == null) ? "" : district;
 	}
 
 	public void setDistrict(String district) {
@@ -35,7 +37,7 @@ public class Address{
 	}
 
 	public String getStreet() {
-		return street;
+		return (street == null) ? "" : street;
 	}
 
 	public void setStreet(String street) {
@@ -43,14 +45,15 @@ public class Address{
 	}
 
 	public String getHouseNumber() {
-		return houseNumber;
+		return (houseNumber == null) ? "" : houseNumber;
 	}
 
 	public void setHouseNumber(String houseNumber) {
 		this.houseNumber = houseNumber;
 	}
-	
-	public String toString(){
-		return this.province +", " + this.district + ", " + this.houseNumber;
+
+	public String toString() {
+		return this.getHouseNumber() + ", " + this.getStreet() + ", "
+				+ this.getDistrict() + ", " + this.getProvince();
 	}
 }

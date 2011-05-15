@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
-public class Article implements Serializable{
+public class Article implements Serializable {
 	private int id;
 	private String title;
 	private Member author;
@@ -14,18 +14,29 @@ public class Article implements Serializable{
 	private LinkedHashSet<Member> membersLikeThis;
 	private LinkedList<Comment> comments;
 	private int pageViews;
-	
+
+	public Article() {
+		membersLikeThis = new LinkedHashSet<Member>();
+		comments = new LinkedList<Comment>();
+	}
+
+	public Article(int id) {
+		membersLikeThis = new LinkedHashSet<Member>();
+		comments = new LinkedList<Comment>();
+		this.id = id;
+	}
+
 	public Article(String title, Member author, Date postedDate, String content) {
 		this.title = title;
 		this.author = author;
 		this.postedDate = postedDate;
 		this.content = content;
-		
+
 		this.membersLikeThis = new LinkedHashSet<Member>();
 		this.comments = new LinkedList<Comment>();
 		this.pageViews = 0;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -35,7 +46,7 @@ public class Article implements Serializable{
 	}
 
 	public String getTitle() {
-		return title;
+		return (title == null) ? "" : title;
 	}
 
 	public void setTitle(String title) {
@@ -67,7 +78,8 @@ public class Article implements Serializable{
 	}
 
 	public LinkedHashSet<Member> getMembersLikeThis() {
-		return membersLikeThis;
+		return (membersLikeThis == null) ? new LinkedHashSet<Member>()
+				: membersLikeThis;
 	}
 
 	public void setMembersLikeThis(LinkedHashSet<Member> membersLikeThis) {
@@ -75,7 +87,7 @@ public class Article implements Serializable{
 	}
 
 	public LinkedList<Comment> getComments() {
-		return comments;
+		return (comments == null) ? new LinkedList<Comment>() : comments;
 	}
 
 	public void setComments(LinkedList<Comment> comments) {
@@ -89,15 +101,15 @@ public class Article implements Serializable{
 	public void setPageViews(int pageViews) {
 		this.pageViews = pageViews;
 	}
-	
-	public boolean equals(Object obj){
-		if (obj instanceof Article){
+
+	public boolean equals(Object obj) {
+		if (obj instanceof Article) {
 			Article that = (Article) obj;
-			if(this.id == that.id){
+			if (this.id == that.id) {
 				return true;
 			}
 		}
 		return false;
 	}
-	
+
 }

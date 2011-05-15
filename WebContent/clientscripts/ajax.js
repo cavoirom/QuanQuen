@@ -6,7 +6,7 @@ var XMLHttpRequestObject = false;
 	}
 	
 	function loadDistrict(provinceid) {
-		url = "loadDistricts?provinceid=" + provinceid;
+		url = "loaddistricts?provinceid=" + provinceid;
 		obj = document.getElementById("district");
 		if (XMLHttpRequestObject) {
 			XMLHttpRequestObject.open("GET", url, true);
@@ -16,7 +16,7 @@ var XMLHttpRequestObject = false;
 					var text = XMLHttpRequestObject.responseText;
 					obj.innerHTML = text;
 				}
-			}
+			};
 			
 			XMLHttpRequestObject.send();
 		}

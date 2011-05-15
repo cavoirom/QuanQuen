@@ -39,9 +39,9 @@ public class category extends HttpServlet {
 		provinces = (List<String>)session.getAttribute("provinces");
 		if (provinces == null){
 			provinces = new BALAddress().getAllProvince();
-			session.setAttribute("provinces",provinces);
+			session.setAttribute("provinces", provinces);
 		}
-		
+		System.out.println("So tinh thanh: " + provinces.size());
 		response.sendRedirect("quanquen.jsp");
 	}
 

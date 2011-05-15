@@ -32,14 +32,11 @@ public class search extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		response.setCharacterEncoding("utf-8");
-		
 		//get type of search
 		String type = request.getParameter("type");
 		type = (type == null)? "name" : type;
 		//get Search Value
-		String searchvalue = request.getParameter("searchvalue");
+		String searchvalue = new String(request.getParameter("searchvalue").getBytes("8859_1"),"UTF-8");
 		System.out.println(type);
 		System.out.println(searchvalue);
 		//Check for type of search

@@ -3,11 +3,19 @@ package quanquen.model;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Comment implements Serializable{
+public class Comment implements Serializable {
+	private int id;
 	private Member author;
 	private Date postedDate = new Date();
 	private String content;
-	
+
+	public Comment() {
+	}
+
+	public Comment(int id) {
+		this.id = id;
+	}
+
 	public Comment(Member author, Date postedDate, String content) {
 		super();
 		this.author = author;
@@ -38,5 +46,12 @@ public class Comment implements Serializable{
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 }

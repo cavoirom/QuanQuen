@@ -1,145 +1,45 @@
+<%@page import="java.util.LinkedHashSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="quanquen.model.Place"%> 
-<%@ page import="quanquen.model.Category"%>  
+<%@ page import="quanquen.model.Category"%>
+<%@ page import="quanquen.model.Member"%>  
 <%
 	List<Place> places = (List<Place>) request.getAttribute("places");
-	if (places != null){
+	if (places != null && places.size() > 0){
 	for (int i=0; i<places.size(); i++){
 		Place place = places.get(i);
 %>
 		<div class="places">
-			<img src="<%=place.getImages().getFirst().getUrl()%>" alt="" width="120" height="120"/>
+			<a href="#"><img src="<%=place.getImages().getFirst().getUrl()%>" alt="" width="120" height="120"/></a>
 			<h3><a href="place?<%=place.getId()%>"><%=place.getName()%></a></h3>
-			<ul>
-				<%for (int j=0; j<place.getCategories().size(); j++){
-					Category category = place.getCategories().iterator().next();
+			<ul class="category">
+				<li>Thể loai: </li>
+				<%
+				LinkedHashSet<Category> categories = place.getCategories();
+				for (int j=0; j<categories.size(); j++){
+					Category category = categories.iterator().next();
 				%>
-					<li><a href="category?<%=category.getId()%>"><%=category.getTitle()%></a></li>
+					<li><a href="category?id=<%=category.getId()%>"><%=category.getTitle()%></a></li>
 				<%}%>
 			</ul>
-			<p class="address"><%=place.getAddress().toString()%></p>
-		</div>
-<%}}%>
-		<div class="places">
-			<img src="images/stones.jpg" alt="Stone" width="120" height="120"/>
-			<h3><a href="#">Tên của địa điểm</a></h3>
-			<ul>
-				<li><a href="#">Thể loại 1</a></li>
-				<li><a href="#">Thể loại 2</a></li>
-				<li><a href="#">Thể loại 3</a></li>
-				<li><a href="#">Thể loại 4</a></li>
+			<p class="address">Địa chỉ: <%=place.getAddress().toString()%></p>
+			<ul class="category">
+				<li>Người quản lý: </li>
+				<%
+				LinkedHashSet<Member> managers = place.getManagers();
+				for (int j=0; j<managers.size(); j++){
+					Member member = managers.iterator().next();
+				%>
+					<li><a href="user?u=<%=member.getUsername()%>"><%=member.getUsername()%></a></li>
+				<%}%>
 			</ul>
-			<p class="address">Đường Võ Văn Ngân, Phường Bình Thọ, Quận Thủ Đức, Thành Phố Hồ Chí Minh</p>
+			<div class="statistics">
+				<p class="numberarticle">Số bài viết: <span><%=place.getArticles().size()%></span></p>
+				<p class="numberclicked">Số lần truy cập: <span><%=place.getNumberOfVisited()%></span></p>
+			</div>
 		</div>
-		<div class="places">
-			<img src="images/stones.jpg" alt="Stone" width="120" height="120"/>
-			<h3><a href="#">Tên của địa điểm</a></h3>
-			<ul>
-				<li><a href="#">Thể loại 1</a></li>
-				<li><a href="#">Thể loại 2</a></li>
-				<li><a href="#">Thể loại 3</a></li>
-				<li><a href="#">Thể loại 4</a></li>
-			</ul>
-			<p class="address">Đường Võ Văn Ngân, Phường Bình Thọ, Quận Thủ Đức, Thành Phố Hồ Chí Minh</p>
-		</div>
-		<div class="places">
-			<img src="images/stones.jpg" alt="Stone" width="120" height="120"/>
-			<h3><a href="#">Tên của địa điểm</a></h3>
-			<ul>
-				<li><a href="#">Thể loại 1</a></li>
-				<li><a href="#">Thể loại 2</a></li>
-				<li><a href="#">Thể loại 3</a></li>
-				<li><a href="#">Thể loại 4</a></li>
-			</ul>
-			<p class="address">Đường Võ Văn Ngân, Phường Bình Thọ, Quận Thủ Đức, Thành Phố Hồ Chí Minh</p>
-		</div>
-		<div class="places">
-			<img src="images/stones.jpg" alt="Stone" width="120" height="120"/>
-			<h3><a href="#">Tên của địa điểm</a></h3>
-			<ul>
-				<li><a href="#">Thể loại 1</a></li>
-				<li><a href="#">Thể loại 2</a></li>
-				<li><a href="#">Thể loại 3</a></li>
-				<li><a href="#">Thể loại 4</a></li>
-			</ul>
-			<p class="address">Đường Võ Văn Ngân, Phường Bình Thọ, Quận Thủ Đức, Thành Phố Hồ Chí Minh</p>
-		</div>
-		<div class="places">
-			<img src="images/stones.jpg" alt="Stone" width="120" height="120"/>
-			<h3><a href="#">Tên của địa điểm</a></h3>
-			<ul>
-				<li><a href="#">Thể loại 1</a></li>
-				<li><a href="#">Thể loại 2</a></li>
-				<li><a href="#">Thể loại 3</a></li>
-				<li><a href="#">Thể loại 4</a></li>
-			</ul>
-			<p class="address">Đường Võ Văn Ngân, Phường Bình Thọ, Quận Thủ Đức, Thành Phố Hồ Chí Minh</p>
-		</div>
-		<div class="places">
-			<img src="images/stones.jpg" alt="Stone" width="120" height="120"/>
-			<h3><a href="#">Tên của địa điểm</a></h3>
-			<ul>
-				<li><a href="#">Thể loại 1</a></li>
-				<li><a href="#">Thể loại 2</a></li>
-				<li><a href="#">Thể loại 3</a></li>
-				<li><a href="#">Thể loại 4</a></li>
-			</ul>
-			<p class="address">Đường Võ Văn Ngân, Phường Bình Thọ, Quận Thủ Đức, Thành Phố Hồ Chí Minh</p>
-		</div>
-		<div class="places">
-			<img src="images/stones.jpg" alt="Stone" width="120" height="120"/>
-			<h3><a href="#">Tên của địa điểm</a></h3>
-			<ul>
-				<li><a href="#">Thể loại 1</a></li>
-				<li><a href="#">Thể loại 2</a></li>
-				<li><a href="#">Thể loại 3</a></li>
-				<li><a href="#">Thể loại 4</a></li>
-			</ul>
-			<p class="address">Đường Võ Văn Ngân, Phường Bình Thọ, Quận Thủ Đức, Thành Phố Hồ Chí Minh</p>
-		</div>
-		<div class="places">
-			<img src="images/stones.jpg" alt="Stone" width="120" height="120"/>
-			<h3><a href="#">Tên của địa điểm</a></h3>
-			<ul>
-				<li><a href="#">Thể loại 1</a></li>
-				<li><a href="#">Thể loại 2</a></li>
-				<li><a href="#">Thể loại 3</a></li>
-				<li><a href="#">Thể loại 4</a></li>
-			</ul>
-			<p class="address">Đường Võ Văn Ngân, Phường Bình Thọ, Quận Thủ Đức, Thành Phố Hồ Chí Minh</p>
-		</div>
-		<div class="places">
-			<img src="images/stones.jpg" alt="Stone" width="120" height="120"/>
-			<h3><a href="#">Tên của địa điểm</a></h3>
-			<ul>
-				<li><a href="#">Thể loại 1</a></li>
-				<li><a href="#">Thể loại 2</a></li>
-				<li><a href="#">Thể loại 3</a></li>
-				<li><a href="#">Thể loại 4</a></li>
-			</ul>
-			<p class="address">Đường Võ Văn Ngân, Phường Bình Thọ, Quận Thủ Đức, Thành Phố Hồ Chí Minh</p>
-		</div>
-		<div class="places">
-			<img src="images/stones.jpg" alt="Stone" width="120" height="120"/>
-			<h3><a href="#">Tên của địa điểm</a></h3>
-			<ul>
-				<li><a href="#">Thể loại 1</a></li>
-				<li><a href="#">Thể loại 2</a></li>
-				<li><a href="#">Thể loại 3</a></li>
-				<li><a href="#">Thể loại 4</a></li>
-			</ul>
-			<p class="address">Đường Võ Văn Ngân, Phường Bình Thọ, Quận Thủ Đức, Thành Phố Hồ Chí Minh</p>
-		</div>
-		<div class="places">
-			<img src="images/stones.jpg" alt="Stone" width="120" height="120"/>
-			<h3><a href="#">Tên của địa điểm</a></h3>
-			<ul>
-				<li><a href="#">Thể loại 1</a></li>
-				<li><a href="#">Thể loại 2</a></li>
-				<li><a href="#">Thể loại 3</a></li>
-				<li><a href="#">Thể loại 4</a></li>
-			</ul>
-			<p class="address">Đường Võ Văn Ngân, Phường Bình Thọ, Quận Thủ Đức, Thành Phố Hồ Chí Minh</p>
-		</div>
+<%}}else{%>
+<h3 class="mark">Không tìm thấy</h3>
+<%}%>	

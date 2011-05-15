@@ -54,4 +54,7 @@ div#result{
 	width: 980px;
 	position: relative;
 	margin: 10px 0px 0px 5px;
+	minheight: 300px;
+	height: auto;
+	height: 300px;
 }

@@ -50,7 +50,9 @@
 				<collection element-type="quanquen.model.Place"/>
 			</field>
 		</class>
-		<class name="Comment" identity-type="datastore" detachable="true">
+		<class name="Comment" detachable="true">
+			<field name="id" primary-key="true" value-strategy="increment">
+			</field>
 			<field name="author" persistence-modifier="persistent">
 			</field>
 			<field name="postedDate">

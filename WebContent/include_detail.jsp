@@ -10,27 +10,30 @@
 <div id="content">
 	<div class="information">
 		<img src="images/stones.jpg" alt="Stone" width="400" height="400"/>
-		<div class="category">
-			<h3>Tên địa điểm</h3>
-			<span>Thể loai: </span><a href ="#">Category</a><a href ="#">Category</a><a href ="#">Category</a>
-		</div>
+		<h3>Tên địa điểm</h3>
+		<ul class="category">
+			<li>Thể loại: </li>
+			<li><a href ="#">Username 1</a></li>
+			<li><a href ="#">Username 2</a></li>
+			<li><a href ="#">Username 3</a></li>
+		</ul>
 		<p class="address">Địa chỉ: Đường Võ Văn Ngân, Phường Bình Thọ, Quận Thủ Đức, Thành Phố Hồ Chí Minh</p>
 		<p class="price">Khoảng giá: <span>10-20k</span></p>
 		<p class="checkoutmethod">Phương thức thanh toán: <span>Tiền mặt</span></p>
-		<div class="manager">
-			<span>Quản lý bởi: </span>
-			<a href ="#">Username 1</a>
-			<a href ="#">Username 2</a>
-			<a href ="#">Username 3</a>
-		</div>
+		<ul class="category">
+			<li>Quản lý bởi: </li>
+			<li><a href ="#">Username 1</a></li>
+			<li><a href ="#">Username 2</a></li>
+			<li><a href ="#">Username 3</a></li>
+		</ul>
 		<p class="postedDate">Ngày post: <span>11/01/2011</span></p>
 		<p class="number">Đã xem: <span>100</span></p>
-		<div class="memberlike">
-			<span>Thành viên thích: </span>
-			<a href ="#">Member 1</a>
-			<a href ="#">Member 2</a>
-			<a href ="#">Member 3</a>		
-		</div>
+		<ul class="category">
+			<li>Thành viên thích: </li>
+			<li><a href ="#">Username 1</a></li>
+			<li><a href ="#">Username 2</a></li>
+			<li><a href ="#">Username 3</a></li>		
+		</ul>
 	</div>
 	
 	<div class="clear"></div>

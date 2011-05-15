@@ -1,3 +1,6 @@
+/*
+*Css reset
+*/
 * {
 	margin: 0px;
 	padding: 0px;
@@ -33,6 +36,10 @@ h4 {
 	font-size: 1em;
 }
 
+
+/*
+*Setup for home page
+*/
 #wrapper {
 	width: 994px;
 	margin: 10px auto;
@@ -96,11 +103,11 @@ ul#nav li a#contact span {
 	background: url(../images/contact.png) no-repeat center center;
 }
 
-ul#nav li a:hover,ul#nav li a:active {
+ul#nav li a:hover, ul#nav li a:active {
 	background: url(../images/navhover.png) repeat-x center;
 }
 
-body#homepage #wrapper div#header ul#nav li a#homepage,body#quanquen #wrapper div#header ul#nav li a#quanquen,body#about #wrapper div#header ul#nav li a#about,body#contact #wrapper div#header ul#nav li a#contact
+body#homepage a#homepage, body#quanquen a#quanquen, body#about a#about,body#contact a#contact
 	{
 	background: url(../images/navselected.png) repeat-x center;
 }
@@ -244,59 +251,9 @@ div#titlemainbox p#topmonth {
 }
 
 div#contentmainbox {
-	height: 360px;
+	height: 358px;
 	position: relative;
 	overflow: hidden;
-}
-
-div#contentmainbox div#numbermainbox {
-	position: absolute;
-	right: 4px;
-	top: 4px;
-	z-index: 600;
-}
-
-div#numbermainbox input {
-	float: left;
-}
-
-.numberbox {
-	width: 30px;
-	height: 30px;
-	background: #000;
-	filter: alpha(opacity = 40);
-	-moz-opacity: 0.4;
-	-khtml-opacity: 0.4;
-	opacity: 0.4;
-	display: block;
-	line-height: 30px;
-	text-align: center;
-	margin: 0px 0px 5px 5px;
-	border: 2px solid #fff;
-	font-weight: bold;
-	color: #fff;
-}
-
-.numberbox:hover {
-	color: #f0f;
-	cursor: pointer;
-}
-
-div.caption {
-	background: #000;
-	filter: alpha(opacity = 50);
-	-moz-opacity: 0.5;
-	-khtml-opacity: 0.5;
-	opacity: 0.5;
-	color: #fff;
-	position: absolute;
-	bottom: 0px;
-	padding: 5px 10px 10px 10px;
-	text-align: justify;
-}
-
-#boxtextmainbox{
-	height: 95px;
 }
 
 div.caption a{
@@ -344,17 +301,16 @@ div.dottersubbox div.titlesubbox {
 }
 
 div.dottersubbox div.titlesubbox p {
-	background: url(../images/newupdate.png) no-repeat center center;
 	height: 30px;
 	width: 265px;
 	text-indent: -9999px;
 }
 
-div.dottersubbox div.titlesubbox p#newupdate {
+div#dottersubbox1 div.titlesubbox p {
 	background: url(../images/newupdate.png) no-repeat center center;
 }
 
-div.dottersubbox div.titlesubbox p#newrecent {
+div#dottersubbox2 div.titlesubbox p {
 	background: url(../images/newrecent.png) no-repeat center center;
 }
 
@@ -365,11 +321,30 @@ div.dottersubbox div.contentsubbox {
 	position: relative;
 }
 
-#numbersubbox{
-	position: absolute;
-	right: 4px;
-	z-index: 600;
-	top: 4px
+#contentsubbox1 .newplace{
+	height: 62px;
+	overflow: hidden;
+	font-size: 0.8em;
+	padding: 4.5px 2px;
+}
+
+#contentsubbox1 .newplace img{
+	float: left;
+	width: 60px;
+	height: 60px;
+	padding: 1px;
+	border: 1px solid #ccc;
+	margin-right: 4px;
+	cursor: pointer;
+}
+#contentsubbox1 .newplace a, #contentsubbox1 .newplace div{
+	height: 15px;
+	overflow: hidden;
+	line-height: 15px;
+}
+
+#contentsubbox1 .newplace a:hover{
+	color: #f00;
 }
 
 p#copyright {
@@ -381,6 +356,9 @@ p#copyright {
 	background: url(../images/copyright.png) no-repeat center;
 }
 
+/*
+*Slide show
+*/
 input.selectednumber {
 	color: #f0f;
 }
@@ -389,12 +367,18 @@ input.selectednumber {
 	position: relative;
 }
 
-#contentmainbox #gallerymainbox{
-	height: 360px;
-}
-
-#contentsubbox2 #gallerysubbox2{
-	height: 360px;
+.caption {
+	background: #000;
+	filter: alpha(opacity = 50);
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5;
+	color: #fff;
+	position: absolute;
+	bottom: 0px;
+	padding: 5px 10px 10px 10px;
+	text-align: justify;
+	z-index: 600;
 }
 
 .gallery>a {
@@ -409,10 +393,67 @@ input.selectednumber {
 	z-index: 500;
 }
 
-.gallery .caption {
+.numberbox {
+	width: 30px;
+	height: 30px;
+	background: #000;
+	filter: alpha(opacity = 40);
+	-moz-opacity: 0.4;
+	-khtml-opacity: 0.4;
+	opacity: 0.4;
+	display: block;
+	line-height: 30px;
+	text-align: center;
+	margin: 0px 0px 5px 5px;
+	border: 2px solid #fff;
+	font-weight: bold;
+	color: #fff;
+}
+
+.numberbox:hover {
+	color: #f0f;
+	cursor: pointer;
+}
+
+#gallerymainbox{
+	height: 358px;
+}
+
+#gallerysubbox2{
+	height: 358px;
+}
+
+div#contentmainbox div#numbermainbox {
+	position: absolute;
+	right: 4px;
+	top: 4px;
 	z-index: 600;
 }
 
+div#numbermainbox input {
+	float: left;
+}
+
+#numbersubbox{
+	position: absolute;
+	right: 4px;
+	z-index: 600;
+	top: 4px
+}
+
+#boxtextmainbox{
+	height: 95px;
+	width: 390px;
+}
+
+#boxtextsubbox{
+	height: 95px;
+	width: 245px;
+}
+
+/*
+*Gobal setup
+*/
 .mark{
 	text-align: center;
 	margin-top: 10px;
@@ -420,4 +461,29 @@ input.selectednumber {
 
 .clear{
 	clear: both;
+}
+ul.category {
+	height: 20px;
+	overflow: hidden;
+}
+
+ul.category li {
+	float: left;
+	border-right: 1px solid #ddd;
+	padding: 0px 5px;
+	line-height: 20px;
+}
+
+ul.category li:first-child {
+	padding: 0px;
+	border: none;
+}
+
+ul.category li:last-child {
+	border: none;
+}
+
+ul.category li a:hover {
+	color: #f00;
+	text-decoration: underline;
 }

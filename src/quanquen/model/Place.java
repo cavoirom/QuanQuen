@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
-public class Place implements Serializable{
+public class Place implements Serializable {
 	private int id;
 	private String name;
 	private Address address;
@@ -18,7 +18,7 @@ public class Place implements Serializable{
 	private String checkoutMethod;
 	private LinkedHashSet<Category> categories;
 	private Date postedDate = new Date();
-	private Date lastUpdate;
+	private Date lastUpdate = new Date();
 	private LinkedList<Image> images;
 	private LinkedHashSet<Member> membersLikeThis;
 	private String announcement;
@@ -26,14 +26,29 @@ public class Place implements Serializable{
 	private boolean isBlock;
 	private int numberOfVisited;
 	private LinkedHashSet<Article> articles;
-	
+
+	public Place() {
+		this.images = new LinkedList<Image>();
+		this.membersLikeThis = new LinkedHashSet<Member>();
+		this.articles = new LinkedHashSet<Article>();
+		this.categories = new LinkedHashSet<Category>();
+	}
+
+	public Place(int placeid) {
+		this.images = new LinkedList<Image>();
+		this.membersLikeThis = new LinkedHashSet<Member>();
+		this.articles = new LinkedHashSet<Article>();
+		this.categories = new LinkedHashSet<Category>();
+		this.id = placeid;
+	}
+
 	public Place(String name, Address address,
 			LinkedHashSet<Category> categories, LinkedHashSet<Member> managers) {
 		this.name = name;
 		this.address = address;
 		this.categories = categories;
 		this.managers = managers;
-		
+
 		this.map = null;
 		this.tel = null;
 		this.fax = null;
@@ -49,14 +64,6 @@ public class Place implements Serializable{
 		this.isBlock = false;
 		this.numberOfVisited = 0;
 		this.articles = new LinkedHashSet<Article>();
-	}
-	
-	public Place(){
-		
-	}
-	
-	public Place(int placeid) {
-		
 	}
 
 	public int getId() {
@@ -84,7 +91,7 @@ public class Place implements Serializable{
 	}
 
 	public String getMap() {
-		return map;
+		return (map == null) ? "images/map/default.jpg" : map;
 	}
 
 	public void setMap(String map) {
@@ -92,7 +99,7 @@ public class Place implements Serializable{
 	}
 
 	public String getTel() {
-		return tel;
+		return (tel == null) ? "Không có" : tel;
 	}
 
 	public void setTel(String tel) {
@@ -100,7 +107,7 @@ public class Place implements Serializable{
 	}
 
 	public String getFax() {
-		return fax;
+		return (fax == null) ? "Không có" : fax;
 	}
 
 	public void setFax(String fax) {
@@ -108,7 +115,7 @@ public class Place implements Serializable{
 	}
 
 	public String getEmail() {
-		return email;
+		return (email == null) ? "Không có" : email;
 	}
 
 	public void setEmail(String email) {
@@ -116,7 +123,7 @@ public class Place implements Serializable{
 	}
 
 	public String getWebsite() {
-		return website;
+		return (website == null) ? "Không có" : website;
 	}
 
 	public void setWebsite(String website) {
@@ -124,7 +131,7 @@ public class Place implements Serializable{
 	}
 
 	public String getPrice() {
-		return price;
+		return (price == null) ? "Không rõ" : price;
 	}
 
 	public void setPrice(String price) {
@@ -132,7 +139,7 @@ public class Place implements Serializable{
 	}
 
 	public String getCheckoutMethod() {
-		return checkoutMethod;
+		return (checkoutMethod == null) ? "Tiền mặt" : checkoutMethod;
 	}
 
 	public void setCheckoutMethod(String checkoutMethod) {
@@ -156,7 +163,7 @@ public class Place implements Serializable{
 	}
 
 	public Date getLastUpdate() {
-		return lastUpdate;
+		return (lastUpdate == null) ? postedDate : lastUpdate;
 	}
 
 	public void setLastUpdate(Date lastUpdate) {
@@ -164,19 +171,25 @@ public class Place implements Serializable{
 	}
 
 	public LinkedList<Image> getImages() {
-		return images;
+		LinkedList<Image> images = new LinkedList<Image>();
+		if (this.images == null) {
+			Image image = new Image("images/place/default.jpg", "Chưa có hình");
+			images.add(image);
+		}
+		return (this.images == null) ? images : this.images;
 	}
 
 	public void setImages(LinkedList<Image> images) {
 		this.images = images;
 	}
-	
+
 	public void addImage(Image image) {
 		this.images.add(image);
 	}
 
 	public LinkedHashSet<Member> getMembersLikeThis() {
-		return membersLikeThis;
+		return (membersLikeThis == null) ? new LinkedHashSet<Member>()
+				: membersLikeThis;
 	}
 
 	public void setMembersLikeThis(LinkedHashSet<Member> membersLikeThis) {
@@ -184,7 +197,7 @@ public class Place implements Serializable{
 	}
 
 	public String getAnnouncement() {
-		return announcement;
+		return (announcement == null) ? "" : announcement;
 	}
 
 	public void setAnnouncement(String announcement) {
@@ -222,11 +235,11 @@ public class Place implements Serializable{
 	public void setArticles(LinkedHashSet<Article> articles) {
 		this.articles = articles;
 	}
-	
-	public boolean equals(Object obj){
-		if (obj instanceof Place){
+
+	public boolean equals(Object obj) {
+		if (obj instanceof Place) {
 			Place that = (Place) obj;
-			if(this.id == that.id){
+			if (this.id == that.id) {
 				return true;
 			}
 		}

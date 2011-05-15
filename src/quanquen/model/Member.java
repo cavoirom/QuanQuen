@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
-public class Member implements Serializable{
+public class Member implements Serializable {
 	private String username;
 	private String password;
 	private String fullName;
@@ -21,20 +21,31 @@ public class Member implements Serializable{
 	private LinkedList<Comment> comments;
 	private LinkedHashSet<Place> places;
 	private boolean isActive;
-	
-	public Member(){
-		
+
+	public Member(String username) {
+		friends = new LinkedHashSet<Member>();
+		articles = new LinkedList<Article>();
+		comments = new LinkedList<Comment>();
+		places = new LinkedHashSet<Place>();
+		this.username = username;
 	}
-	
-	public Member(String username, String password, String email, Date birthday,
-			Group group, boolean isActive) {
+
+	public Member() {
+		friends = new LinkedHashSet<Member>();
+		articles = new LinkedList<Article>();
+		comments = new LinkedList<Comment>();
+		places = new LinkedHashSet<Place>();
+	}
+
+	public Member(String username, String password, String email,
+			Date birthday, Group group, boolean isActive) {
 		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.birthday = birthday;
 		this.group = group;
 		this.isActive = isActive;
-		
+
 		this.fullName = null;
 		this.joinedDate = new Date();
 		this.website = null;
@@ -63,7 +74,7 @@ public class Member implements Serializable{
 	}
 
 	public String getFullName() {
-		return fullName;
+		return (fullName == null) ? "" : fullName;
 	}
 
 	public void setFullName(String fullName) {
@@ -87,7 +98,7 @@ public class Member implements Serializable{
 	}
 
 	public String getWebsite() {
-		return website;
+		return (website == null) ? "" : website;
 	}
 
 	public void setWebsite(String website) {
@@ -95,7 +106,8 @@ public class Member implements Serializable{
 	}
 
 	public Image getAvatar() {
-		return avatar;
+		return (avatar == null) ? new Image("imges/avata/default.jpg",
+				"Chưa có hình") : avatar;
 	}
 
 	public void setAvatar(Image avatar) {
@@ -104,6 +116,10 @@ public class Member implements Serializable{
 
 	public Address getAddress() {
 		return address;
+	}
+
+	public String getStringAddress() {
+		return address.toString();
 	}
 
 	public void setAddress(Address address) {
@@ -127,7 +143,7 @@ public class Member implements Serializable{
 	}
 
 	public LinkedHashSet<Member> getFriends() {
-		return friends;
+		return (friends == null) ? new LinkedHashSet<Member>() : friends;
 	}
 
 	public void setFriends(LinkedHashSet<Member> friends) {
@@ -143,7 +159,7 @@ public class Member implements Serializable{
 	}
 
 	public LinkedList<Comment> getComments() {
-		return comments;
+		return (comments == null) ? new LinkedList<Comment>() : comments;
 	}
 
 	public void setComments(LinkedList<Comment> comments) {
@@ -151,7 +167,7 @@ public class Member implements Serializable{
 	}
 
 	public LinkedHashSet<Place> getPlaces() {
-		return places;
+		return (places == null) ? new LinkedHashSet<Place>() : places;
 	}
 
 	public void setPlaces(LinkedHashSet<Place> places) {
@@ -166,14 +182,14 @@ public class Member implements Serializable{
 		this.isActive = isActive;
 	}
 
-	public boolean equals(Object obj){
-		if (obj instanceof Member){
+	public boolean equals(Object obj) {
+		if (obj instanceof Member) {
 			Member that = (Member) obj;
-			if(this.username.equals(that.username)){
+			if (this.username.equals(that.username)) {
 				return true;
 			}
 		}
 		return false;
 	}
-	
+
 }

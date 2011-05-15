@@ -3,49 +3,46 @@
 	border-bottom: 1px solid #ddd;
 	margin: 0px 10px;
 	width: 960px;
-	height: 150px;
+	height: 106px;
+	overflow: hidden;
+	padding: 10px 0px;
 }
 
 .places:last-child {
 	border-bottom: none;
 }
+
+.places h3, .places p{
+	width: 740px;
+}
+
 .places img {
 	float: left;
-	padding: 15px 10px;
+	cursor: pointer;
+	padding: 2px;
+	border: 1px solid #ccc;
+	height: 100px;
+	width: 100px;
+	margin-right: 10px;
 }
 
 .places h3 {
 	position: relative;
-	padding: 35px 0px 0px 0px;
+	padding: 10px 0px 0px 0px;
 }
 
 .places h3 a {
 	color: #f00;
 }
 
-.places ul li {
-	float: left;
-	border-right: 1px solid #ddd;
-	padding: 0px 5px;
-}
-
-.places ul li:first-child {
-	padding-left: 0px;
-}
-
-.places ul li:last-child{
-	border: none;
-}
-
-.places ul li a:hover{
-	color: #f00;	
-}
-
-.places ul {
-	height: 20px;
-	width: 500px;
-}
-
-.clear {
-	clear: both;
+.places div.statistics {
+	position: absolute;
+	right: 0px;
+	width: 200px;
+	vertical-align: middle;
+	top: 50%;
+	height: 106px;
+	margin-top: -53px;
+	padding: 0px 0px 0px 10px;
+	border-left: 1px solid #ddd;
 }

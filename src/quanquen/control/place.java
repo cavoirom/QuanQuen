@@ -31,8 +31,8 @@ public class place extends HttpServlet {
 		if (placeid != null){
 			id = Integer.parseInt(placeid);
 		}
-		if (id==null){
-			response.sendRedirect("error.jsp?code=0");
+		if (placeid == null){
+			response.sendRedirect("message.jsp?code=0");
 		}
 		Place place = new BALPlace().getPlaceByID(id);
 	}

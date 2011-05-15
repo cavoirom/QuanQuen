@@ -19,10 +19,10 @@
 	//String value = (String)session.getAttribute("searchvalue");
 	String type = (String)session.getAttribute("type");
 	type = (type == null)? "name" : type;
-	String[] types = new String[]{"name","category","author","price"};
-	String[] description = new String[]{"Tên địa điểm","Thể loại","Thành viên post","Khoảng giá"};
+	String[] types = new String[]{"name","author"};
+	String[] description = new String[]{"Tên địa điểm","Thành viên post"};
 %>    
-<form id="advancesearch" action="search" method="post" onsubmit="return validateAdvanceSearch();">
+<form id="advancesearch" action="search" method="get" onsubmit="return validateAdvanceSearch();" accept-charset="utf-8">
 	<fieldset>
 		<label for="type">Tìm theo</label>
 		<select id="type" name="type">
@@ -40,7 +40,7 @@
 		<label for="value">Giá trị tìm kiếm</label>
 		<input type="text" id="value" name="searchvalue" onclick="deleteText()" value="<%=((session.getAttribute("searchvalue")==null)? "Nội dung tìm kiếm...":(String)session.getAttribute("searchvalue"))%>"/>
 	</fieldset>
-	<input type="submit" value="Tìm kiếm" id="buttonsearch"/>
+	<input type="submit" value="Tìm kiếm" id="buttonsearch" />
 </form>
 <div id="result">
 	<%@include file="include_listplaces.jsp"%>

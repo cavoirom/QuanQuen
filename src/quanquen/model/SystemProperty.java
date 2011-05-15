@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class SystemProperty implements Serializable{
 	private String name;
 	private String value;
+	
 	public SystemProperty(String name, String value) {
 		this.name = name;
 		this.value = value;

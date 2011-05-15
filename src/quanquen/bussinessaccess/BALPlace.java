@@ -7,6 +7,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
+import quanquen.model.Article;
 import quanquen.model.Category;
 import quanquen.model.Member;
 import quanquen.model.Place;
@@ -179,5 +180,17 @@ public class BALPlace {
 		String value = "phong";
 		String names = "name";
 		System.out.println(new BALPlace().getPlacesByTypes(names, value, 1).get(0).getName());
+	}
+
+	public Place getPlacesByArticleId(int id) {
+		Place place;
+		Article article = new Article(id);
+		pm = Connection.getPersistenceManager();
+		Query query = pm.newQuery(Place.class);
+		query.declareParameters("Article article");
+		query.setFilter("this.articles.contains(article)");
+		place = (Place) query.execute(article);
+		pm.close();
+		return place;
 	}
 }

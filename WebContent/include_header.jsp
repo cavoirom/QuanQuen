@@ -44,7 +44,7 @@ response.setCharacterEncoding("utf-8");%>
 			<li><a href="about.jsp" id="about"><span>Giới thiệu</span></a></li>
 			<li><a href="contact.jsp" id="contact"><span>Liên hệ</span></a></li>
 			<li id="search">
-				<form action="search" method="post" id="formsearch" onsubmit="return validateSearch();">
+				<form action="search" method="get" id="formsearch" onsubmit="return validateSearch();">
 				<input type="text" value="<%=((session.getAttribute("searchvalue")==null)? "Nội dung tìm kiếm...":(String)session.getAttribute("searchvalue"))%>" id="searchbox" size="20" name="searchvalue" onClick="deleteText()"/>
 				<input type="submit" value="Tìm" id="buttonsearch"/>
 				</form>

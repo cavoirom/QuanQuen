@@ -9,6 +9,7 @@ div#quanquen_first div#topplace {
 	height: 400px;
 	width: 600px;
 	border: 1px solid #ddd;
+	overflow: hidden;
 }
 
 div#topplace #gallerytopplace{
@@ -24,6 +25,11 @@ div#quanquen_first div#topplace div#numbertopplacebox {
 	top: 5px;
 	left: 0px;
 	z-index: 600;
+}
+
+#boxtexttopplace{
+	height: 95px;
+	width: 580px;
 }
 
 div#quanquen_first div#topplace div#numbertopplacebox input {

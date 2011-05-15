@@ -1,6 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
+<%@ page import="quanquen.model.Place"%>
+<%
+List<Place> topPlaces = (List<Place>)session.getAttribute("topPlaces");
+if (topPlaces == null){
+	response.sendRedirect("loadtopplace");
+	return;
+}
+%>
 <%
 	request.setCharacterEncoding("utf-8");
 	response.setCharacterEncoding("utf-8");
@@ -20,35 +27,14 @@
 			</div>
 
 			<div class="gallery" id="gallerytopplace">
-				
-				<a href="http://wwww.google.com.vn1" class="show">
-					<img src="images/flowing-rock.jpg" alt="Flowing Rock" width="410" height="360" title="" alt="" rel="<a id='linkbox'><h3>Nội dung 1</h3></a><p>You're not connected to online Help, which shows you our latest content. Check your Internet connection, and then try to connect to online Help again. If you still see this message, the online Help service might be temporarily unavailable.</p>"/>
-				</a>
-	
-				<a href="http://wwww.google.com.vn2">
-					<img src="images/grass-blades.jpg" alt="Grass Blades" width="410" height="360" title="" alt="" rel="<a id='linkbox'><h3>Nội dung 2</h3></a><p>You're not connected to online Help, which shows you our latest content. Check your Internet connection, and then try to connect to online Help again. If you still see this message, the online Help service might be temporarily unavailable.</p>"/>
-				</a>
-	
-				<a href="http://wwww.google.com.vn3">
-					<img src="images/ladybug.jpg" alt="Ladybug" width="410" height="360" title="" alt="" rel="<a id='linkbox'><h3>Nội dung 3</h3></a><p>You're not connected to online Help, which shows you our latest content. Check your Internet connection, and then try to connect to online Help again. If you still see this message, the online Help service might be temporarily unavailable.</p>"/>
-				</a>
-
-				<a href="4">
-					<img src="images/lightning.jpg" alt="Lightning" width="410" height="360" title="" alt="" rel="<a id='linkbox'><h3>Nội dung 4</h3></a><p>You're not connected to online Help, which shows you our latest content. Check your Internet connection, and then try to connect to online Help again. If you still see this message, the online Help service might be temporarily unavailable.</p>"/>
-				</a>
-	
-				<a href="5">
-					<img src="images/lotus.jpg" alt="Lotus" width="410" height="360" title="" alt="" rel="<h3><a id='linkbox'>Nội dung 5</a></h3><p>You're not connected to online Help, which shows you our latest content. Check your Internet connection, and then try to connect to online Help again. If you still see this message, the online Help service might be temporarily unavailable.</p>"/>
-				</a>
-	
-				<a href="6">
-					<img src="images/mojave.jpg" alt="Mojave" width="410" height="360" title="" alt="" rel="<a id='linkbox'><h3>Nội dung 6</h3></a><p>You're not connected to online Help, which shows you our latest content. Check your Internet connection, and then try to connect to online Help again. If you still see this message, the online Help service might be temporarily unavailable.</p>"/>
-				</a>
-				
-				<a href="7">
-					<img src="images/stones.jpg" alt="Stone" width="580" height="360" title="" alt="" rel="<a id='linkbox'><h3>Nội dung 7</h3></a><p>You're not connected to online Help, which shows you our latest content. Check your Internet connection, and then try to connect to online Help again. If you still see this message, the online Help service might be temporarily unavailable.</p>"/>
-				</a>
-
+				<%
+				for (int i=0; i < topPlaces.size(); i++){
+					Place place = topPlaces.get(i);
+				%>
+					<a href="place?id=<%=place.getId()%>" class="show">
+						<img src="<%=place.getImages().getFirst().getUrl()%>" width="410" height="360" rel="<a id='linkbox'><h3><%=place.getName()%></h3></a><p><%=place.getArticles().iterator().next().getContent()%></p>"/>
+					</a>
+				<%}%>
 				<div id="boxtexttopplace" class="caption">
 				</div>
 			</div>

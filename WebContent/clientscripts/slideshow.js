@@ -7,7 +7,7 @@ SlideShow = function(parent)
 		this.parent = parent + " ";
 	}
     this.show();
-}
+};
 
 SlideShow.prototype = 
 {
@@ -16,6 +16,12 @@ SlideShow.prototype =
 	
 	//Set the opacity of all images to 0
 	$(this.parent + '.gallery>a').css({opacity: 0.0});
+	
+	//Resize the width and height of the image according to the gallery
+	$(this.parent + '.gallery>a').find('img').css({width: $(this.parent + '.gallery').css('width'), height: $(this.parent + '.gallery').css('height')});
+	
+	//Resize the width of the caption according to the image width
+	$(this.parent + '.gallery .caption').css({width: $(this.parent + '.gallery').css('width') - 20});
 	
 	//Get the first image and display it (set it to full opacity)
 	$(this.parent + '.gallery a:first').css({opacity: 1.0});
@@ -28,9 +34,6 @@ SlideShow.prototype =
 	
 	//Set the caption background to semi-transparent
 	$(this.parent + '.gallery .caption').css({opacity: 0.7});
-
-	//Resize the width of the caption according to the image width
-	//$(this.parent + '.gallery .caption').css({width: $(this.parent + '.gallery a').find('img').css('width')});
 		
 	//Call the gallery function to run the slideshow, 6000 = change to next image after 6 seconds
 	this.slideShowTimeout = setInterval('gallery(\'' + this.parent + '\')',6000);
@@ -75,9 +78,7 @@ change: function(index){
 	
 	this.slideShowTimeout = setInterval('gallery(\'' + this.parent + '\')',6000);
 }
-
-
-}
+};
 function gallery(parent) {
 
 if (parent==null)

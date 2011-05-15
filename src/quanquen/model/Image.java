@@ -2,16 +2,16 @@ package quanquen.model;
 
 import java.io.Serializable;
 
-public class Image implements Serializable{
+public class Image implements Serializable {
 	private String url;
 	private String description;
-	
+
+	public Image() {
+	}
+
 	public Image(String url) {
 		this.url = url;
 		this.description = null;
-	}
-
-	public Image() {
 	}
 
 	public Image(String url, String description) {
@@ -29,11 +29,11 @@ public class Image implements Serializable{
 	}
 
 	public String getDescription() {
-		return description;
+		return (description == null) ? "" : description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 }
