@@ -6,10 +6,14 @@ import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
 public class Place implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8041524166672529186L;
 	private int id;
 	private String name;
 	private Address address;
-	private String map;
+	private String map = "images/map/default.jpg";
 	private String tel;
 	private String fax;
 	private String email;
@@ -36,6 +40,8 @@ public class Place implements Serializable {
 
 	public Place(int placeid) {
 		this.images = new LinkedList<Image>();
+		Image image = new Image("images/place/default.jpg", "Chưa có hình");
+		images.add(image);
 		this.membersLikeThis = new LinkedHashSet<Member>();
 		this.articles = new LinkedHashSet<Article>();
 		this.categories = new LinkedHashSet<Category>();
@@ -48,19 +54,18 @@ public class Place implements Serializable {
 		this.address = address;
 		this.categories = categories;
 		this.managers = managers;
-
-		this.map = null;
-		this.tel = null;
-		this.fax = null;
-		this.email = null;
-		this.website = null;
-		this.price = null;
-		this.checkoutMethod = null;
+		this.map = "";
+		this.tel = "";
+		this.fax = "";
+		this.email = "";
+		this.website = "";
+		this.price = "";
+		this.checkoutMethod = "";
 		this.postedDate = new Date();
 		this.lastUpdate = new Date();
 		this.images = new LinkedList<Image>();
 		this.membersLikeThis = new LinkedHashSet<Member>();
-		this.announcement = null;
+		this.announcement = "";
 		this.isBlock = false;
 		this.numberOfVisited = 0;
 		this.articles = new LinkedHashSet<Article>();

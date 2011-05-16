@@ -2,9 +2,13 @@ package quanquen.model;
 
 import java.io.Serializable;
 import java.util.LinkedHashSet;
-import java.util.LinkedList;
 
 public class Category implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8155155773582930696L;
 	private int id;
 	private String title;
 	private LinkedHashSet<Place> places;

@@ -15,6 +15,9 @@ import quanquen.bussinessaccess.BALPlace;
 import quanquen.model.Article;
 import quanquen.model.Place;
 
+/*
+ * Load top place, new place, new article
+ */
 
 public class loadtopplace extends HttpServlet {
 	private static final long serialVersionUID = 1L;

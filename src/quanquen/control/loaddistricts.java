@@ -31,22 +31,22 @@ public class loaddistricts extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		
-		int provinceid = Integer.parseInt(request.getParameter("provinceid"));
-		HttpSession session = request.getSession();
-		String district = (String)session.getAttribute("district");
-		String province = ((List<String>)session.getAttribute("provinces")).get(provinceid);
-		List<String> districts = new BALAddress().getDistrictsByProvince(province);
-		System.out.println("So huyện quận: " + districts.size());
+//		int provinceid = Integer.parseInt(request.getParameter("provinceid"));
+//		HttpSession session = request.getSession();
+//		String district = (String)session.getAttribute("district");
+//		String province = ((List<String>)session.getAttribute("provinces")).get(provinceid);
+//		List<String> districts = new BALAddress().getDistrictsByProvince(province);
+//		System.out.println("So huyện quận: " + districts.size());
 		PrintWriter out = response.getWriter();
-		String text = "";
-		for (int i=0; i < districts.size(); i++){
-			if (district != null && i==new Integer(district)){
-				text = text + "\n" + "<option value=\"" + i +"\" selected=\"selected\">" + districts.get(i) + "</option>";
-			}else{
-				text = text + "\n" + "<option value=\"" + i + "\">" + districts.get(i) + "</option>";
-			}
-		}
-		out.print(text);
+//		String text = "";
+//		for (int i=0; i < districts.size(); i++){
+//			if (district != null && i==new Integer(district)){
+//				text = text + "\n" + "<option value=\"" + i +"\" selected=\"selected\">" + districts.get(i) + "</option>";
+//			}else{
+//				text = text + "\n" + "<option value=\"" + i + "\">" + districts.get(i) + "</option>";
+//			}
+//		}
+		out.println("index.jsp");
 		out.close();
 	}
 

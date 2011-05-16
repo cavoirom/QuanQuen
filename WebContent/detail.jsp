@@ -8,14 +8,16 @@
 <title>Quán Quen | Chi Tiết</title>
 <link href="stylesheets/styles.css" rel="stylesheet" type="text/css">
 <link href="stylesheets/detail.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="stylesheets/lightbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="clientscripts/lightbox/builder.js"></script>
+<script type="text/javascript" src="clientscripts/lightbox/scriptaculous.js?load=effects,builder"></script>
+<script type="text/javascript" src="clientscripts/lightbox/lightbox.js"></script>
 </head>
 <body>
 <div id="wrapper">
-
 	<%@include file="include_header.jsp" %>
 	<%@include file="include_detail.jsp" %>
 	<%@include file="include_footer.jsp" %>
-
 </div><!--End wrapper-->
 </body>
 </html>

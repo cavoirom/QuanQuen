@@ -4,6 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Comment implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3276678424933749112L;
 	private int id;
 	private Member author;
 	private Date postedDate = new Date();

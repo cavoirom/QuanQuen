@@ -10,11 +10,9 @@
 </head>
 <body id="about">
 <div id="wrapper">
-
 	<%@include file="include_header.jsp" %>
-	<p style="height: 300px; padding: 10px;">Welcome you to Quan Quen. This is a website for find place entertainment, food, drink, shopping, etc...</p>
+	<p class="mark" style="height: 300px; padding: 10px;">Welcome you to Quan Quen. This is a website for find place entertainment, food, drink, shopping, etc...</p>
 	<%@include file="include_footer.jsp" %>
-
 </div><!--End wrapper-->
 </body>
 </html>

@@ -3,6 +3,10 @@ package quanquen.model;
 import java.io.Serializable;
 
 public class Image implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8217166846099523776L;
 	private String url;
 	private String description;
 

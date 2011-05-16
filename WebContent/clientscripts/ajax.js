@@ -6,8 +6,11 @@ var XMLHttpRequestObject = false;
 	}
 	
 	function loadDistrict(provinceid) {
+		if (provinceid == null| provinceid ==""){
+			provinceid = 0;
+		}
 		url = "loaddistricts?provinceid=" + provinceid;
-		obj = document.getElementById("district");
+		obj = document.getElementById("tabs");
 		if (XMLHttpRequestObject) {
 			XMLHttpRequestObject.open("GET", url, true);
 			XMLHttpRequestObject.onreadystatechange = function() {

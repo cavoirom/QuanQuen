@@ -3,6 +3,10 @@ package quanquen.model;
 import java.io.Serializable;
 
 public class SystemProperty implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2236657484544204836L;
 	private String name;
 	private String value;
 	

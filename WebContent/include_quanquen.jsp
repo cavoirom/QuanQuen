@@ -1,18 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="quanquen.model.Place"%>
+<%@ page import="quanquen.model.Category"%>
 <%
 List<Place> topPlaces = (List<Place>)session.getAttribute("topPlaces");
+List<String> provinces = (List<String>)session.getAttribute("provinces");
+List<Category> categories = (List<Category>)session.getAttribute("categories");
+String province = (String)session.getAttribute("province");
+
 if (topPlaces == null){
 	response.sendRedirect("loadtopplace");
 	return;
 }
 %>
-<%
-	request.setCharacterEncoding("utf-8");
-	response.setCharacterEncoding("utf-8");
-%>
-
 <div id="content">
 	<div id="quanquen_first">
 		<div id="topplace">
@@ -44,22 +44,20 @@ if (topPlaces == null){
 	</div> <!-- End quanquen_first -->
 	
 	<div id="quanquen_last">
-		<form action="category" method="post" id="choosecategory">
+		<form action="category" method="get" id="choosecategory">
 			<fieldset>
 				<label for="province">Tỉnh/Thành phố</label>
 				<select id="province" name="province">
-				<%
-				List<String> provinces = (List<String>)session.getAttribute("provinces");
-				String province = (String)session.getAttribute("province");
-				for (int i=0; i<provinces.size(); i++){
-					if(provinces.get(i).equals(province)){
-				%>
-						<option value="<%=i%>" selected="selected"><%=provinces.get(i).toString()%></option>
-					<%}else{%>
-						<option value="<%=i%>"><%=provinces.get(i).toString()%></option>
-					<%}} %>
+			<%
+			if (provinces != null){
+			for (int i=0; i<provinces.size(); i++){
+				if(provinces.get(i).equals(province)){
+			%>
+					<option value="<%=i%>" selected="selected"><%=provinces.get(i).toString()%></option>
+				<%}else{%>
+					<option value="<%=i%>"><%=provinces.get(i).toString()%></option>
+				<%}}} %>
 				</select>
-				
 				<label for="district">Quận/Huyện</label>
 				<select id="district" name="district">
 				</select>
@@ -69,60 +67,13 @@ if (topPlaces == null){
 		<div id="quanquen">
 			<div id="category">
 				<ul>
-					<li><a href="#">Giải trí đầu</a></li>
-					<li><a href="#">Mua sắm</a></li>
-					<li><a href="#">Thời trang</a></li>
-					<li><a href="#">Thực phẩm</a></li>
-					<li><a href="#">Giải trí</a></li>
-					<li><a href="#">Mua sắm</a></li>
-					<li><a href="#">Thời trang</a></li>
-					<li><a href="#">Thực phẩm</a></li>
-					<li><a href="#">Giải trí</a></li>
-					<li><a href="#">Mua sắm</a></li>
-					<li><a href="#">Thời trang</a></li>
-					<li><a href="#">Thực phẩm</a></li>
-					<li><a href="#">Giải trí</a></li>
-					<li><a href="#">Giải trí</a></li>
-					<li><a href="#">Mua sắm</a></li>
-					<li><a href="#">Thời trang</a></li>
-					<li><a href="#">Thực phẩm</a></li>
-					<li><a href="#">Giải trí</a></li>
-					<li><a href="#">Mua sắm</a></li>
-					<li><a href="#">Thời trang</a></li>
-					<li><a href="#">Thực phẩm</a></li>
-					<li><a href="#">Giải trí</a></li>
-					<li><a href="#">Mua sắm</a></li>
-					<li><a href="#">Thời trang</a></li>
-					<li><a href="#">Thực phẩm</a></li>
-					<li><a href="#">Giải trí</a></li>
-					<li><a href="#">Mua sắm</a></li>
-					<li><a href="#">Thời trang</a></li>
-					<li><a href="#">Thực phẩm</a></li>
-					<li><a href="#">Giải trí</a></li>
-					<li><a href="#">Mua sắm</a></li>
-					<li><a href="#">Thời trang</a></li>
-					<li><a href="#">Thực phẩm</a></li>
-					<li><a href="#">Giải trí</a></li>
-					<li><a href="#">Mua sắm</a></li>
-					<li><a href="#">Thời trang</a></li>
-					<li><a href="#">Thực phẩm</a></li>
-					<li><a href="#">Giải trí</a></li>
-					<li><a href="#">Mua sắm</a></li>
-					<li><a href="#">Thời trang</a></li>
-					<li><a href="#">Thực phẩm</a></li>
-					<li><a href="#">Giải trí</a></li>
-					<li><a href="#">Mua sắm</a></li>
-					<li><a href="#">Thời trang</a></li>
-					<li><a href="#">Thực phẩm</a></li>
-					<li><a href="#">Giải trí</a></li>
-					<li><a href="#">Mua sắm</a></li>
-					<li><a href="#">Thời trang</a></li>
-					<li><a href="#">Thực phẩm</a></li>
-					<li><a href="#">Giải trí</a></li>
-					<li><a href="#">Mua sắm</a></li>
-					<li><a href="#">Thực phẩm cuối</a></li>
+				<%for (int i=0; i < categories.size(); i++){
+					Category category = categories.get(i);
+				%>
+					<li><a href="category?id=<%=category.getId()%>"><%=category.getTitle()%></a></li>
+				<%}%>
 				</ul>
-				<div style="clear:both"></div>
+				<div clss="clear"></div>
 			</div>
 		
 			<div id="tabs">

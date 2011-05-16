@@ -22,7 +22,7 @@ public class BALPlace {
 	public BALPlace(int numberResult) {
 		this.numberResult = numberResult;
 	}
-	
+	//OK
 	public List<Place> getPlacesByVisistorDesc() {
 		List<Place> places = new ArrayList<Place>();
 		pm = Connection.getPersistenceManager();
@@ -33,7 +33,7 @@ public class BALPlace {
 		pm.close();
 		return places;
 	}
-	
+	//OK
 	public List<Place> getPlacesByDateDesc(){
 		List<Place> places = new ArrayList<Place>();
 		pm = Connection.getPersistenceManager();
@@ -44,7 +44,7 @@ public class BALPlace {
 		pm.close();
 		return places;
 	}
-	
+	//OK
 	public List<Place> getPlacesByVisistorDesc(Category category) {
 		List<Place> places = new ArrayList<Place>();
 		pm = Connection.getPersistenceManager();
@@ -57,7 +57,12 @@ public class BALPlace {
 		pm.close();
 		return places;
 	}
-	
+	//OK
+	public List<Place> getPlacesByVisistorDesc(int id) {
+		Category category = new Category(id);
+		return getPlacesByVisistorDesc(category);
+	}
+	//OK
 	public void addNumberVisisted(Place place){
 		pm = Connection.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
@@ -69,39 +74,17 @@ public class BALPlace {
 			List<Place> places = (List<Place>)query.execute(place);
 			Place edit = places.get(0);
 			int number = edit.getNumberOfVisited();
-			edit.setNumberOfVisited(++number);
-		tx.commit();
-		pm.close();
-	}
-	//Pass
-	public void addNumberVisisted(int placeid){
-		pm = Connection.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
-		tx.begin();
-			Query query = pm.newQuery(Place.class);
-			query.declareParameters("int placeid");
-			query.setFilter("this.id == placeid");
-			query.setRange(0, 1);
-			List<Place> places = (List<Place>)query.execute(placeid);
-			Place edit = places.get(0);
-			int number = edit.getNumberOfVisited();
 			number++;
 			edit.setNumberOfVisited(number);
 		tx.commit();
 		pm.close();
 	}
-	
-	public List<Place> getPlacesByAuthor(Member author) {
-		List<Place> places = new ArrayList<Place>();
-		pm = Connection.getPersistenceManager();
-		Query query = pm.newQuery(Place.class);
-		query.declareParameters("Member author");
-		query.setFilter("this.managers.contains(author)");
-		places = (List<Place>) query.execute(author);
-		pm.close();
-		return places;
+	//Pass
+	public void addNumberVisisted(int id){
+		Place place = new Place(id);
+		addNumberVisisted(place);
 	}
-	
+	//OK
 	public List<Place> getPlacesByAuthor(Member author, int page) {
 		List<Place> places = new ArrayList<Place>();
 		pm = Connection.getPersistenceManager();
@@ -113,28 +96,27 @@ public class BALPlace {
 		pm.close();
 		return places;
 	}
-
-	public List<Place> getPlacesByCategory(Category category) {
+	//OK
+	public List<Place> getPlacesByAuthor(String username, int page){
+		Member author = new Member(username);
+		return getPlacesByAuthor(author, page);
+	}
+	//OK
+	public List<Place> getPlacesByCategory(Category category, int page) {
 		List<Place> places = new ArrayList<Place>();
 		pm = Connection.getPersistenceManager();
 		Query query = pm.newQuery(Place.class);
 		query.declareParameters("Category category");
 		query.setFilter("this.categories.contains(category)");
-		places = (List<Place>) query.execute(category);
-		pm.close();
-		return places;
-	}
-	
-	public List<Place> getPlacesByCategory(String category, int page) {
-		List<Place> places = new ArrayList<Place>();
-		pm = Connection.getPersistenceManager();
-		Query query = pm.newQuery(Place.class);
-		query.declareParameters("String category");
-		query.setFilter("this.categories.contains(category)");
 		query.setRange((page - 1) * numberResult, numberResult);
 		places = (List<Place>) query.execute(category);
 		pm.close();
 		return places;
+	}
+	//OK
+	public List<Place> getPlacesByCategory(int id, int page) {
+		Category category = new Category(id);
+		return getPlacesByCategory(category, page);
 	}
 	
 	public List<Place> getPlacesByTypes(String type, String searchvalue, int page) {
@@ -148,9 +130,9 @@ public class BALPlace {
 			query.setFilter("this." + type +".matches('(?i).*" + searchvalue + ".*')");
 			places = (List<Place>)query.execute(searchvalue);
 		}
-		if (type.equals("category")){
-			places = getPlacesByCategory(searchvalue, page);
-		}
+//		if (type.equals("category")){
+//			places = getPlacesByCategory(searchvalue, page);
+//		}
 		if (type.equals("author")){
 			Member member = new Member();
 			member.setUsername(searchvalue);
@@ -183,13 +165,14 @@ public class BALPlace {
 	}
 
 	public Place getPlacesByArticleId(int id) {
-		Place place;
+		List<Place> places;
 		Article article = new Article(id);
 		pm = Connection.getPersistenceManager();
 		Query query = pm.newQuery(Place.class);
 		query.declareParameters("Article article");
 		query.setFilter("this.articles.contains(article)");
-		place = (Place) query.execute(article);
+		places = (List<Place>) query.execute(article);
+		Place place = places.get(0);
 		pm.close();
 		return place;
 	}

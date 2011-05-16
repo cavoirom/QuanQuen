@@ -2,9 +2,13 @@ package quanquen.model;
 
 import java.io.Serializable;
 import java.util.LinkedHashSet;
-import java.util.LinkedList;
 
 public class Group implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8308600885516031919L;
 	private String name = "";
 	private LinkedHashSet<Member> members;
 	private LinkedHashSet<String> permissions;

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String ul = (String)session.getAttribute("ur");
+	String ul = (String)session.getAttribute("ul");
 	String code = request.getParameter("code");
 	Integer id = new Integer(code);
 	String message = "";
@@ -13,11 +13,12 @@
 		case 4: message = "Đăng ký thành công";break;
 		case 5: message = "Đăng nhập thành công";break;
 	}
+	out.print(ul + "ádfasdf");
 %>
 <div id="content">
 	<h3 class="mark"><%=message%></h3>
 	<%if(ul != null){%>
-		<p class="mark" style="padding: 10px 0px 200px 0px;">Chuyển tới trang <a href="<%=session.getAttribute("ur")%>"><%=session.getAttribute("ur")%></a></p>
+		<p class="mark" style="padding: 10px 0px 200px 0px;">Chuyển tới trang <a href="<%=session.getAttribute("ul")%>"><%=session.getAttribute("ul")%></a></p>
 	<%}else{%>
 		<p class="mark" style="padding: 10px 0px 200px 0px;">Chuyển tới <a href="index.jsp">Trang nhất</a></p>
 	<%}%>

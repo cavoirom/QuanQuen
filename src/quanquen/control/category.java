@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import quanquen.bussinessaccess.BALAddress;
 
 /*
- * Load all Place by category id
+ * Load all place by category id
  */
 
 public class category extends HttpServlet {

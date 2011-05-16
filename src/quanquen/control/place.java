@@ -11,7 +11,7 @@ import quanquen.bussinessaccess.BALPlace;
 import quanquen.model.Place;
 
 /*
- * Display detail for Place
+ * Display detail for place
  */
 
 public class place extends HttpServlet {
@@ -34,7 +34,7 @@ public class place extends HttpServlet {
 		if (placeid == null){
 			response.sendRedirect("message.jsp?code=0");
 		}
-		Place place = new BALPlace().getPlaceByID(id);
+//		Place place = new BALPlace().getPlaceByID(id);
 	}
 
 }

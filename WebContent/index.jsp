@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%session.setAttribute("ul",request.getRequestURL());%>
+<%session.setAttribute("ul","index.jsp");%>
 <%@ page import="java.util.List"%>
 <%@page import="quanquen.model.Image"%>
 <%@page import="java.util.LinkedHashSet"%>

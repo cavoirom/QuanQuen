@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%session.setAttribute("ul",request.getRequestURL());%>
+<%session.setAttribute("ul",request.getRequestURI());%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,7 +23,6 @@
 <div id="wrapper">
 
 	<%@include file="include_header.jsp"%>
-	<a href="message.jsp?code=0">Click</a>
 	<%@include file="include_place.jsp"%>
 	<%@include file="include_footer.jsp"%>
 

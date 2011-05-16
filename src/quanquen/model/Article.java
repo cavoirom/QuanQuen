@@ -6,6 +6,11 @@ import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
 public class Article implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6534045015434435838L;
 	private int id;
 	private String title;
 	private Member author;

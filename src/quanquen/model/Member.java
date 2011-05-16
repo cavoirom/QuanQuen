@@ -6,13 +6,17 @@ import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
 public class Member implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9160499798538826538L;
 	private String username;
 	private String password;
 	private String fullName;
 	private String email;
 	private Date joinedDate = new Date();
 	private String website;
-	private Image avatar;
+	private Image avatar = new Image("images/avata/default.png", "Chưa có hình");
 	private Address address;
 	private Date birthday;
 	private Group group;
@@ -106,7 +110,7 @@ public class Member implements Serializable {
 	}
 
 	public Image getAvatar() {
-		return (avatar == null) ? new Image("imges/avata/default.jpg",
+		return (avatar == null) ? new Image("images/avata/default.png",
 				"Chưa có hình") : avatar;
 	}
 
@@ -191,5 +195,7 @@ public class Member implements Serializable {
 		}
 		return false;
 	}
-
+	public static void main(String[] args) {
+		System.out.println(new Member().getAvatar().getUrl());
+	}
 }

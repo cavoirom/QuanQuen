@@ -3,6 +3,10 @@ package quanquen.model;
 import java.io.Serializable;
 
 public class Address implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9202302680837958686L;
 	private String province;
 	private String district;
 	private String street;
