@@ -117,4 +117,19 @@ public class Article implements Serializable {
 		return false;
 	}
 
+	@Override
+	public String toString() {
+		return "Article [id=" + id + ", title=" + title + ", author=" + author
+				+ ", postedDate=" + postedDate + ", content=" + content
+				+ ", membersLikeThis=" + membersLikeThis + ", comments="
+				+ comments + ", pageViews=" + pageViews + ", getId()="
+				+ getId() + ", getTitle()=" + getTitle() + ", getAuthor()="
+				+ getAuthor() + ", getPostedDate()=" + getPostedDate()
+				+ ", getContent()=" + getContent() + ", getMembersLikeThis()="
+				+ getMembersLikeThis() + ", getComments()=" + getComments()
+				+ ", getPageViews()=" + getPageViews() + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
+	}
+
 }

@@ -49,6 +49,7 @@ public class loadtopplace extends HttpServlet {
 		session.setAttribute("newPlaces", newPlaces);
 		System.out.println(session.getAttribute("ul").toString());
 		response.sendRedirect(session.getAttribute("ul").toString());
+		System.out.println(topPlaces.size() + " placesWithNewArticle: " + placesWithNewArticle + " New place " + newPlaces);
 	}
 
 }

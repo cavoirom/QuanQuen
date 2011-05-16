@@ -64,4 +64,14 @@ public class Category implements Serializable {
 		}
 		return false;
 	}
+
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", title=" + title + ", places=" + places
+				+ ", getId()=" + getId() + ", getTitle()=" + getTitle()
+				+ ", getPlaces()=" + getPlaces() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
+	}
+	
 }

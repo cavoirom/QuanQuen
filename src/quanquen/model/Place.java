@@ -13,7 +13,7 @@ public class Place implements Serializable {
 	private int id;
 	private String name;
 	private Address address;
-	private String map = "images/map/default.jpg";
+	private String map;
 	private String tel;
 	private String fax;
 	private String email;
@@ -40,8 +40,6 @@ public class Place implements Serializable {
 
 	public Place(int placeid) {
 		this.images = new LinkedList<Image>();
-		Image image = new Image("images/place/default.jpg", "Chưa có hình");
-		images.add(image);
 		this.membersLikeThis = new LinkedHashSet<Member>();
 		this.articles = new LinkedHashSet<Article>();
 		this.categories = new LinkedHashSet<Category>();
@@ -250,4 +248,34 @@ public class Place implements Serializable {
 		}
 		return false;
 	}
+
+	@Override
+	public String toString() {
+		return "Place [id=" + id + ", name=" + name + ", address=" + address
+				+ ", map=" + map + ", tel=" + tel + ", fax=" + fax + ", email="
+				+ email + ", website=" + website + ", price=" + price
+				+ ", checkoutMethod=" + checkoutMethod + ", categories="
+				+ categories + ", postedDate=" + postedDate + ", lastUpdate="
+				+ lastUpdate + ", images=" + images + ", membersLikeThis="
+				+ membersLikeThis + ", announcement=" + announcement
+				+ ", managers=" + managers + ", isBlock=" + isBlock
+				+ ", numberOfVisited=" + numberOfVisited + ", articles="
+				+ articles + ", getId()=" + getId() + ", getName()="
+				+ getName() + ", getAddress()=" + getAddress() + ", getMap()="
+				+ getMap() + ", getTel()=" + getTel() + ", getFax()="
+				+ getFax() + ", getEmail()=" + getEmail() + ", getWebsite()="
+				+ getWebsite() + ", getPrice()=" + getPrice()
+				+ ", getCheckoutMethod()=" + getCheckoutMethod()
+				+ ", getCategories()=" + getCategories() + ", getPostedDate()="
+				+ getPostedDate() + ", getLastUpdate()=" + getLastUpdate()
+				+ ", getImages()=" + getImages() + ", getMembersLikeThis()="
+				+ getMembersLikeThis() + ", getAnnouncement()="
+				+ getAnnouncement() + ", getManagers()=" + getManagers()
+				+ ", isBlock()=" + isBlock() + ", getNumberOfVisited()="
+				+ getNumberOfVisited() + ", getArticles()=" + getArticles()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
+	}
+
+
 }

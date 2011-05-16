@@ -16,7 +16,7 @@ public class Member implements Serializable {
 	private String email;
 	private Date joinedDate = new Date();
 	private String website;
-	private Image avatar = new Image("images/avata/default.png", "Chưa có hình");
+	private Image avatar;
 	private Address address;
 	private Date birthday;
 	private Group group;
@@ -26,6 +26,13 @@ public class Member implements Serializable {
 	private LinkedHashSet<Place> places;
 	private boolean isActive;
 
+	public Member() {
+		friends = new LinkedHashSet<Member>();
+		articles = new LinkedList<Article>();
+		comments = new LinkedList<Comment>();
+		places = new LinkedHashSet<Place>();
+	}
+	
 	public Member(String username) {
 		friends = new LinkedHashSet<Member>();
 		articles = new LinkedList<Article>();
@@ -33,12 +40,14 @@ public class Member implements Serializable {
 		places = new LinkedHashSet<Place>();
 		this.username = username;
 	}
-
-	public Member() {
+	
+	public Member(String username, String password) {
 		friends = new LinkedHashSet<Member>();
 		articles = new LinkedList<Article>();
 		comments = new LinkedList<Comment>();
 		places = new LinkedHashSet<Place>();
+		this.username = username;
+		this.password = password;
 	}
 
 	public Member(String username, String password, String email,
@@ -49,12 +58,7 @@ public class Member implements Serializable {
 		this.birthday = birthday;
 		this.group = group;
 		this.isActive = isActive;
-
-		this.fullName = null;
 		this.joinedDate = new Date();
-		this.website = null;
-		this.avatar = new Image();
-		this.address = new Address();
 		this.friends = new LinkedHashSet<Member>();
 		this.articles = new LinkedList<Article>();
 		this.comments = new LinkedList<Comment>();
@@ -195,7 +199,37 @@ public class Member implements Serializable {
 		}
 		return false;
 	}
-	public static void main(String[] args) {
-		System.out.println(new Member().getAvatar().getUrl());
+
+	@Override
+	public String toString() {
+		return "Member [username=" + username + ", password=" + password
+				+ ", fullName=" + fullName + ", email=" + email
+				+ ", joinedDate=" + joinedDate + ", website=" + website
+				+ ", avatar=" + avatar + ", address=" + address + ", birthday="
+				+ birthday + ", group=" + group + ", friends=" + friends
+				+ ", articles=" + articles + ", comments=" + comments
+				+ ", places=" + places + ", isActive=" + isActive
+				+ ", getUsername()=" + getUsername() + ", getPassword()="
+				+ getPassword() + ", getFullName()=" + getFullName()
+				+ ", getEmail()=" + getEmail() + ", getJoinedDate()="
+				+ getJoinedDate() + ", getWebsite()=" + getWebsite()
+				+ ", getAvatar()=" + getAvatar() + ", getAddress()="
+				+ getAddress() + ", getStringAddress()=" + getStringAddress()
+				+ ", getBirthday()=" + getBirthday() + ", getGroup()="
+				+ getGroup() + ", getFriends()=" + getFriends()
+				+ ", getArticles()=" + getArticles() + ", getComments()="
+				+ getComments() + ", getPlaces()=" + getPlaces()
+				+ ", isActive()=" + isActive() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
 	}
+
+	
+	
+	
+	
+//	public String encodePassword() {
+//		ShaPasswordEncoder encoder = new ShaPasswordEncoder();
+//		return encoder.encodePassword(password, username);
+//	}
 }

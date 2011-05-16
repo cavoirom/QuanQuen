@@ -73,7 +73,7 @@ if (topPlaces == null){
 					<li><a href="category?id=<%=category.getId()%>"><%=category.getTitle()%></a></li>
 				<%}%>
 				</ul>
-				<div clss="clear"></div>
+				<div class="clear"></div>
 			</div>
 		
 			<div id="tabs">

@@ -63,7 +63,7 @@ public class BALPlace {
 		return getPlacesByVisistorDesc(category);
 	}
 	//OK
-	public void addNumberVisisted(Place place){
+	public void updateNumberVisisted(Place place){
 		pm = Connection.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 		tx.begin();
@@ -80,9 +80,9 @@ public class BALPlace {
 		pm.close();
 	}
 	//Pass
-	public void addNumberVisisted(int id){
+	public void updateNumberVisisted(int id){
 		Place place = new Place(id);
-		addNumberVisisted(place);
+		updateNumberVisisted(place);
 	}
 	//OK
 	public List<Place> getPlacesByAuthor(Member author, int page) {
@@ -161,7 +161,7 @@ public class BALPlace {
 	public static void main(String[] args) {
 		String value = "phong";
 		String names = "name";
-		System.out.println(new BALPlace().getPlacesByTypes(names, value, 1).get(0).getName());
+		new BALPlace().updateNumberVisisted(1);
 	}
 
 	public Place getPlacesByArticleId(int id) {

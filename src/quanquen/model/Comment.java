@@ -59,4 +59,15 @@ public class Comment implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	@Override
+	public String toString() {
+		return "Comment [id=" + id + ", author=" + author + ", postedDate="
+				+ postedDate + ", content=" + content + ", getAuthor()="
+				+ getAuthor() + ", getPostedDate()=" + getPostedDate()
+				+ ", getContent()=" + getContent() + ", getId()=" + getId()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
+	}
+	
 }
