@@ -26,10 +26,17 @@ public class BALPlace {
 	public List<Place> getPlacesByVisistorDesc() {
 		List<Place> places = new ArrayList<Place>();
 		pm = Connection.getPersistenceManager();
+		pm.setDetachAllOnCommit(true);
+		Transaction tx = pm.currentTransaction();
+		tx.setNontransactionalRead(true);
+		tx.setNontransactionalWrite(true);
+		tx.begin();
+		pm.setDetachAllOnCommit(true);
 		Query query = pm.newQuery(Place.class);
 		query.setOrdering("this.numberOfVisited DESCENDING");
 		query.setRange(0, 7);
 		places = (List<Place>) query.execute();
+		pm.currentTransaction().commit();
 		pm.close();
 		return places;
 	}
@@ -37,10 +44,17 @@ public class BALPlace {
 	public List<Place> getPlacesByDateDesc(){
 		List<Place> places = new ArrayList<Place>();
 		pm = Connection.getPersistenceManager();
+		pm.setDetachAllOnCommit(true);
+		Transaction tx = pm.currentTransaction();
+		tx.setNontransactionalRead(true);
+		tx.setNontransactionalWrite(true);
+		tx.begin();
+		pm.setDetachAllOnCommit(true);
 		Query query = pm.newQuery(Place.class);
 		query.setOrdering("this.postedDate DESCENDING");
 		query.setRange(0, 7);
 		places = (List<Place>) query.execute();
+		pm.currentTransaction().commit();
 		pm.close();
 		return places;
 	}
@@ -48,12 +62,18 @@ public class BALPlace {
 	public List<Place> getPlacesByVisistorDesc(Category category) {
 		List<Place> places = new ArrayList<Place>();
 		pm = Connection.getPersistenceManager();
+		pm.setDetachAllOnCommit(true);
+		Transaction tx = pm.currentTransaction();
+		tx.setNontransactionalRead(true);
+		tx.setNontransactionalWrite(true);
+		tx.begin();
 		Query query = pm.newQuery(Place.class);
 		query.declareParameters("Category category");
 		query.setFilter("this.categories.contains(category)");
 		query.setOrdering("this.numberOfVisited DESCENDING");
 		query.setRange(0, 7);
 		places = (List<Place>) query.execute(category);
+		pm.currentTransaction().commit();
 		pm.close();
 		return places;
 	}
@@ -65,6 +85,7 @@ public class BALPlace {
 	//OK
 	public void updateNumberVisisted(Place place){
 		pm = Connection.getPersistenceManager();
+		pm.setDetachAllOnCommit(true);
 		Transaction tx = pm.currentTransaction();
 		tx.begin();
 			Query query = pm.newQuery(Place.class);
@@ -88,11 +109,17 @@ public class BALPlace {
 	public List<Place> getPlacesByAuthor(Member author, int page) {
 		List<Place> places = new ArrayList<Place>();
 		pm = Connection.getPersistenceManager();
+		pm.setDetachAllOnCommit(true);
+		Transaction tx = pm.currentTransaction();
+		tx.setNontransactionalRead(true);
+		tx.setNontransactionalWrite(true);
+		tx.begin();
 		Query query = pm.newQuery(Place.class);
 		query.declareParameters("Member author");
 		query.setFilter("this.managers.contains(author)");
 		query.setRange((page - 1) * numberResult, numberResult);
 		places = (List<Place>) query.execute(author);
+		tx.commit();
 		pm.close();
 		return places;
 	}
@@ -105,11 +132,17 @@ public class BALPlace {
 	public List<Place> getPlacesByCategory(Category category, int page) {
 		List<Place> places = new ArrayList<Place>();
 		pm = Connection.getPersistenceManager();
+		pm.setDetachAllOnCommit(true);
+		Transaction tx = pm.currentTransaction();
+		tx.setNontransactionalRead(true);
+		tx.setNontransactionalWrite(true);
+		tx.begin();
 		Query query = pm.newQuery(Place.class);
 		query.declareParameters("Category category");
 		query.setFilter("this.categories.contains(category)");
 		query.setRange((page - 1) * numberResult, numberResult);
 		places = (List<Place>) query.execute(category);
+		pm.currentTransaction().commit();
 		pm.close();
 		return places;
 	}
@@ -119,18 +152,29 @@ public class BALPlace {
 		return getPlacesByCategory(category, page);
 	}
 	
-	public List<Place> getPlacesByTypes(String type, String searchvalue, int page) {
+	public List<Place> getPlacesByTypes(String type, String searchvalue, String address, int page) {
 		pm = Connection.getPersistenceManager();
+		pm.setDetachAllOnCommit(true);
+		Transaction tx = pm.currentTransaction();
+		tx.setNontransactionalRead(true);
+		tx.setNontransactionalWrite(true);
+		tx.begin();
 		List<Place> places = new ArrayList<Place>();
 		Query query = pm.newQuery(Place.class);
 		query.setRange(0, 20);
+		String filterAddress = "";
+		if (address != null){
+			filterAddress = " && (this.address.province.matches('(?i).*" + address + ".*')" + " || this.address.district.matches('(?i).*" + address + ".*')" + " || this.address.street.matches('(?i).*" + address + ".*')" + " || this.address.houseNumber.matches('(?i).*" + address + ".*')" + ")";
+		}
 		//Pass
 		if(type.equals("name") || type.equals("price")){
 			query.declareParameters("String " + type);
-			query.setFilter("this." + type +".matches('(?i).*" + searchvalue + ".*')");
+			query.setFilter("this." + type +".matches('(?i).*" + searchvalue + ".*')" + filterAddress);
 			places = (List<Place>)query.execute(searchvalue);
 		}
 //		if (type.equals("category")){
+//			Category category = new Category();
+//			
 //			places = getPlacesByCategory(searchvalue, page);
 //		}
 		if (type.equals("author")){
@@ -138,6 +182,7 @@ public class BALPlace {
 			member.setUsername(searchvalue);
 			places = getPlacesByAuthor(member, page);
 		}
+		pm.currentTransaction().commit();
 		pm.close();
 		return places;
 	}
@@ -145,6 +190,12 @@ public class BALPlace {
 	//Pass
 	public Place getPlaceByID(int id) {
 		pm = Connection.getPersistenceManager();
+		pm.setDetachAllOnCommit(true);
+		Transaction tx = pm.currentTransaction();
+		tx.setNontransactionalRead(true);
+		tx.setNontransactionalWrite(true);
+		tx.begin();
+//		pm.setDetachAllOnCommit(true);
 		Place place = null;
 		Query query = pm.newQuery(Place.class);
 		query.declareParameters("int id");
@@ -154,26 +205,90 @@ public class BALPlace {
 		if (places.size()>0){
 			place = places.get(0);
 		}
+		pm.currentTransaction().commit();
 		pm.close();
 		return place;
-	}
-	
-	public static void main(String[] args) {
-		String value = "phong";
-		String names = "name";
-		new BALPlace().updateNumberVisisted(1);
 	}
 
 	public Place getPlacesByArticleId(int id) {
 		List<Place> places;
 		Article article = new Article(id);
 		pm = Connection.getPersistenceManager();
+		pm.setDetachAllOnCommit(true);
+		Transaction tx = pm.currentTransaction();
+		tx.setNontransactionalRead(true);
+		tx.setNontransactionalWrite(true);
+		tx.begin();
+//		pm.setDetachAllOnCommit(true);
 		Query query = pm.newQuery(Place.class);
 		query.declareParameters("Article article");
 		query.setFilter("this.articles.contains(article)");
 		places = (List<Place>) query.execute(article);
 		Place place = places.get(0);
+		pm.currentTransaction().commit();
 		pm.close();
 		return place;
+	}
+	
+	
+	//Pass -->Tested
+	public Place getPlaceAndUpdateNumber(Place place){
+		pm = Connection.getPersistenceManager();
+		pm.setDetachAllOnCommit(true);
+		Transaction tx = pm.currentTransaction();
+		tx.setNontransactionalRead(true);
+		tx.setNontransactionalWrite(true);
+		tx.begin();
+			Query query = pm.newQuery(Place.class);
+			query.declareParameters("Place place");
+			query.setFilter("this.id == place.id");
+			query.setRange(0, 1);
+			List<Place> places = (List<Place>)query.execute(place);
+			Place edit = places.get(0);
+			int number = edit.getNumberOfVisited();
+			number++;
+			edit.setNumberOfVisited(number);
+		tx.commit();
+		pm.close();
+		return edit;
+	}
+	//Pass -->Tested
+	public Place getPlaceAndUpdateNumber(int id){
+		Place place = new Place(id);
+		return getPlaceAndUpdateNumber(place);
+	}
+	
+	public List<Place> getPlacesByListArticleId(List<Integer> ids){
+		List<Place> places = new ArrayList<Place>();
+		pm = Connection.getPersistenceManager();
+		pm.setDetachAllOnCommit(true);
+		Transaction tx = pm.currentTransaction();
+		tx.setNontransactionalRead(true);
+		tx.setNontransactionalWrite(true);
+		tx.begin();
+		Query query = pm.newQuery(Place.class);
+		query.declareParameters("Article article");
+		query.setFilter("this.articles.contains(article)");
+		query.setRange(0, 1);
+		for (Integer id: ids){
+			Article article = new Article(id);
+			List<Place> pls = (List<Place>) query.execute(article);
+			System.out.println(pls.size());
+			places.addAll(pls);
+		}
+		tx.commit();
+		pm.close();
+		return places;
+	}
+	
+	public static void main(String[] args) {
+//		List<Integer> list = new ArrayList<Integer>();
+//		list.add(new Integer(1));
+//		list.add(new Integer(8));
+//		Category a = new Category(4);
+//		System.out.println(new BALPlace().getPlacesByCategory(a, 1));
+//		System.out.println(new BALPlace().getPlacesByListArticleId(list).size());
+//		System.out.println((new BALPlace().getPlaceAndUpdateNumber(4)).getAddress().toString());
+		System.out.println(new BALPlace().getPlacesByAuthor("vinh", 1).size());
 	}
 }

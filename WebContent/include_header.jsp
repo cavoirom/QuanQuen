@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <script type="text/javascript">
 	function validateLogin(){
 		var formlogin = document.forms["formlogin"];
@@ -29,14 +28,7 @@
 		return true;
 	}
 </script>
-
-
-<%request.setCharacterEncoding("utf-8");
-response.setCharacterEncoding("utf-8");%>
-
-
 <div id="header">
-
 	<div id="dotter">
 		<ul id="nav">
 			<li><a href="index.jsp" id="homepage"><span>Trang nhất</span></a></li>

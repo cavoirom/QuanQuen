@@ -32,21 +32,28 @@ public class search extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		//get type of search
 		String type = request.getParameter("type");
 		type = (type == null)? "name" : type;
+		
+		//get address
+		String address = (String)request.getParameter("address");
+		if (address != null){
+			address = new String(address.getBytes("8859_1"),"UTF-8");
+		}
+		
 		//get Search Value
 		String searchvalue = new String(request.getParameter("searchvalue").getBytes("8859_1"),"UTF-8");
-		System.out.println(type);
-		System.out.println(searchvalue);
+		
 		//Check for type of search
-		List<Place> places = new BALPlace().getPlacesByTypes(type.trim(), searchvalue.trim(), 1);
-		System.out.println(places.size());
+		List<Place> places = new BALPlace().getPlacesByTypes(type.trim(), searchvalue.trim(), address, 1);
 		
 		//Save information for times other search
 		HttpSession session = request.getSession();
 		session.setAttribute("searchvalue", searchvalue);
 		session.setAttribute("type", type);
+		session.setAttribute("address", address);
 		
 		//Return result for client
 		request.setAttribute("places", places);

@@ -76,6 +76,14 @@ ul.images li a.next {
 	padding: 10px;
 }
 
+.infoauthor p {
+	margin: 1px 0px;
+}
+
+.infoauthor a:hover {
+	text-decoration: underline;
+}
+
 .article .contentarticle {
 	padding: 10px;
 	width: 800px;
@@ -86,23 +94,23 @@ ul.images li a.next {
 }
 
 .article .sendcomment {
-	width: 400px;
-	height: 100px;
+	width: 250px;
+	height: 70px;
 	margin: 10px 10px 0px 0px;
-	float: left;
+	float: right;
 }
 
 .article .sendcomment textarea {
-	width: 350px;
-	height: 100px;
+	width: 200px;
+	height: 50px;
 }
 
 .article .tools {
 	margin-top: 20px;
-	width: 500px;
+margin-right: 10px;
+	width: 550px;
 	height: 40px;
-	float: right;
-	border-top: 1px solid #ddd;
+	float: left;
 }
 
 .article .tools p {

@@ -16,7 +16,7 @@ import quanquen.model.Article;
 import quanquen.model.Place;
 
 /*
- * Load top place, new place, new article
+ * Load top place, new place, new article. index.jsp
  */
 
 public class loadtopplace extends HttpServlet {
@@ -32,24 +32,27 @@ public class loadtopplace extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//Load places for home page
 		BALPlace balPlace = new BALPlace();
 		List<Place> topPlaces = (List<Place>)balPlace.getPlacesByVisistorDesc();
 		List<Place> newPlaces = (List<Place>)balPlace.getPlacesByDateDesc();
-		//BALArticle balArticle = new BALArticle();
 		List<Integer> newArticlesId = (List<Integer>)(new BALArticle().getArticleByDescDate());
-		List<Place> placesWithNewArticle = new ArrayList<Place>();
-		for (int i=1; i<newArticlesId.size(); i++){
-			Place place = balPlace.getPlacesByArticleId(newArticlesId.get(i));
-			placesWithNewArticle.add(place);
-		}
+		List<Place> placesWithNewArticle = balPlace.getPlacesByListArticleId(newArticlesId);
+		
+		//Save to session
 		HttpSession session = request.getSession();
-		System.out.println(placesWithNewArticle.size());
 		session.setAttribute("topPlaces", topPlaces);
 		session.setAttribute("placesWithNewArticle", placesWithNewArticle);
 		session.setAttribute("newPlaces", newPlaces);
-		System.out.println(session.getAttribute("ul").toString());
+		String ul = (String)session.getAttribute("ul");
+		System.out.println(placesWithNewArticle.size());
+		if(ul == null){
+			ul = "index.jsp";
+			session.setAttribute("ul", ul);
+		}
+		
+		//Return home page
 		response.sendRedirect(session.getAttribute("ul").toString());
-		System.out.println(topPlaces.size() + " placesWithNewArticle: " + placesWithNewArticle + " New place " + newPlaces);
 	}
 
 }

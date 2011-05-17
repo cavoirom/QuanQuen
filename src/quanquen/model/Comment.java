@@ -1,6 +1,7 @@
 package quanquen.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Comment implements Serializable {
@@ -39,6 +40,11 @@ public class Comment implements Serializable {
 	public Date getPostedDate() {
 		return postedDate;
 	}
+	
+	public String getPostedDateString(){
+		SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+		return fm.format(postedDate);
+	}
 
 	public void setPostedDate(Date postedDate) {
 		this.postedDate = postedDate;
@@ -59,15 +65,4 @@ public class Comment implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	@Override
-	public String toString() {
-		return "Comment [id=" + id + ", author=" + author + ", postedDate="
-				+ postedDate + ", content=" + content + ", getAuthor()="
-				+ getAuthor() + ", getPostedDate()=" + getPostedDate()
-				+ ", getContent()=" + getContent() + ", getId()=" + getId()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
-	}
-	
 }

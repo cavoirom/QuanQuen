@@ -19,8 +19,8 @@
 				for (int i=0; i < topPlaces.size(); i++){
 					Place place = topPlaces.get(i);
 				%>
-					<a href="place?id=<%=place.getId()%>" class="show">
-						<img src="<%=place.getImages().getFirst().getUrl()%>" width="410" height="360" rel="<a id='linkbox'><h3><%=place.getName()%></h3></a><p><%=place.getArticles().iterator().next().getContent()%></p>"/>
+					<a href="place?id=<%=place.getId()%>">
+						<img src="<%=place.getImages().get(0).getUrl()%>" width="410" height="360" rel="<h3><a id='linkbox'><%=place.getName()%></a></h3><p><%=place.getArticles().iterator().next().getContent()%></p>"/>
 					</a>
 				<%}%>
 				<div id="boxtextmainbox" class="caption"></div>
@@ -36,7 +36,7 @@
 				Place place = newPlaces.get(i);
 			%>
 			<div class="newplace">
-				<a href="place?id=<%=place.getId()%>"><img alt="" src="<%=place.getImages().iterator().next()%>" width="60" height="60"/></a>
+				<a href="place?id=<%=place.getId()%>"><img alt="" src="<%=place.getImages().iterator().next().getUrl()%>" width="60" height="60"/></a>
 				<a href="place?id=<%=place.getId()%>"><%=place.getName()%></a>
 				<ul class="category">
 					<li>Thể loai: </li>
@@ -75,8 +75,8 @@
 					int index = articles.size() - 1;
 					Article[] arrArticle = articles.toArray(new Article[index+1]);	
 				%>
-					<a href="place?id=<%=place.getId()%>" class="show">
-						<img src="<%=place.getImages().getFirst().getUrl()%>" width="410" height="360" rel="<a id='linkbox'><h3><%=place.getName()%></h3></a><p><%=arrArticle[index].getContent()%></p>"/>
+					<a href="place?id=<%=place.getId()%>">
+						<img src="<%=place.getImages().get(0).getUrl()%>" width="410" height="360" rel="<h3><a id='linkbox'><%=place.getName()%></a></h3><p><%=arrArticle[index].getContent()%></p>"/>
 					</a>
 				<%}%>
 				<div id="boxtextsubbox" class="caption"></div>

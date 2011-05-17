@@ -19,8 +19,10 @@
 	//String value = (String)session.getAttribute("searchvalue");
 	String type = (String)session.getAttribute("type");
 	type = (type == null)? "name" : type;
-	String[] types = new String[]{"name","author"};
-	String[] description = new String[]{"Tên địa điểm","Thành viên post"};
+	String[] types = new String[]{"name","author","category"};
+	String[] description = new String[]{"Tên địa điểm","Thành viên post","Thể loại"};
+	String address = (String)session.getAttribute("address");
+	address = (address == null)? "" : address;
 %>    
 <form id="advancesearch" action="search" method="get" onsubmit="return validateAdvanceSearch();" accept-charset="utf-8">
 	<fieldset>
@@ -35,6 +37,9 @@
 				<%}
 			} %>
 		</select>
+		
+		<label for="address">Khu vực:</label>
+		<input type="text" id="address" name="address" value="<%=address%>"/><span>VD: Quận 1 hoặc Lê Văn Việt hoặc để trống</span>
 	</fieldset>
 	<fieldset>
 		<label for="value">Giá trị tìm kiếm</label>

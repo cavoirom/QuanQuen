@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import quanquen.bussinessaccess.BALAddress;
 
 /*
- * Load all place by category id
+ *Load Categories from province, district. quanquen.jsp
  */
 
 public class category extends HttpServlet {
@@ -41,7 +41,6 @@ public class category extends HttpServlet {
 			provinces = new BALAddress().getAllProvince();
 			session.setAttribute("provinces", provinces);
 		}
-		System.out.println("So tinh thanh: " + provinces.size());
 		response.sendRedirect("quanquen.jsp");
 	}
 

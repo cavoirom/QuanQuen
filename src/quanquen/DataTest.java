@@ -34,7 +34,7 @@ public class DataTest {
 		
 		
 		for (int i=1; i<=17; i++){
-			images.add(new Image("images/place/hinh("+i+").jpg"));
+			images.add(new Image("images/place/hinh ("+i+").jpg"));
 		}
 		
 		
@@ -183,32 +183,66 @@ public class DataTest {
 		
 		
 		
+//		Transaction tx = pm.currentTransaction();
+//		tx.begin();
+//		Category category = categories.get(0);
+//		Member memberTest = members.get(0);
+//		Article article = articles.get(0);
+//		Comment comment = comments.get(0);
+//		Address address2 = address.get(0);
+//	
+//		
+//		
+//		
+//		
+//		//Set list manager in place
+//		LinkedHashSet<Member> managers = new LinkedHashSet<Member>();
+//		Place place = new Place("Test", address2, null, null);
+//		managers.add(memberTest);
+//		place.setManagers(managers);
+//		
+//
+//		pm.makePersistent(memberTest);
+//		pm.makePersistent(place);
+//		
+//		//Set list place in member
+//		LinkedHashSet<Place> p = new LinkedHashSet<Place>();
+//		p.add(place);
+//		memberTest.setPlaces(p);
+//		
+//		pm.makePersistent(memberTest);
+//		pm.makePersistent(place);
+
+		
+		
+		
+		
+		
 		
 		//---------------------------------Start Place---------------------------------------
 		for (int i=0; i< categories.size(); i++){
-				for (int j = 0; j<categories.size(); j++){
 					LinkedHashSet<Category> a = new LinkedHashSet<Category>();
-					a.add(categories.get(j));
-					for (int k = 0; k<members.size(); k++){
+					a.add(categories.get(i));
+					for (int k = 0; k < members.size(); k++){
 						LinkedHashSet<Member> b = new LinkedHashSet<Member>();
 						b.add(members.get(k));
-						Place p;
-						try {
-							p = new Place(categories.get(i).getTitle(), address.get(i), a, b);
-						} catch (Exception e) {
-							break;
-						}
+						
+						Place p = new Place(categories.get(k).getTitle() + " " + k, address.get(k), a, b);
 						LinkedHashSet<Article> ad = new LinkedHashSet<Article>();
-						ad.add(articles.get(i));
+						ad.add(articles.get(k));
 						p.setArticles(ad);
+						LinkedList<Image> image= new LinkedList<Image>();
+						image.add(images.get(k));
+						p.setImages(image);
 						places.add(p);
+						categories.get(i).addPlace(p);
+//						
 					}
-				}
-				
 			}
 
 		//---------------------------------End Place----------------------------------------------
-		
+//		tx.commit();
+//		pm.close();
 		
 		
 		
@@ -223,13 +257,23 @@ public class DataTest {
 		//=================================================Start save==========================================
 		Transaction tx = pm.currentTransaction();
 		tx.begin();
+		pm.makePersistent(groupMember);
+		pm.makePersistent(groupAdmin);
+		
+		for(Category p: categories){
+			pm.makePersistent(p);			
+		}
+		
+		for(Comment p: comments){
+			pm.makePersistent(p);			
+		}
+		
+		for(Article p: articles){
+			pm.makePersistent(p);			
+		}
+		
 		for(Place p: places){
-			try {
-				pm.makePersistent(p);
-			} catch (Exception e) {
-				continue;
-			}
-			
+				pm.makePersistent(p);			
 		}
 		
 //		pm.makePersistent(members);
@@ -241,6 +285,7 @@ public class DataTest {
 		//=================================================End save==========================================
 		
 		System.out.println("--------------------------------All Done----------------------");
+		System.out.println("Hinh " + images.size());
 		System.out.println("Place " + places.size());
 		System.out.println("Address " + address.size());
 		System.out.println("Member " + members.size());

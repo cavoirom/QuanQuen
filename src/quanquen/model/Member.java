@@ -1,6 +1,7 @@
 package quanquen.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -101,6 +102,11 @@ public class Member implements Serializable {
 		return joinedDate;
 	}
 
+	public String getJoinedDateString(){
+		SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+		return fm.format(joinedDate);
+	}
+	
 	public void setJoinedDate(Date joinedDate) {
 		this.joinedDate = joinedDate;
 	}
@@ -114,8 +120,8 @@ public class Member implements Serializable {
 	}
 
 	public Image getAvatar() {
-		return (avatar == null) ? new Image("images/avata/default.png",
-				"Chưa có hình") : avatar;
+		return ((avatar == null) ? new Image("images/avata/default.png",
+				"Chưa có hình") : avatar);
 	}
 
 	public void setAvatar(Image avatar) {
@@ -199,37 +205,4 @@ public class Member implements Serializable {
 		}
 		return false;
 	}
-
-	@Override
-	public String toString() {
-		return "Member [username=" + username + ", password=" + password
-				+ ", fullName=" + fullName + ", email=" + email
-				+ ", joinedDate=" + joinedDate + ", website=" + website
-				+ ", avatar=" + avatar + ", address=" + address + ", birthday="
-				+ birthday + ", group=" + group + ", friends=" + friends
-				+ ", articles=" + articles + ", comments=" + comments
-				+ ", places=" + places + ", isActive=" + isActive
-				+ ", getUsername()=" + getUsername() + ", getPassword()="
-				+ getPassword() + ", getFullName()=" + getFullName()
-				+ ", getEmail()=" + getEmail() + ", getJoinedDate()="
-				+ getJoinedDate() + ", getWebsite()=" + getWebsite()
-				+ ", getAvatar()=" + getAvatar() + ", getAddress()="
-				+ getAddress() + ", getStringAddress()=" + getStringAddress()
-				+ ", getBirthday()=" + getBirthday() + ", getGroup()="
-				+ getGroup() + ", getFriends()=" + getFriends()
-				+ ", getArticles()=" + getArticles() + ", getComments()="
-				+ getComments() + ", getPlaces()=" + getPlaces()
-				+ ", isActive()=" + isActive() + ", getClass()=" + getClass()
-				+ ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
-	}
-
-	
-	
-	
-	
-//	public String encodePassword() {
-//		ShaPasswordEncoder encoder = new ShaPasswordEncoder();
-//		return encoder.encodePassword(password, username);
-//	}
 }

@@ -7,11 +7,11 @@ List<Place> topPlaces = (List<Place>)session.getAttribute("topPlaces");
 List<String> provinces = (List<String>)session.getAttribute("provinces");
 List<Category> categories = (List<Category>)session.getAttribute("categories");
 String province = (String)session.getAttribute("province");
-
 if (topPlaces == null){
 	response.sendRedirect("loadtopplace");
-	return;
 }
+request.setCharacterEncoding("utf-8");
+response.setCharacterEncoding("utf-8");
 %>
 <div id="content">
 	<div id="quanquen_first">
@@ -31,8 +31,8 @@ if (topPlaces == null){
 				for (int i=0; i < topPlaces.size(); i++){
 					Place place = topPlaces.get(i);
 				%>
-					<a href="place?id=<%=place.getId()%>" class="show">
-						<img src="<%=place.getImages().getFirst().getUrl()%>" width="410" height="360" rel="<a id='linkbox'><h3><%=place.getName()%></h3></a><p><%=place.getArticles().iterator().next().getContent()%></p>"/>
+					<a href="place?id=<%=place.getId()%>">
+						<img src="<%=place.getImages().getFirst().getUrl()%>" rel="<h3><a id='linkbox'><%=place.getName()%></a></h3><p><%=place.getArticles().iterator().next().getContent()%></p>"/>
 					</a>
 				<%}%>
 				<div id="boxtexttopplace" class="caption">
@@ -49,14 +49,13 @@ if (topPlaces == null){
 				<label for="province">Tỉnh/Thành phố</label>
 				<select id="province" name="province">
 			<%
-			if (provinces != null){
-			for (int i=0; i<provinces.size(); i++){
+			for (int i=0; i< provinces.size(); i++){
 				if(provinces.get(i).equals(province)){
 			%>
 					<option value="<%=i%>" selected="selected"><%=provinces.get(i).toString()%></option>
 				<%}else{%>
 					<option value="<%=i%>"><%=provinces.get(i).toString()%></option>
-				<%}}} %>
+				<%}} %>
 				</select>
 				<label for="district">Quận/Huyện</label>
 				<select id="district" name="district">
@@ -67,7 +66,8 @@ if (topPlaces == null){
 		<div id="quanquen">
 			<div id="category">
 				<ul>
-				<%for (int i=0; i < categories.size(); i++){
+				<%
+				for (int i=0; i < -1; i++){
 					Category category = categories.get(i);
 				%>
 					<li><a href="category?id=<%=category.getId()%>"><%=category.getTitle()%></a></li>

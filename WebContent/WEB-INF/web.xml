@@ -79,4 +79,14 @@
     <servlet-name>loadtopplace</servlet-name>
     <url-pattern>/loadtopplace</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>places</display-name>
+    <servlet-name>places</servlet-name>
+    <servlet-class>quanquen.control.places</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>places</servlet-name>
+    <url-pattern>/places</url-pattern>
+  </servlet-mapping>
 </web-app>

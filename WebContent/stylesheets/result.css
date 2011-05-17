@@ -17,13 +17,20 @@ form#advancesearch fieldset label {
 	text-align: right;
 }
 
-form#advancesearch fieldset select{
+form#advancesearch fieldset select, form#advancesearch fieldset input{
 	width: 180px;
 	float: left;
 	margin: 0px 0px 0px 10px;
 	height: 24px;
 	line-height: 24px;
 	font-size: 1em;
+}
+
+form#advancesearch fieldset span{
+	margin-left: 30px;
+	font-style: italic;
+	font-size: 0.9em;
+	color: #ccc;
 }
 
 form#advancesearch fieldset input#value {
@@ -54,7 +61,7 @@ div#result{
 	width: 980px;
 	position: relative;
 	margin: 10px 0px 0px 5px;
-	minheight: 300px;
+	min-height: 300px;
 	height: auto;
-	height: 300px;
+	hight: 300px;
 }

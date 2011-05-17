@@ -17,6 +17,9 @@ SlideShow.prototype =
 	//Set the opacity of all images to 0
 	$(this.parent + '.gallery>a').css({opacity: 0.0});
 	
+	//Add class show to show
+	$(this.parent + '.gallery>a:first').addClass('show');
+	
 	//Resize the width and height of the image according to the gallery
 	$(this.parent + '.gallery>a').find('img').css({width: $(this.parent + '.gallery').css('width'), height: $(this.parent + '.gallery').css('height')});
 	
@@ -85,7 +88,6 @@ if (parent==null)
 {
 	parent = "";
 }
-	
 	//if no IMGs have the show class, grab the first image
 	var current = ($(parent + '.gallery a.show')?  $(parent + '.gallery a.show') : $(parent + '.gallery a:first'));
 
@@ -102,19 +104,17 @@ if (parent==null)
 	$(parent + 'input.selectednumber').removeClass('selectednumber');
 	$(parent + 'input').eq(currentNumber).addClass('selectednumber');
 
-	//$('#numbermainbox input').length;
-
 	//Get next image caption
 	var caption = next.find('img').attr('rel');	
+	
+	//Hide the current image
+	current.animate({opacity: 0.0}, 1000)
+	.removeClass('show');
 	
 	//Set the fade in effect for the next image, show class has higher z-index
 	next.css({opacity: 0.0})
 	.addClass('show')
 	.animate({opacity: 1.0}, 1000);
-
-	//Hide the current image
-	current.animate({opacity: 0.0}, 1000)
-	.removeClass('show');
 	
 	//Display the content
 	$(parent + '.gallery .caption').html(caption);

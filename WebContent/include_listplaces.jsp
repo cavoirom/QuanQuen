@@ -13,7 +13,7 @@
 %>
 		<div class="places">
 			<a href="#"><img src="<%=place.getImages().getFirst().getUrl()%>" alt="" width="120" height="120"/></a>
-			<h3><a href="place?<%=place.getId()%>"><%=place.getName()%></a></h3>
+			<h3><a href="place?id=<%=place.getId()%>"><%=place.getName()%></a></h3>
 			<ul class="category">
 				<li>Thể loai: </li>
 				<%

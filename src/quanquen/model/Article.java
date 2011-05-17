@@ -1,6 +1,7 @@
 package quanquen.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -36,7 +37,6 @@ public class Article implements Serializable {
 		this.author = author;
 		this.postedDate = postedDate;
 		this.content = content;
-
 		this.membersLikeThis = new LinkedHashSet<Member>();
 		this.comments = new LinkedList<Comment>();
 		this.pageViews = 0;
@@ -69,7 +69,12 @@ public class Article implements Serializable {
 	public Date getPostedDate() {
 		return postedDate;
 	}
-
+	
+	public String getPostedDateString(){
+		SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+		return fm.format(postedDate);
+	}
+	
 	public void setPostedDate(Date postedDate) {
 		this.postedDate = postedDate;
 	}
@@ -116,20 +121,4 @@ public class Article implements Serializable {
 		}
 		return false;
 	}
-
-	@Override
-	public String toString() {
-		return "Article [id=" + id + ", title=" + title + ", author=" + author
-				+ ", postedDate=" + postedDate + ", content=" + content
-				+ ", membersLikeThis=" + membersLikeThis + ", comments="
-				+ comments + ", pageViews=" + pageViews + ", getId()="
-				+ getId() + ", getTitle()=" + getTitle() + ", getAuthor()="
-				+ getAuthor() + ", getPostedDate()=" + getPostedDate()
-				+ ", getContent()=" + getContent() + ", getMembersLikeThis()="
-				+ getMembersLikeThis() + ", getComments()=" + getComments()
-				+ ", getPageViews()=" + getPageViews() + ", getClass()="
-				+ getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
-	}
-
 }
