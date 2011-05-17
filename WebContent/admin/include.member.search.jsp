@@ -1,8 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%
-	import quanquen.model.*;
-
-	// check authorization status
+<%@ page import="java.util.List,quanquen.model.Member;" %>
+<%	// check authorization status
 	boolean isAdminAuthorized;
 	if (session.getAttribute("isAdminAuthorized") == null)
 		isAdminAuthorized = false;
@@ -11,7 +9,7 @@
 				.getAttribute("isAdminAuthorized");
 	List<Member> result = (List<Member>) session.getAttribute("searchMemberResult");
 	if (result == null) {
-		result = new List<Member>();
+		//result = new List<Member>();
 	}
 %>
 <%
