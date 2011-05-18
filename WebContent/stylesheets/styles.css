@@ -321,14 +321,14 @@ div.dottersubbox div.contentsubbox {
 	position: relative;
 }
 
-#contentsubbox1 .newplace{
+.newplace{
 	height: 62px;
 	overflow: hidden;
 	font-size: 0.8em;
 	padding: 4.5px 2px;
 }
 
-#contentsubbox1 .newplace img{
+.newplace img{
 	float: left;
 	width: 60px;
 	height: 60px;
@@ -337,13 +337,13 @@ div.dottersubbox div.contentsubbox {
 	margin-right: 4px;
 	cursor: pointer;
 }
-#contentsubbox1 .newplace a, #contentsubbox1 .newplace div{
+.newplace a, .newplace div{
 	height: 15px;
 	overflow: hidden;
 	line-height: 15px;
 }
 
-#contentsubbox1 .newplace a:hover{
+.newplace a:hover{
 	color: #f00;
 }
 

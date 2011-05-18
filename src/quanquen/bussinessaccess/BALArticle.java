@@ -19,8 +19,8 @@ public class BALArticle {
 		Transaction tx = pm.currentTransaction();
 		tx.setNontransactionalRead(true);
 		tx.setNontransactionalWrite(true);
-		tx.begin();
-		pm.setDetachAllOnCommit(true);
+		tx.setSerializeRead(true);
+		tx.begin();		
 		Query query = pm.newQuery(Article.class);
 		query.setOrdering("this.postedDate DESCENDING");
 		query.setResult("id");
@@ -38,6 +38,7 @@ public class BALArticle {
 		Transaction tx = pm.currentTransaction();
 		tx.setNontransactionalRead(true);
 		tx.setNontransactionalWrite(true);
+		tx.setSerializeRead(true);
 		tx.begin();
 		Query query = pm.newQuery(Article.class);
 		query.declareParameters("Article article");
@@ -47,8 +48,5 @@ public class BALArticle {
 		tx.commit();
 		pm.close();
 		return article;
-	}
-	public static void main(String[] args) {
-		System.out.println(new BALArticle().getArticleByDescDate().toString());
 	}
 }

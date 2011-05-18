@@ -1,3 +1,5 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.LinkedHashSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="quanquen.model.Place"%>
@@ -6,17 +8,20 @@
 List<Place> topPlaces = (List<Place>)session.getAttribute("topPlaces");
 List<String> provinces = (List<String>)session.getAttribute("provinces");
 List<Category> categories = (List<Category>)session.getAttribute("categories");
+List<Place> newPlaces = (List<Place>)session.getAttribute("newPlaces");
 String province = (String)session.getAttribute("province");
 if (topPlaces == null){
 	response.sendRedirect("loadtopplace");
+	return;
 }
 request.setCharacterEncoding("utf-8");
 response.setCharacterEncoding("utf-8");
 %>
 <div id="content">
-	<div id="quanquen_first">
-		<div id="topplace">
-			<div id="numbertopplacebox">
+	<div id="dottermainbox">
+		<div id="titlemainbox"><p id="topmonth">Top của tháng</p></div>
+		<div id="contentmainbox">
+			<div id="numbermainbox">
 				<input type="button" class="numberbox selectednumber" value="1" onClick="slideshowquanquen.change(this.value)"/>
 				<input type="button" class="numberbox" value="2" onClick="slideshowquanquen.change(this.value)"/>
 				<input type="button" class="numberbox" value="3" onClick="slideshowquanquen.change(this.value)"/>
@@ -26,24 +31,45 @@ response.setCharacterEncoding("utf-8");
 				<input type="button" class="numberbox" value="7" onClick="slideshowquanquen.change(this.value)"/>
 			</div>
 
-			<div class="gallery" id="gallerytopplace">
+			<div class="gallery" id="gallerymainbox">
 				<%
 				for (int i=0; i < topPlaces.size(); i++){
 					Place place = topPlaces.get(i);
 				%>
 					<a href="place?id=<%=place.getId()%>">
-						<img src="<%=place.getImages().getFirst().getUrl()%>" rel="<h3><a id='linkbox'><%=place.getName()%></a></h3><p><%=place.getArticles().iterator().next().getContent()%></p>"/>
+						<img src="<%=place.getImages().get(0).getUrl()%>" width="410" height="360" rel="<h3><a id='linkbox'><%=place.getName()%></a></h3><p><%=place.getArticles().iterator().next().getContent().replaceAll("\n","")%></p>"/>
 					</a>
 				<%}%>
-				<div id="boxtexttopplace" class="caption">
-				</div>
+				<div id="boxtextmainbox" class="caption"></div>
 			</div>
-		</div><!-- End topplace -->
+		</div>
+	</div>
 	
-		<div id="ad"></div>
-	</div> <!-- End quanquen_first -->
+	<div id="newplaces">
+		<h2 class="mark">Quán mới cập nhật</h2>
+		<%
+			for (int i=0; i<newPlaces.size(); i++){
+				Place place = newPlaces.get(i);
+			%>
+			<div class="newplace">
+				<a href="place?id=<%=place.getId()%>"><img alt="" src="<%=place.getImages().iterator().next().getUrl()%>" width="60" height="60"/></a>
+				<a href="place?id=<%=place.getId()%>"><%=place.getName()%></a>
+				<ul class="category">
+					<li>Thể loai: </li>
+					<%
+						Iterator<Category> types = place.getCategories().iterator();
+						while(types.hasNext()){
+							Category category = types.next();
+					%>
+					<li><a href ="search?type=category&searchvalue=<%=category.getTitle()%>"><%=category.getTitle()%></a></li>
+						<%}%>
+				</ul>
+				<p class="address">ĐC: <%=place.getAddress().toString()%></p>
+			</div>
+			<%}%>
+		</div>
 	
-	<div id="quanquen_last">
+	<div id="quanquen">
 		<form action="category" method="get" id="choosecategory">
 			<fieldset>
 				<label for="province">Tỉnh/Thành phố</label>
@@ -60,27 +86,13 @@ response.setCharacterEncoding("utf-8");
 				<label for="district">Quận/Huyện</label>
 				<select id="district" name="district">
 				</select>
+				<label for="categories">Thể loại</label>
+				<select id="categories" name="categories">
+				</select>
 				<input type="submit" value="Go"/>
 			</fieldset>
 		</form>
-		<div id="quanquen">
-			<div id="category">
-				<ul>
-				<%
-				for (int i=0; i < -1; i++){
-					Category category = categories.get(i);
-				%>
-					<li><a href="category?id=<%=category.getId()%>"><%=category.getTitle()%></a></li>
-				<%}%>
-				</ul>
-				<div class="clear"></div>
-			</div>
-		
-			<div id="tabs">
-				<div id="newplace">Địa điểm mới</div>
-				<div id="newpost">Bài viết mới</div>
-				<div id="newupdate">Bình luận mới</div>
-			</div>
+		<div id="places">
 		</div>
 	</div>
 </div>

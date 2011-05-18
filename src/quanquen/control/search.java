@@ -47,7 +47,8 @@ public class search extends HttpServlet {
 		String searchvalue = new String(request.getParameter("searchvalue").getBytes("8859_1"),"UTF-8");
 		
 		//Check for type of search
-		List<Place> places = new BALPlace().getPlacesByTypes(type.trim(), searchvalue.trim(), address, 1);
+		BALPlace balPlace = new BALPlace();
+		List<Place> places = balPlace.getPlacesByTypes(type.trim(), searchvalue.trim(), address, 1);
 		
 		//Save information for times other search
 		HttpSession session = request.getSession();

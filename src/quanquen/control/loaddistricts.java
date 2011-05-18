@@ -35,15 +35,26 @@ public class loaddistricts extends HttpServlet {
 		int provinceid = Integer.parseInt(request.getParameter("provinceid"));
 		HttpSession session = request.getSession();
 		String district = (String)session.getAttribute("district");
+		Integer id = null;
+		if (district == null || district.equals("")){
+			id = -1;
+		}else{
+			id = new Integer(district);
+		}
 		String province = ((List<String>)session.getAttribute("provinces")).get(provinceid);
 		List<String> districts = new BALAddress().getDistrictsByProvince(province);
 		PrintWriter out = response.getWriter();
 		String text = "";
-		for (int i=0; i < districts.size(); i++){
-			if (district != null && i==new Integer(district)){
-				text = text + "\n" + "<option value=\"" + i +"\" selected=\"selected\">" + districts.get(i) + "</option>";
+		if (district == null || new Integer(district) == -1){
+			text = "<option value=\"-1\" selected=\"selected\">----------Tất cả----------</option>";
+		}else{
+			text = "<option value=\"-1\">----------Tất cả----------</option>";
+		}
+		for (int i = 0; i < districts.size(); i++){
+			if (i == id){
+				text = text + "<option value=\"" + i +"\" selected=\"selected\">" + districts.get(i) + "</option>";
 			}else{
-				text = text + "\n" + "<option value=\"" + i + "\">" + districts.get(i) + "</option>";
+				text = text + "<option value=\"" + i + "\">" + districts.get(i) + "</option>";
 			}
 		}
 		out.println(text);

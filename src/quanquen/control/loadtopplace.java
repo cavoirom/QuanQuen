@@ -45,7 +45,6 @@ public class loadtopplace extends HttpServlet {
 		session.setAttribute("placesWithNewArticle", placesWithNewArticle);
 		session.setAttribute("newPlaces", newPlaces);
 		String ul = (String)session.getAttribute("ul");
-		System.out.println(placesWithNewArticle.size());
 		if(ul == null){
 			ul = "index.jsp";
 			session.setAttribute("ul", ul);

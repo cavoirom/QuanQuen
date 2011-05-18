@@ -1,6 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div id="content">
 
+<%@page import="java.util.Iterator"%>
+<%@ page import="java.util.List"%>
+<%@page import="quanquen.model.Image"%>
+<%@page import="java.util.LinkedHashSet"%>
+<%@ page import="quanquen.model.Place"%>
+<%@ page import="quanquen.model.Article"%>
+<%@ page import="quanquen.model.Category"%>
+<%
+List<Place> topPlaces = (List<Place>)session.getAttribute("topPlaces");
+List<Place> newPlaces = (List<Place>)session.getAttribute("newPlaces");
+List<Place> placesWithNewArticle = (List<Place>)session.getAttribute("placesWithNewArticle");
+if(topPlaces == null || newPlaces == null || placesWithNewArticle == null){
+	response.sendRedirect("loadtopplace");
+	return;
+}
+%>
+<div id="content">
 	<div id="dottermainbox">
 		<div id="titlemainbox"><p id="topmonth">Top của tháng</p></div>
 		<div id="contentmainbox">
@@ -20,7 +36,7 @@
 					Place place = topPlaces.get(i);
 				%>
 					<a href="place?id=<%=place.getId()%>">
-						<img src="<%=place.getImages().get(0).getUrl()%>" width="410" height="360" rel="<h3><a id='linkbox'><%=place.getName()%></a></h3><p><%=place.getArticles().iterator().next().getContent()%></p>"/>
+						<img src="<%=place.getImages().get(0).getUrl()%>" width="410" height="360" rel="<h3><a id='linkbox'><%=place.getName()%></a></h3><p><%=place.getArticles().iterator().next().getContent().replaceAll("\n","")%></p>"/>
 					</a>
 				<%}%>
 				<div id="boxtextmainbox" class="caption"></div>
@@ -32,7 +48,7 @@
 		<div class="titlesubbox"><p>Mới cập nhật</p></div>
 		<div id="contentsubbox1" class="contentsubbox">
 			<%
-			for (int i=1; i<newPlaces.size(); i++){
+			for (int i=0; i<newPlaces.size(); i++){
 				Place place = newPlaces.get(i);
 			%>
 			<div class="newplace">
@@ -41,11 +57,11 @@
 				<ul class="category">
 					<li>Thể loai: </li>
 					<%
-						LinkedHashSet<Category> categories = place.getCategories();
-						for (int j=0; j<categories.size(); j++){
-							Category category = categories.iterator().next();
+						Iterator<Category> categories = place.getCategories().iterator();
+						while(categories.hasNext()){
+							Category category = categories.next();
 					%>
-					<li><a href ="category?id=<%=category.getId()%>"><%=category.getTitle()%></a></li>
+					<li><a href ="search?type=category&searchvalue=<%=category.getTitle()%>"><%=category.getTitle()%></a></li>
 						<%}%>
 				</ul>
 				<p class="address">ĐC: <%=place.getAddress().toString()%></p>
@@ -76,7 +92,7 @@
 					Article[] arrArticle = articles.toArray(new Article[index+1]);	
 				%>
 					<a href="place?id=<%=place.getId()%>">
-						<img src="<%=place.getImages().get(0).getUrl()%>" width="410" height="360" rel="<h3><a id='linkbox'><%=place.getName()%></a></h3><p><%=arrArticle[index].getContent()%></p>"/>
+						<img src="<%=place.getImages().get(0).getUrl()%>" rel="<h3><a id='linkbox'><%=place.getName()%></a></h3><p><%=arrArticle[index].getContent().replaceAll("\n","")%></p>"/>
 					</a>
 				<%}%>
 				<div id="boxtextsubbox" class="caption"></div>

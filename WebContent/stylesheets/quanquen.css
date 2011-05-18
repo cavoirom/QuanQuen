@@ -6,14 +6,14 @@ div#content div#quanquen_first {
 
 div#quanquen_first div#topplace {
 	position: relative;
-	height: 400px;
-	width: 600px;
+	height: 300px;
+	width: 400px;
 	border: 1px solid #ddd;
 	overflow: hidden;
 }
 
 div#topplace #gallerytopplace{
-	height: 400px;
+	height: 300px;
 }
 
 div#quanquen_first div#topplace div#boxtexttopplace{
@@ -29,7 +29,7 @@ div#quanquen_first div#topplace div#numbertopplacebox {
 
 #boxtexttopplace{
 	height: 95px;
-	width: 580px;
+	width: 380px;
 }
 
 div#quanquen_first div#topplace div#numbertopplacebox input {
@@ -38,11 +38,23 @@ div#quanquen_first div#topplace div#numbertopplacebox input {
 
 div#content div#quanquen_first div#ad {
 	position: absolute;
-	height: 400px;
-	width: 370px;
+	height: 300px;
+	width: 570px;
 	border: 1px solid #ddd;
 	top: 0px;
 	right: 0px;
+}
+
+#ad .newplace{
+width: 280px;
+float: left;
+position:relative;
+}
+
+#ad .mark {
+padding: 0px 0px 10px 0px;
+border-bottom: 1px solid #ddd;
+margin-bottom: 10px;
 }
 
 div#content div#quanquen_last{
@@ -60,17 +72,18 @@ form#choosecategory{
 
 form#choosecategory fieldset{
 	border: none;
-	width: 670px;
+	width: 900px;
 	margin: auto;
 }
 
 form#choosecategory fieldset label {
-	width: 120px;
+	width: auto;
 	float: left;
 	height: 24px;
 	line-height: 24px;
 	text-align: right;
-	margin-right: 5px;
+	padding-right: 10px;
+	display: block;
 }
 
 form#choosecategory fieldset select{
@@ -80,10 +93,11 @@ form#choosecategory fieldset select{
 	line-height: 24px;
 	font-size: 1em;
 	text-transform: capitalize;
+	margin-right: 10px;
 }
 
 form#choosecategory fieldset input{
-	margin-left: 20px;
+	margin-left: 10px;
 }
 
 div#content div#quanquen_last div#category{

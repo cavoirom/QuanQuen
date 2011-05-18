@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Transaction;
@@ -23,6 +24,7 @@ public class DataTest {
 	private static PersistenceManager pm;
 
 	public static void main(String[] args) {
+		Random ran = new Random();
 		pm = Connection.getPersistenceManager();
 		List<Address> address = new ArrayList<Address>();
 		List<Category> categories = new ArrayList<Category>();
@@ -161,7 +163,8 @@ public class DataTest {
 				aa.setComments(cm);
 				articles.add(a);
 				articles.add(aa);
-				articles.add(aa);				
+				articles.add(aa);
+				
 			}
 			
 		}
@@ -218,29 +221,80 @@ public class DataTest {
 		
 		
 		
-		
 		//---------------------------------Start Place---------------------------------------
-		for (int i=0; i< categories.size(); i++){
+		for (int i=0; i < categories.size(); i++){
 					LinkedHashSet<Category> a = new LinkedHashSet<Category>();
 					a.add(categories.get(i));
 					for (int k = 0; k < members.size(); k++){
 						LinkedHashSet<Member> b = new LinkedHashSet<Member>();
-						b.add(members.get(k));
+						b.add(members.get(ran.nextInt(members.size()-1)));
+						b.add(members.get(ran.nextInt(members.size()-1)));
+						b.add(members.get(ran.nextInt(members.size()-1)));
+						b.add(members.get(ran.nextInt(members.size()-1)));
 						
-						Place p = new Place(categories.get(k).getTitle() + " " + k, address.get(k), a, b);
+						Place p = new Place("Quán " + members.get(ran.nextInt(members.size()-1)).getUsername() + " " + k, address.get(ran.nextInt(address.size()-1)), a, b);
+						
 						LinkedHashSet<Article> ad = new LinkedHashSet<Article>();
-						ad.add(articles.get(k));
+						ad.add(articles.get(ran.nextInt(articles.size()-1)));
+						ad.add(articles.get(ran.nextInt(articles.size()-1)));
+						ad.add(articles.get(ran.nextInt(articles.size()-1)));
+						ad.add(articles.get(ran.nextInt(articles.size()-1)));
 						p.setArticles(ad);
+						
+						LinkedHashSet<Member> likes = new LinkedHashSet<Member>();
+						likes.add(members.get(ran.nextInt(members.size()-1)));
+						likes.add(members.get(ran.nextInt(members.size()-1)));
+						likes.add(members.get(ran.nextInt(members.size()-1)));
+						p.setMembersLikeThis(likes);
+						
 						LinkedList<Image> image= new LinkedList<Image>();
-						image.add(images.get(k));
+						image.add(images.get(ran.nextInt(images.size()-1)));
+						image.add(images.get(ran.nextInt(images.size()-1)));
+						image.add(images.get(ran.nextInt(images.size()-1)));
+						image.add(images.get(ran.nextInt(images.size()-1)));
+						image.add(images.get(ran.nextInt(images.size()-1)));
 						p.setImages(image);
+						
 						places.add(p);
 						categories.get(i).addPlace(p);
-//						
 					}
 			}
 
 		//---------------------------------End Place----------------------------------------------
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//		//---------------------------------Start Place---------------------------------------
+//		for (int i=0; i< categories.size(); i++){
+//					LinkedHashSet<Category> a = new LinkedHashSet<Category>();
+//					a.add(categories.get(i));
+//					for (int k = 0; k < members.size(); k++){
+//						LinkedHashSet<Member> b = new LinkedHashSet<Member>();
+//						b.add(members.get(k));
+//						
+//						Place p = new Place(categories.get(k).getTitle() + " " + k, address.get(k), a, b);
+//						LinkedHashSet<Article> ad = new LinkedHashSet<Article>();
+//						ad.add(articles.get(k));
+//						p.setArticles(ad);
+//						LinkedList<Image> image= new LinkedList<Image>();
+//						image.add(images.get(k));
+//						p.setImages(image);
+//						places.add(p);
+//						categories.get(i).addPlace(p);
+////						
+//					}
+//			}
+//
+//		//---------------------------------End Place----------------------------------------------
 //		tx.commit();
 //		pm.close();
 		
@@ -257,21 +311,21 @@ public class DataTest {
 		//=================================================Start save==========================================
 		Transaction tx = pm.currentTransaction();
 		tx.begin();
-		pm.makePersistent(groupMember);
+//		pm.makePersistent(groupMember);
 		pm.makePersistent(groupAdmin);
-		
-		for(Category p: categories){
-			pm.makePersistent(p);			
-		}
-		
-		for(Comment p: comments){
-			pm.makePersistent(p);			
-		}
-		
-		for(Article p: articles){
-			pm.makePersistent(p);			
-		}
-		
+//		
+//		for(Category p: categories){
+//			pm.makePersistent(p);			
+//		}
+//		
+//		for(Comment p: comments){
+//			pm.makePersistent(p);			
+//		}
+//		
+//		for(Article p: articles){
+//			pm.makePersistent(p);			
+//		}
+//		
 		for(Place p: places){
 				pm.makePersistent(p);			
 		}

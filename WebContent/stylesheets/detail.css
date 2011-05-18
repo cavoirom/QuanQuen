@@ -61,6 +61,17 @@ ul.images li a.next {
 	background: url(../images/next.png) no-repeat center right;
 }
 
+.information div ul.category {
+	width: 100px;
+	margin: 15px auto;
+}
+
+ul#placetools{
+	position: absolute;
+	bottom: 10px;
+	left: 430px;
+}
+
 .articles {
 	padding: 0px;
 	width: 980px;
@@ -107,7 +118,7 @@ ul.images li a.next {
 
 .article .tools {
 	margin-top: 20px;
-margin-right: 10px;
+	margin-right: 10px;
 	width: 550px;
 	height: 40px;
 	float: left;

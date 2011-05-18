@@ -1,4 +1,6 @@
+<%@page import="quanquen.model.Article"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%Article article = null;%>
 <div class="article">
 	<div class="infoauthor">
 		<img alt="" src="<%=article.getAuthor().getAvatar().getUrl()%>"/>
@@ -18,8 +20,8 @@
 	<div class="tools">
 		<ul class="category">
 		<li></li>
-		<li><a href="viewcomment?article=<%=article.getId()%>">(<%=article.getComments().size()%>) phản hồi</a></li>
-		<li><a href="like?article=<%=article.getId()%>">Thích</a></li>
+		<li><a href="viewcomment?article=<%=article.getId()%>">(<%=article.getComments().size()%>) Phản hồi</a></li>
+		<li><a href="like?article=<%=article.getId()%>">(<%=article.getMembersLikeThis().size()%>) Thích</a></li>
 		<li><a href="share?article=<%=article.getId()%>">Chia sẻ qua facebook</a></li>
 		<li><a href="send?article=<%=article.getId()%>">Gửi cho bạn bè</a></li>
 		<li><a href="black?article=<%=article.getId()%>">Báo xấu</a></li>

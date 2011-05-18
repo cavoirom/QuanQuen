@@ -1,3 +1,4 @@
+<%@page import="java.util.Iterator"%>
 <%@page import="java.util.LinkedHashSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -17,22 +18,22 @@
 			<ul class="category">
 				<li>Thể loai: </li>
 				<%
-				LinkedHashSet<Category> categories = place.getCategories();
-				for (int j=0; j<categories.size(); j++){
-					Category category = categories.iterator().next();
+				Iterator<Category> categories = place.getCategories().iterator();
+				while (categories.hasNext()){
+					Category category = categories.next();
 				%>
-					<li><a href="category?id=<%=category.getId()%>"><%=category.getTitle()%></a></li>
+					<li><a href="search?type=category&searchvalue=<%=category.getTitle()%>"><%=category.getTitle()%></a></li>
 				<%}%>
 			</ul>
 			<p class="address">Địa chỉ: <%=place.getAddress().toString()%></p>
 			<ul class="category">
 				<li>Người quản lý: </li>
 				<%
-				LinkedHashSet<Member> managers = place.getManagers();
-				for (int j=0; j<managers.size(); j++){
-					Member member = managers.iterator().next();
+				Iterator<Member> managers = place.getManagers().iterator();
+				while (managers.hasNext()){
+					Member member = managers.next();
 				%>
-					<li><a href="user?u=<%=member.getUsername()%>"><%=member.getUsername()%></a></li>
+					<li><a href="search?type=author&searchvalue=<%=member.getUsername()%>"><%=member.getUsername()%></a></li>
 				<%}%>
 			</ul>
 			<div class="statistics">

@@ -14,7 +14,7 @@
 <script type="text/javascript">
 
 $(document).ready(function() {		
-	slideshowquanquen = new SlideShow("#topplace");
+	slideshowquanquen = new SlideShow("#contentmainbox");
 });
 </script>
 </head>

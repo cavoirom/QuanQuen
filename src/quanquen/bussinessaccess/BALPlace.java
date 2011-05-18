@@ -36,7 +36,7 @@ public class BALPlace {
 		query.setOrdering("this.numberOfVisited DESCENDING");
 		query.setRange(0, 7);
 		places = (List<Place>) query.execute();
-		pm.currentTransaction().commit();
+		tx.commit();
 		pm.close();
 		return places;
 	}
@@ -52,9 +52,9 @@ public class BALPlace {
 		pm.setDetachAllOnCommit(true);
 		Query query = pm.newQuery(Place.class);
 		query.setOrdering("this.postedDate DESCENDING");
-		query.setRange(0, 7);
+		query.setRange(0, 5);
 		places = (List<Place>) query.execute();
-		pm.currentTransaction().commit();
+		tx.commit();
 		pm.close();
 		return places;
 	}
@@ -73,7 +73,7 @@ public class BALPlace {
 		query.setOrdering("this.numberOfVisited DESCENDING");
 		query.setRange(0, 7);
 		places = (List<Place>) query.execute(category);
-		pm.currentTransaction().commit();
+		tx.commit();
 		pm.close();
 		return places;
 	}
@@ -106,7 +106,7 @@ public class BALPlace {
 		updateNumberVisisted(place);
 	}
 	//OK
-	public List<Place> getPlacesByAuthor(Member author, int page) {
+	public List<Place> getPlacesByAuthor(String username, String filter, int page) {
 		List<Place> places = new ArrayList<Place>();
 		pm = Connection.getPersistenceManager();
 		pm.setDetachAllOnCommit(true);
@@ -115,21 +115,17 @@ public class BALPlace {
 		tx.setNontransactionalWrite(true);
 		tx.begin();
 		Query query = pm.newQuery(Place.class);
-		query.declareParameters("Member author");
-		query.setFilter("this.managers.contains(author)");
+		query.declareVariables("Member member");
+		query.setFilter("(this.managers.contains(member) && member.username.matches('(?i).*" + username + ".*'))" + filter);
 		query.setRange((page - 1) * numberResult, numberResult);
-		places = (List<Place>) query.execute(author);
+		places = (List<Place>) query.execute();
 		tx.commit();
 		pm.close();
 		return places;
 	}
+
 	//OK
-	public List<Place> getPlacesByAuthor(String username, int page){
-		Member author = new Member(username);
-		return getPlacesByAuthor(author, page);
-	}
-	//OK
-	public List<Place> getPlacesByCategory(Category category, int page) {
+	public List<Place> getPlacesByCategory(String title, String filter, int page) {
 		List<Place> places = new ArrayList<Place>();
 		pm = Connection.getPersistenceManager();
 		pm.setDetachAllOnCommit(true);
@@ -138,18 +134,13 @@ public class BALPlace {
 		tx.setNontransactionalWrite(true);
 		tx.begin();
 		Query query = pm.newQuery(Place.class);
-		query.declareParameters("Category category");
-		query.setFilter("this.categories.contains(category)");
+		query.declareVariables("Category category");
+		query.setFilter("(this.categories.contains(category) && category.title.matches('(?i).*" + title + ".*'))" + filter);
 		query.setRange((page - 1) * numberResult, numberResult);
-		places = (List<Place>) query.execute(category);
-		pm.currentTransaction().commit();
+		places = (List<Place>) query.execute();
+		tx.commit();
 		pm.close();
 		return places;
-	}
-	//OK
-	public List<Place> getPlacesByCategory(int id, int page) {
-		Category category = new Category(id);
-		return getPlacesByCategory(category, page);
 	}
 	
 	public List<Place> getPlacesByTypes(String type, String searchvalue, String address, int page) {
@@ -162,29 +153,26 @@ public class BALPlace {
 		List<Place> places = new ArrayList<Place>();
 		Query query = pm.newQuery(Place.class);
 		query.setRange(0, 20);
-		String filterAddress = "";
-		if (address != null){
-			filterAddress = " && (this.address.province.matches('(?i).*" + address + ".*')" + " || this.address.district.matches('(?i).*" + address + ".*')" + " || this.address.street.matches('(?i).*" + address + ".*')" + " || this.address.houseNumber.matches('(?i).*" + address + ".*')" + ")";
-		}
 		//Pass
 		if(type.equals("name") || type.equals("price")){
-			query.declareParameters("String " + type);
-			query.setFilter("this." + type +".matches('(?i).*" + searchvalue + ".*')" + filterAddress);
-			places = (List<Place>)query.execute(searchvalue);
+			query.setFilter("this." + type + ".matches('(?i).*" + searchvalue + ".*')" + filterAddress(address));
+			places = (List<Place>)query.execute();
 		}
-//		if (type.equals("category")){
-//			Category category = new Category();
-//			
-//			places = getPlacesByCategory(searchvalue, page);
-//		}
+		if (type.equals("category")){
+			places = getPlacesByCategory(searchvalue, filterAddress(address), page);
+		}
 		if (type.equals("author")){
-			Member member = new Member();
-			member.setUsername(searchvalue);
-			places = getPlacesByAuthor(member, page);
+			places = getPlacesByAuthor(searchvalue, filterAddress(address), page);
 		}
-		pm.currentTransaction().commit();
+		tx.commit();
 		pm.close();
 		return places;
+	}
+	
+	private String filterAddress(String address){
+		if (address == null || address.equals(""))
+			return "";
+		return " && (this.address.province.matches('(?i).*" + address + ".*')" + " || this.address.district.matches('(?i).*" + address + ".*')" + " || this.address.street.matches('(?i).*" + address + ".*')" + " || this.address.houseNumber.matches('(?i).*" + address + ".*'))";
 	}
 
 	//Pass
@@ -195,7 +183,6 @@ public class BALPlace {
 		tx.setNontransactionalRead(true);
 		tx.setNontransactionalWrite(true);
 		tx.begin();
-//		pm.setDetachAllOnCommit(true);
 		Place place = null;
 		Query query = pm.newQuery(Place.class);
 		query.declareParameters("int id");
@@ -205,7 +192,7 @@ public class BALPlace {
 		if (places.size()>0){
 			place = places.get(0);
 		}
-		pm.currentTransaction().commit();
+		tx.commit();
 		pm.close();
 		return place;
 	}
@@ -219,17 +206,15 @@ public class BALPlace {
 		tx.setNontransactionalRead(true);
 		tx.setNontransactionalWrite(true);
 		tx.begin();
-//		pm.setDetachAllOnCommit(true);
 		Query query = pm.newQuery(Place.class);
-		query.declareParameters("Article article");
-		query.setFilter("this.articles.contains(article)");
-		places = (List<Place>) query.execute(article);
+		query.declareVariables("Article article");
+		query.setFilter("this.articles.contains(article) && article.id==id");
+		places = (List<Place>) query.execute(id);
 		Place place = places.get(0);
-		pm.currentTransaction().commit();
+		tx.commit();
 		pm.close();
 		return place;
 	}
-	
 	
 	//Pass -->Tested
 	public Place getPlaceAndUpdateNumber(Place place){
@@ -252,6 +237,7 @@ public class BALPlace {
 		pm.close();
 		return edit;
 	}
+	
 	//Pass -->Tested
 	public Place getPlaceAndUpdateNumber(int id){
 		Place place = new Place(id);
@@ -267,13 +253,12 @@ public class BALPlace {
 		tx.setNontransactionalWrite(true);
 		tx.begin();
 		Query query = pm.newQuery(Place.class);
-		query.declareParameters("Article article");
-		query.setFilter("this.articles.contains(article)");
+		query.declareParameters("Integer id");
+		query.declareVariables("Article articleIn");
+		query.setFilter("this.articles.contains(articleIn) && articleIn.id==id");
 		query.setRange(0, 1);
 		for (Integer id: ids){
-			Article article = new Article(id);
-			List<Place> pls = (List<Place>) query.execute(article);
-			System.out.println(pls.size());
+			List<Place> pls = (List<Place>) query.execute(id);
 			places.addAll(pls);
 		}
 		tx.commit();
@@ -282,13 +267,5 @@ public class BALPlace {
 	}
 	
 	public static void main(String[] args) {
-//		List<Integer> list = new ArrayList<Integer>();
-//		list.add(new Integer(1));
-//		list.add(new Integer(8));
-//		Category a = new Category(4);
-//		System.out.println(new BALPlace().getPlacesByCategory(a, 1));
-//		System.out.println(new BALPlace().getPlacesByListArticleId(list).size());
-//		System.out.println((new BALPlace().getPlaceAndUpdateNumber(4)).getAddress().toString());
-		System.out.println(new BALPlace().getPlacesByAuthor("vinh", 1).size());
 	}
 }

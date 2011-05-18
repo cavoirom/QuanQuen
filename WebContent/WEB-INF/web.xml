@@ -89,4 +89,14 @@
     <servlet-name>places</servlet-name>
     <url-pattern>/places</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>loadcategory</display-name>
+    <servlet-name>loadcategory</servlet-name>
+    <servlet-class>quanquen.control.loadcategory</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>loadcategory</servlet-name>
+    <url-pattern>/loadcategory</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -107,14 +107,14 @@ if (parent==null)
 	//Get next image caption
 	var caption = next.find('img').attr('rel');	
 	
-	//Hide the current image
-	current.animate({opacity: 0.0}, 1000)
-	.removeClass('show');
-	
 	//Set the fade in effect for the next image, show class has higher z-index
 	next.css({opacity: 0.0})
 	.addClass('show')
 	.animate({opacity: 1.0}, 1000);
+	
+	//Hide the current image
+	current.animate({opacity: 0.0}, 1000)
+	.removeClass('show');
 	
 	//Display the content
 	$(parent + '.gallery .caption').html(caption);
