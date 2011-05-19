@@ -15,7 +15,6 @@
 <script type="text/javascript" src="clientscripts/lightbox/lightbox.js"></script>
 </head>
 <body>
-<a href="images/place/default.jpg" rel="lightbox">testest</a>
 <div id="wrapper">
 	<%@include file="include_header.jsp" %>
 	<%@include file="include_detail.jsp" %>

@@ -32,32 +32,47 @@ public class loaddistricts extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		
-		int provinceid = Integer.parseInt(request.getParameter("provinceid"));
+		//Get province from quanquen
+		String province = request.getParameter("province");
+		province = (province == null)? "TP.Hồ Chí Minh" : new String(province.getBytes("8859_1"),"UTF-8");
+		
 		HttpSession session = request.getSession();
+		String all = "-------------All-----------------";
+		//Get district from session
 		String district = (String)session.getAttribute("district");
-		Integer id = null;
-		if (district == null || district.equals("")){
-			id = -1;
-		}else{
-			id = new Integer(district);
+		district = (district == null)? all: district;
+		
+		//Get province from session
+		String provinceSession = (String)session.getAttribute("provinceSession");
+		
+		//Get districts form session.
+		List<String> districtsSession = (List<String>)session.getAttribute("districts");
+		
+		//if province not change then not load again districts
+		if ((province != null && !province.equals(provinceSession)) || districtsSession == null){
+			//Get list district by province
+			districtsSession = new BALAddress().getDistrictsByProvince(province);
+			System.out.println(province);
+			System.out.println(districtsSession.toString());
+//			districtsSession.add(0, all);
+			session.setAttribute("districtsSession", districtsSession);
 		}
-		String province = ((List<String>)session.getAttribute("provinces")).get(provinceid);
-		List<String> districts = new BALAddress().getDistrictsByProvince(province);
+		
+		//Save information
+		session.setAttribute("provinceSession", province);
+		session.setAttribute("district", district);
+		
 		PrintWriter out = response.getWriter();
 		String text = "";
-		if (district == null || new Integer(district) == -1){
-			text = "<option value=\"-1\" selected=\"selected\">----------Tất cả----------</option>";
-		}else{
-			text = "<option value=\"-1\">----------Tất cả----------</option>";
-		}
-		for (int i = 0; i < districts.size(); i++){
-			if (i == id){
-				text = text + "<option value=\"" + i +"\" selected=\"selected\">" + districts.get(i) + "</option>";
+		for (String str: districtsSession){
+			if (str.equals(district)){
+				text = text + "<option selected='selected'>" + str + "</option>";
 			}else{
-				text = text + "<option value=\"" + i + "\">" + districts.get(i) + "</option>";
+				text = text + "<option value ='"+ str +"'>" + str + "</option>";
 			}
 		}
 		out.println(text);
+		out.flush();
 		out.close();
 	}
 

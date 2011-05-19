@@ -19,7 +19,6 @@ public class BALArticle {
 		Transaction tx = pm.currentTransaction();
 		tx.setNontransactionalRead(true);
 		tx.setNontransactionalWrite(true);
-		tx.setSerializeRead(true);
 		tx.begin();		
 		Query query = pm.newQuery(Article.class);
 		query.setOrdering("this.postedDate DESCENDING");

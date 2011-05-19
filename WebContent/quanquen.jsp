@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Quán quen</title>
 <link href="stylesheets/styles.css" rel="stylesheet" type="text/css">
+<link href="stylesheets/result.css" rel="stylesheet" type="text/css">
 <link href="stylesheets/quanquen.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="clientscripts/jquery-1.5.1.min.js"></script>
 <script type="text/javascript" src="clientscripts/jquery.corner.js"></script>
@@ -18,7 +19,7 @@ $(document).ready(function() {
 });
 </script>
 </head>
-<body id="quanquen" onload="loadDistrict('<%=((session.getAttribute("provinceid")== null)? "0" : session.getAttribute("provinceid").toString())%>')">
+<body id="quanquen" onload="loadDistrict('<%=((session.getAttribute("province")== null)? "TP.Hồ Chí Minh" : session.getAttribute("province").toString())%>')">
 <div id="wrapper">
 
 	<%@include file="include_header.jsp"%>

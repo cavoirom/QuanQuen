@@ -5,11 +5,8 @@ var XMLHttpRequestObject = false;
 		XMLHttpRequestObject = new ActiveXObject("Microsoft.XMLHTTP");
 	}
 	
-	function loadDistrict(provinceid) {
-		if (provinceid == null| provinceid ==""){
-			provinceid = 0;
-		}
-		url = "loaddistricts?provinceid=" + provinceid;
+	function loadDistrict(province) {
+		url = "loaddistricts?province=" + province;
 		obj = document.getElementById("district");
 		if (XMLHttpRequestObject) {
 			XMLHttpRequestObject.open("GET", url, true);

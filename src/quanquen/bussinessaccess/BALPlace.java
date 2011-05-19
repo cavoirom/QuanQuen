@@ -169,6 +169,37 @@ public class BALPlace {
 		return places;
 	}
 	
+	public List<Integer> getListIdPlaceByAddress(String province, String district){
+		pm = Connection.getPersistenceManager();
+		pm.setDetachAllOnCommit(true);
+		Transaction tx = pm.currentTransaction();
+		tx.setNontransactionalRead(true);
+		tx.setNontransactionalWrite(true);
+		tx.begin();
+		Query query = pm.newQuery(Place.class);
+		query.setFilter(getFilter("province", province) + addFilter("&&","district", district));
+		query.setResult("this.id");
+		List<Integer> placesId = (List<Integer>)query.execute();
+		tx.commit();
+		pm.close();
+		return placesId;
+	}
+	
+	public List<Place> getPlacesByCategoryAddress(String province, String district, String category, int page){
+		return getPlacesByCategory(category, addFilter("&&", "province", province) + addFilter("&&", "district", district), page);
+	}
+	
+	private String addFilter(String rel, String type, String filter){
+		if (filter == null || filter.equals("")){
+			return "";
+		}
+		return " " + rel + " this.address." + type + ".matches('(?i).*" + filter + ".*')";
+	}
+	
+	private String getFilter(String type, String filter){
+		return "this.address." + type + ".matches('(?i).*" + filter + ".*')";
+	}
+	
 	private String filterAddress(String address){
 		if (address == null || address.equals(""))
 			return "";
@@ -265,7 +296,7 @@ public class BALPlace {
 		pm.close();
 		return places;
 	}
-	
 	public static void main(String[] args) {
+		System.out.println(new BALPlace().getListIdPlaceByAddress("Hồ chí minh", "Thủ đức").size());
 	}
 }

@@ -99,4 +99,14 @@
     <servlet-name>loadcategory</servlet-name>
     <url-pattern>/loadcategory</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>quanquen</display-name>
+    <servlet-name>quanquen</servlet-name>
+    <servlet-class>quanquen.control.quanquen</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>quanquen</servlet-name>
+    <url-pattern>/quanquen</url-pattern>
+  </servlet-mapping>
 </web-app>

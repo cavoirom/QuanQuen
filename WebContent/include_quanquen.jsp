@@ -86,13 +86,15 @@ response.setCharacterEncoding("utf-8");
 				<label for="district">Quận/Huyện</label>
 				<select id="district" name="district">
 				</select>
-				<label for="categories">Thể loại</label>
-				<select id="categories" name="categories">
+				<label for="type">Thể loại</label>
+				<select id="type" name="type">
 				</select>
 				<input type="submit" value="Go"/>
 			</fieldset>
 		</form>
 		<div id="places">
 		</div>
+	</div>
+	<div id="result">
 	</div>
 </div>
